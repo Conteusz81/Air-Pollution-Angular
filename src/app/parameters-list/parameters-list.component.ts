@@ -24,10 +24,11 @@ export class ParametersListComponent implements OnInit {
   // }
   onParameterSelect(param: string) {
     this.parameterService.getLatestMeasurements(param);
+    this.getMostPollutedCities();
   }
-  // getMostPollutedCities() {
-  //   // @ts-ignore
-  //   this.parameterService.getLatestMeasurements().subscribe(response => console.log(response));
-  // }
+  getMostPollutedCities() {
+    // @ts-ignore
+    this.parameterService.getLatestMeasurements().subscribe(response => console.log(response));
+  }
 
 }

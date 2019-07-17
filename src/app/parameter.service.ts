@@ -20,8 +20,8 @@ export class ParameterService {
   //   );
   // }
   getLatestMeasurements(id: string) {
-    return this.http.get(`https://api.openaq.org/v1/latest?country=PL&parameter=${id}&limit=10000`).pipe(
-      map(response => console.log(response) )
-    );
+    const url = `https://api.openaq.org/v1/latest?country=PL&parameter=${id}&limit=10000`;
+    console.log(url);
+    return this.http.get(url);
   }
 }
