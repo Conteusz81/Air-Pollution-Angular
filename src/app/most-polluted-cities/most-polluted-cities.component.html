@@ -1,0 +1,7 @@
+<section>
+  <ol>
+    <li *ngFor="let city of this.pollutionSortService.mostPollutedCities()">
+      <span>{{city.name}}  </span><span>{{city.measurementAvg.toFixed(2)}}</span><span>µg/m³</span>
+    </li>
+  </ol>
+</section>

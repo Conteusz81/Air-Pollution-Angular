@@ -1,27 +1,27 @@
-import { Injectable } from '@angular/core';
-import { PollutionParameter } from './pollution-parameter';
-import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
-import {ParametersApiResponse} from './parameters-api-response.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {PollutionMeasurementsSortService} from './pollution-measurements-sort.service';
+import {LatestMeasurementsApiResponse} from './latest-measurements-api-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParameterService {
-    // private parametersUrl = 'https://api.openaq.org/v1/parameters';
+
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private pollutionMeasurementsService: PollutionMeasurementsSortService
   ) { }
 
-  //  getParameters(): Observable<PollutionParameter[]> {
-  //   return this.http.get<ParametersApiResponse>(this.parametersUrl).pipe(
-  //     map(response => response.results)
-  //   );
+  // getMostPollutedCities(parameterId: string) {
+  //   this.getLatestMeasurements(parameterId);
+  //   return this.pollutionMeasurementsService.mostPollutedCities;
   // }
-  getLatestMeasurements(id: string) {
-    const url = `https://api.openaq.org/v1/latest?country=PL&parameter=${id}&limit=10000`;
-    console.log(url);
-    return this.http.get(url);
+
+  getLatestMeasurements(parameterId: string) {
+    const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
+    this.http.get<LatestMeasurementsApiResponse>(latestMeasurementsUrl).subscribe(response => {
+      this.pollutionMeasurementsService.sortMostPollutedCities(response);
+    });
   }
 }

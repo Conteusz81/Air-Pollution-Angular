@@ -6,12 +6,14 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { ParametersListComponent } from './parameters-list/parameters-list.component';
+import { MostPollutedCitiesComponent } from './most-polluted-cities/most-polluted-cities.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageHeaderComponent,
     ParametersListComponent,
+    MostPollutedCitiesComponent,
   ],
   imports: [
     BrowserModule,
