@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ParameterService} from '../parameter.service';
 import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
 
 @Component({
