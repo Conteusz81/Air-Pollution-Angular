@@ -5,7 +5,7 @@ import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.s
 @Component({
   selector: 'app-most-polluted-cities',
   templateUrl: './most-polluted-cities.component.html',
-  styleUrls: ['./most-polluted-cities.component.css']
+  styleUrls: ['./most-polluted-cities.component.scss']
 })
 export class MostPollutedCitiesComponent implements OnInit {
 

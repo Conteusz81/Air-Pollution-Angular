@@ -5,7 +5,7 @@ import { PARAMETERS } from '../mock-parameters';
 @Component({
   selector: 'app-parameters-list',
   templateUrl: './parameters-list.component.html',
-  styleUrls: ['./parameters-list.component.css']
+  styleUrls: ['./parameters-list.component.scss']
 })
 export class ParametersListComponent implements OnInit {
   pollutionParameters = PARAMETERS;
