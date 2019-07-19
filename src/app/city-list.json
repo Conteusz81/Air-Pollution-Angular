@@ -1,0 +1,900 @@
+{
+  "meta": {
+    "name": "openaq-api",
+    "license": "CC BY 4.0",
+    "website": "https://docs.openaq.org/",
+    "page": 1,
+    "limit": 1000,
+    "found": 148
+  },
+  "results": [
+    {
+      "city": "Toruń",
+      "country": "PL",
+      "locations": 4,
+      "count": 56562
+    },
+    {
+      "city": "Konin",
+      "country": "PL",
+      "locations": 1,
+      "count": 27248
+    },
+    {
+      "city": "Kraków",
+      "country": "PL",
+      "locations": 8,
+      "count": 122588
+    },
+    {
+      "city": "Łódź",
+      "country": "PL",
+      "locations": 3,
+      "count": 89275
+    },
+    {
+      "city": "Słupsk",
+      "country": "PL",
+      "locations": 1,
+      "count": 24766
+    },
+    {
+      "city": "Belsk",
+      "country": "PL",
+      "locations": 1,
+      "count": 32105
+    },
+    {
+      "city": "Jarczew",
+      "country": "PL",
+      "locations": 1,
+      "count": 4781
+    },
+    {
+      "city": "Skawina",
+      "country": "PL",
+      "locations": 1,
+      "count": 16234
+    },
+    {
+      "city": "Rzeszów",
+      "country": "PL",
+      "locations": 2,
+      "count": 54944
+    },
+    {
+      "city": "Zgorzelec",
+      "country": "PL",
+      "locations": 1,
+      "count": 21122
+    },
+    {
+      "city": "Warszawa",
+      "country": "PL",
+      "locations": 13,
+      "count": 302705
+    },
+    {
+      "city": "Lubań",
+      "country": "PL",
+      "locations": 2,
+      "count": 24486
+    },
+    {
+      "city": "Wschowa",
+      "country": "PL",
+      "locations": 1,
+      "count": 30889
+    },
+    {
+      "city": "Gdynia",
+      "country": "PL",
+      "locations": 3,
+      "count": 54076
+    },
+    {
+      "city": "Bydgoszcz",
+      "country": "PL",
+      "locations": 2,
+      "count": 52643
+    },
+    {
+      "city": "Opole",
+      "country": "PL",
+      "locations": 2,
+      "count": 26501
+    },
+    {
+      "city": "Krzyżówka",
+      "country": "PL",
+      "locations": 1,
+      "count": 16436
+    },
+    {
+      "city": "Piastów",
+      "country": "PL",
+      "locations": 2,
+      "count": 57469
+    },
+    {
+      "city": "Goczałkowice-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 7870
+    },
+    {
+      "city": "Szymbark",
+      "country": "PL",
+      "locations": 1,
+      "count": 16177
+    },
+    {
+      "city": "Czerwionka-Leszczyny",
+      "country": "PL",
+      "locations": 1,
+      "count": 5182
+    },
+    {
+      "city": "Żory",
+      "country": "PL",
+      "locations": 1,
+      "count": 10650
+    },
+    {
+      "city": "Działoszyn",
+      "country": "PL",
+      "locations": 1,
+      "count": 16036
+    },
+    {
+      "city": "Ełk",
+      "country": "PL",
+      "locations": 1,
+      "count": 25233
+    },
+    {
+      "city": "Katowice",
+      "country": "PL",
+      "locations": 2,
+      "count": 43158
+    },
+    {
+      "city": "Zabrze",
+      "country": "PL",
+      "locations": 1,
+      "count": 27121
+    },
+    {
+      "city": "Jawor",
+      "country": "PL",
+      "locations": 1,
+      "count": 13659
+    },
+    {
+      "city": "Bielsko-Biała",
+      "country": "PL",
+      "locations": 2,
+      "count": 37239
+    },
+    {
+      "city": "Osieczów",
+      "country": "PL",
+      "locations": 1,
+      "count": 15855
+    },
+    {
+      "city": "Olesno",
+      "country": "PL",
+      "locations": 1,
+      "count": 11218
+    },
+    {
+      "city": "Sosnowiec",
+      "country": "PL",
+      "locations": 1,
+      "count": 16310
+    },
+    {
+      "city": "Oława",
+      "country": "PL",
+      "locations": 1,
+      "count": 16986
+    },
+    {
+      "city": "Nisko",
+      "country": "PL",
+      "locations": 1,
+      "count": 26773
+    },
+    {
+      "city": "Tarnów",
+      "country": "PL",
+      "locations": 2,
+      "count": 47005
+    },
+    {
+      "city": "Gołdap",
+      "country": "PL",
+      "locations": 2,
+      "count": 39011
+    },
+    {
+      "city": "Płock",
+      "country": "PL",
+      "locations": 4,
+      "count": 154318
+    },
+    {
+      "city": "Legionowo",
+      "country": "PL",
+      "locations": 2,
+      "count": 62422
+    },
+    {
+      "city": "Nałęczów",
+      "country": "PL",
+      "locations": 1,
+      "count": 11669
+    },
+    {
+      "city": "Gliwice",
+      "country": "PL",
+      "locations": 1,
+      "count": 15382
+    },
+    {
+      "city": "Piła",
+      "country": "PL",
+      "locations": 1,
+      "count": 21917
+    },
+    {
+      "city": "Włocławek",
+      "country": "PL",
+      "locations": 2,
+      "count": 40268
+    },
+    {
+      "city": "Sulęcin",
+      "country": "PL",
+      "locations": 1,
+      "count": 24347
+    },
+    {
+      "city": "Mińsk Mazowiecki",
+      "country": "PL",
+      "locations": 1,
+      "count": 8152
+    },
+    {
+      "city": "Prudnik",
+      "country": "PL",
+      "locations": 1,
+      "count": 13265
+    },
+    {
+      "city": "Grudziądz",
+      "country": "PL",
+      "locations": 1,
+      "count": 16029
+    },
+    {
+      "city": "Karpacz",
+      "country": "PL",
+      "locations": 1,
+      "count": 5523
+    },
+    {
+      "city": "Pabianice",
+      "country": "PL",
+      "locations": 1,
+      "count": 22129
+    },
+    {
+      "city": "Radomsko",
+      "country": "PL",
+      "locations": 1,
+      "count": 27063
+    },
+    {
+      "city": "Piotrków Trybunalski",
+      "country": "PL",
+      "locations": 1,
+      "count": 27437
+    },
+    {
+      "city": "Nowy Sącz",
+      "country": "PL",
+      "locations": 1,
+      "count": 16424
+    },
+    {
+      "city": "Kościerzyna",
+      "country": "PL",
+      "locations": 1,
+      "count": 26454
+    },
+    {
+      "city": "Wieniec-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 16681
+    },
+    {
+      "city": "Lądek-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 3398
+    },
+    {
+      "city": "Wilczopole",
+      "country": "PL",
+      "locations": 1,
+      "count": 4942
+    },
+    {
+      "city": "Lublin",
+      "country": "PL",
+      "locations": 1,
+      "count": 36123
+    },
+    {
+      "city": "Gajew",
+      "country": "PL",
+      "locations": 1,
+      "count": 21586
+    },
+    {
+      "city": "Augustów",
+      "country": "PL",
+      "locations": 1,
+      "count": 20790
+    },
+    {
+      "city": "Gdańsk",
+      "country": "PL",
+      "locations": 5,
+      "count": 106374
+    },
+    {
+      "city": "Żywiec",
+      "country": "PL",
+      "locations": 1,
+      "count": 15786
+    },
+    {
+      "city": "Skarżysko-Kamienna",
+      "country": "PL",
+      "locations": 1,
+      "count": 21599
+    },
+    {
+      "city": "Przemyśl",
+      "country": "PL",
+      "locations": 1,
+      "count": 32221
+    },
+    {
+      "city": "Siedlce",
+      "country": "PL",
+      "locations": 2,
+      "count": 65082
+    },
+    {
+      "city": "Zgierz",
+      "country": "PL",
+      "locations": 1,
+      "count": 27340
+    },
+    {
+      "city": "Borówiec",
+      "country": "PL",
+      "locations": 1,
+      "count": 27448
+    },
+    {
+      "city": "Szarów",
+      "country": "PL",
+      "locations": 1,
+      "count": 11025
+    },
+    {
+      "city": "Smolary Bytnickie",
+      "country": "PL",
+      "locations": 1,
+      "count": 16485
+    },
+    {
+      "city": "Florianka",
+      "country": "PL",
+      "locations": 1,
+      "count": 13180
+    },
+    {
+      "city": "Kaszów",
+      "country": "PL",
+      "locations": 1,
+      "count": 10902
+    },
+    {
+      "city": "Otwock",
+      "country": "PL",
+      "locations": 2,
+      "count": 38139
+    },
+    {
+      "city": "Częstochowa",
+      "country": "PL",
+      "locations": 2,
+      "count": 47918
+    },
+    {
+      "city": "Zakopane",
+      "country": "PL",
+      "locations": 1,
+      "count": 27191
+    },
+    {
+      "city": "Suwałki",
+      "country": "PL",
+      "locations": 2,
+      "count": 5131
+    },
+    {
+      "city": "Borsukowizna",
+      "country": "PL",
+      "locations": 1,
+      "count": 25737
+    },
+    {
+      "city": "Poznań",
+      "country": "PL",
+      "locations": 3,
+      "count": 63126
+    },
+    {
+      "city": "Nowa Ruda",
+      "country": "PL",
+      "locations": 2,
+      "count": 4265
+    },
+    {
+      "city": "Radom",
+      "country": "PL",
+      "locations": 2,
+      "count": 91838
+    },
+    {
+      "city": "Dębica",
+      "country": "PL",
+      "locations": 1,
+      "count": 9040
+    },
+    {
+      "city": "Łomża",
+      "country": "PL",
+      "locations": 1,
+      "count": 15850
+    },
+    {
+      "city": "Widuchowa",
+      "country": "PL",
+      "locations": 1,
+      "count": 16512
+    },
+    {
+      "city": "Koziegłowy",
+      "country": "PL",
+      "locations": 1,
+      "count": 27263
+    },
+    {
+      "city": "Czerniawa",
+      "country": "PL",
+      "locations": 1,
+      "count": 2452
+    },
+    {
+      "city": "Żary",
+      "country": "PL",
+      "locations": 1,
+      "count": 36201
+    },
+    {
+      "city": "Ząbkowice Śląskie",
+      "country": "PL",
+      "locations": 1,
+      "count": 16183
+    },
+    {
+      "city": "Legnica",
+      "country": "PL",
+      "locations": 1,
+      "count": 32074
+    },
+    {
+      "city": "Sopot",
+      "country": "PL",
+      "locations": 1,
+      "count": 19312
+    },
+    {
+      "city": "Białystok",
+      "country": "PL",
+      "locations": 2,
+      "count": 34174
+    },
+    {
+      "city": "Jasło",
+      "country": "PL",
+      "locations": 1,
+      "count": 21369
+    },
+    {
+      "city": "Kalisz",
+      "country": "PL",
+      "locations": 1,
+      "count": 36130
+    },
+    {
+      "city": "Koszalin",
+      "country": "PL",
+      "locations": 2,
+      "count": 27045
+    },
+    {
+      "city": "Małogoszcz",
+      "country": "PL",
+      "locations": 1,
+      "count": 16542
+    },
+    {
+      "city": "Starachowice",
+      "country": "PL",
+      "locations": 1,
+      "count": 13734
+    },
+    {
+      "city": "Zdzieszowice",
+      "country": "PL",
+      "locations": 1,
+      "count": 20661
+    },
+    {
+      "city": "Lubliniec",
+      "country": "PL",
+      "locations": 1,
+      "count": 5474
+    },
+    {
+      "city": "Elbląg",
+      "country": "PL",
+      "locations": 1,
+      "count": 37069
+    },
+    {
+      "city": "Gorzów Wielkopolski",
+      "country": "PL",
+      "locations": 1,
+      "count": 32109
+    },
+    {
+      "city": "Granica",
+      "country": "PL",
+      "locations": 2,
+      "count": 41164
+    },
+    {
+      "city": "Puławy",
+      "country": "PL",
+      "locations": 1,
+      "count": 5351
+    },
+    {
+      "city": "Wrocław",
+      "country": "PL",
+      "locations": 3,
+      "count": 65455
+    },
+    {
+      "city": "Dąbrowa Górnicza",
+      "country": "PL",
+      "locations": 1,
+      "count": 32726
+    },
+    {
+      "city": "Racibórz",
+      "country": "PL",
+      "locations": 1,
+      "count": 3416
+    },
+    {
+      "city": "Żyrardów",
+      "country": "PL",
+      "locations": 2,
+      "count": 32867
+    },
+    {
+      "city": "Liniewko Kościerskie",
+      "country": "PL",
+      "locations": 1,
+      "count": 11635
+    },
+    {
+      "city": "Belsk Duży",
+      "country": "PL",
+      "locations": 1,
+      "count": 19336
+    },
+    {
+      "city": "Dzierżoniów",
+      "country": "PL",
+      "locations": 1,
+      "count": 16430
+    },
+    {
+      "city": "Szczecin",
+      "country": "PL",
+      "locations": 4,
+      "count": 54156
+    },
+    {
+      "city": "Nowiny",
+      "country": "PL",
+      "locations": 1,
+      "count": 20932
+    },
+    {
+      "city": "Malbork",
+      "country": "PL",
+      "locations": 1,
+      "count": 21321
+    },
+    {
+      "city": "Wałbrzych",
+      "country": "PL",
+      "locations": 1,
+      "count": 32237
+    },
+    {
+      "city": "Biała Podlaska",
+      "country": "PL",
+      "locations": 1,
+      "count": 25540
+    },
+    {
+      "city": "Rymanów-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 10923
+    },
+    {
+      "city": "Rybnik",
+      "country": "PL",
+      "locations": 1,
+      "count": 32585
+    },
+    {
+      "city": "Nowy Targ",
+      "country": "PL",
+      "locations": 1,
+      "count": 15245
+    },
+    {
+      "city": "Diabla Góra",
+      "country": "PL",
+      "locations": 1,
+      "count": 16346
+    },
+    {
+      "city": "Olsztyn",
+      "country": "PL",
+      "locations": 1,
+      "count": 38117
+    },
+    {
+      "city": "Zamość",
+      "country": "PL",
+      "locations": 1,
+      "count": 21812
+    },
+    {
+      "city": "Połaniec",
+      "country": "PL",
+      "locations": 1,
+      "count": 29872
+    },
+    {
+      "city": "Zielonka",
+      "country": "PL",
+      "locations": 1,
+      "count": 22302
+    },
+    {
+      "city": "Złoty Potok",
+      "country": "PL",
+      "locations": 1,
+      "count": 32407
+    },
+    {
+      "city": "Horyniec-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 8910
+    },
+    {
+      "city": "Trzebinia",
+      "country": "PL",
+      "locations": 1,
+      "count": 26322
+    },
+    {
+      "city": "Ustroń",
+      "country": "PL",
+      "locations": 1,
+      "count": 21725
+    },
+    {
+      "city": "Tychy",
+      "country": "PL",
+      "locations": 1,
+      "count": 16172
+    },
+    {
+      "city": "Jelenia Góra",
+      "country": "PL",
+      "locations": 1,
+      "count": 36932
+    },
+    {
+      "city": "Parzniewice",
+      "country": "PL",
+      "locations": 1,
+      "count": 16323
+    },
+    {
+      "city": "Ostróda",
+      "country": "PL",
+      "locations": 1,
+      "count": 27517
+    },
+    {
+      "city": "Łeba",
+      "country": "PL",
+      "locations": 1,
+      "count": 5562
+    },
+    {
+      "city": "Mogilno",
+      "country": "PL",
+      "locations": 1,
+      "count": 243
+    },
+    {
+      "city": "Jarosław",
+      "country": "PL",
+      "locations": 1,
+      "count": 8976
+    },
+    {
+      "city": "Krempna",
+      "country": "PL",
+      "locations": 1,
+      "count": 15554
+    },
+    {
+      "city": "Cieszyn",
+      "country": "PL",
+      "locations": 1,
+      "count": 27063
+    },
+    {
+      "city": "Sucha Beskidzka",
+      "country": "PL",
+      "locations": 1,
+      "count": 5525
+    },
+    {
+      "city": "Nowa Sól",
+      "country": "PL",
+      "locations": 1,
+      "count": 14381
+    },
+    {
+      "city": "Lębork",
+      "country": "PL",
+      "locations": 1,
+      "count": 21190
+    },
+    {
+      "city": "Ciechocinek",
+      "country": "PL",
+      "locations": 1,
+      "count": 13802
+    },
+    {
+      "city": "Konstancin-Jeziorna",
+      "country": "PL",
+      "locations": 1,
+      "count": 31649
+    },
+    {
+      "city": "Koniczynka",
+      "country": "PL",
+      "locations": 1,
+      "count": 10897
+    },
+    {
+      "city": "Szczecinek",
+      "country": "PL",
+      "locations": 1,
+      "count": 16431
+    },
+    {
+      "city": "Chełm",
+      "country": "PL",
+      "locations": 1,
+      "count": 4294
+    },
+    {
+      "city": "Kędzierzyn-Koźle",
+      "country": "PL",
+      "locations": 1,
+      "count": 38237
+    },
+    {
+      "city": "Kielce",
+      "country": "PL",
+      "locations": 1,
+      "count": 35348
+    },
+    {
+      "city": "Inowrocław",
+      "country": "PL",
+      "locations": 1,
+      "count": 14536
+    },
+    {
+      "city": "Zielona Góra",
+      "country": "PL",
+      "locations": 1,
+      "count": 37829
+    },
+    {
+      "city": "Końskie",
+      "country": "PL",
+      "locations": 1,
+      "count": 3304
+    },
+    {
+      "city": "Duszniki-Zdrój",
+      "country": "PL",
+      "locations": 1,
+      "count": 17808
+    },
+    {
+      "city": "Guty Duże",
+      "country": "PL",
+      "locations": 1,
+      "count": 15487
+    },
+    {
+      "city": "Wodzisław Śląski",
+      "country": "PL",
+      "locations": 1,
+      "count": 26684
+    },
+    {
+      "city": "Mielec",
+      "country": "PL",
+      "locations": 1,
+      "count": 30343
+    },
+    {
+      "city": "Kłodzko",
+      "country": "PL",
+      "locations": 1,
+      "count": 21247
+    }
+  ]
+}

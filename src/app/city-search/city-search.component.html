@@ -1,0 +1,14 @@
+<form [formGroup]="cityForm">
+  <mat-form-field>
+    <label>
+      <input type="text" matInput placeholder="Choose City" formControlName="cityGroup" required [matAutocomplete]="autoGroup">
+    </label>
+    <mat-autocomplete #autoGroup="matAutocomplete">
+      <mat-optgroup *ngFor="let group of cityGroupOptions | async" [label]="group.letter">
+        <mat-option *ngFor="let name of group.names" [value]="name">
+          {{name}}
+        </mat-option>
+      </mat-optgroup>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
