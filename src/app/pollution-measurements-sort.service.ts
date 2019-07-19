@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LatestMeasurementsApiResponse} from './latest-measurements-api-response.model';
+import {ApiResponse} from './api-response.model';
 import {LocationApiResponse} from './location-api-response.model';
 import {MostPollutedCities} from './most-polluted-cities.model';
 
@@ -15,7 +15,7 @@ export class PollutionMeasurementsSortService {
 
   constructor() { }
 
-  sortMostPollutedCities(serviceResponse: LatestMeasurementsApiResponse) {
+  sortMostPollutedCities(serviceResponse: ApiResponse) {
     this.responseResult = serviceResponse.results;
     // console.log(this.responseResult);
     this.currentMonthMeasurements = this.responseResult.filter(element => {

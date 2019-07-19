@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PollutionMeasurementsSortService} from './pollution-measurements-sort.service';
-import {LatestMeasurementsApiResponse} from './latest-measurements-api-response.model';
+import {ApiResponse} from './api-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ParameterService {
 
   getLatestMeasurements(parameterId: string) {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
-    this.http.get<LatestMeasurementsApiResponse>(latestMeasurementsUrl).subscribe(response => {
+    this.http.get<ApiResponse>(latestMeasurementsUrl).subscribe(response => {
       this.pollutionMeasurementsService.sortMostPollutedCities(response);
     });
   }

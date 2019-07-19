@@ -1,6 +1,6 @@
 import { LocationApiResponse } from './location-api-response.model';
 
-export interface LatestMeasurementsApiResponse {
+export interface ApiResponse {
   meta: object;
   results: LocationApiResponse[];
 }
