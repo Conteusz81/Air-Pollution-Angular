@@ -18,6 +18,7 @@ import { ParametersListComponent } from './parameters-list/parameters-list.compo
 import { MostPollutedCitiesComponent } from './most-polluted-cities/most-polluted-cities.component';
 import { CitySearchComponent } from './city-search/city-search.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CityDetailsComponent } from './city-details/city-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     ParametersListComponent,
     MostPollutedCitiesComponent,
     CitySearchComponent,
+    CityDetailsComponent,
   ],
   imports: [
     BrowserModule,
