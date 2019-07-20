@@ -17,6 +17,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { ParametersListComponent } from './parameters-list/parameters-list.component';
 import { MostPollutedCitiesComponent } from './most-polluted-cities/most-polluted-cities.component';
 import { CitySearchComponent } from './city-search/city-search.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CitySearchComponent } from './city-search/city-search.component';
     MatOptionModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
