@@ -1,7 +1,8 @@
 <form [formGroup]="cityForm">
   <mat-form-field>
     <label>
-      <input type="text" matInput placeholder="Choose City" formControlName="cityGroup" required [matAutocomplete]="autoGroup">
+      <input type="text" matInput placeholder="Choose City"
+             formControlName="cityGroup" required [matAutocomplete]="autoGroup" [(ngModel)]="cityName">
     </label>
     <mat-autocomplete #autoGroup="matAutocomplete">
       <mat-optgroup *ngFor="let group of cityGroupOptions | async" [label]="group.letter">
@@ -11,5 +12,5 @@
       </mat-optgroup>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-button>Click me!</button>
+  <button mat-button routerLink="/city/{{cityName}}">Click me!</button>
 </form>

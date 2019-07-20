@@ -24,6 +24,7 @@ export class CitySearchComponent implements OnInit {
   cityGroups: CityGroup[] = this.inputAutocompleteService.citiesList;
 
   cityGroupOptions: Observable<CityGroup[]>;
+  cityName: string;
 
   constructor(
     private formBuilder: FormBuilder,
