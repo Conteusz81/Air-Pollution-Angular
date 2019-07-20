@@ -1,9 +1,10 @@
 <section class="pollution-parameters">
-  <h2>List of Parameters</h2>
-  <ul class="parameter-list">
-    <li class="parameter-name" *ngFor="let parameter of pollutionParameters" (click)="onParameterSelect(parameter.id)">
+  <h2>Select a parameter to get to know the ten most polluted cities.</h2>
+  <p>The data is displayed based on the average of the last measurements from the current month.</p>
+  <h3>List of Pollution Parameters</h3>
+  <div class="parameter-list">
+    <div class="parameter-name" *ngFor="let parameter of pollutionParameters" (click)="onParameterSelect(parameter.id)">
       <a>{{parameter.name}} <span>{{parameter.description}}</span></a>
-    </li>
-  </ul>
+    </div>
+  </div>
 </section>
-
