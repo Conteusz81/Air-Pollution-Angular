@@ -44,7 +44,7 @@ export class PollutionMeasurementsSortService {
 
     this.sortedTopCities = sortedByCitiesAvgValue.sort((a, b) => (a.measurementAvg > b.measurementAvg) ?
       -1 : ((b.measurementAvg > a.measurementAvg) ? 1 : 0)).slice(0, 10);
-    console.log(this.sortedTopCities);
+    // console.log(this.sortedTopCities);
   }
 
   mostPollutedCities() {

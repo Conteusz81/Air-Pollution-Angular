@@ -1,1 +1,12 @@
-<p>city-details works!</p>
+<div *ngIf="cityData">
+  <ul>
+    <li *ngFor="let city of cityData">{{city.location}}
+      <div *ngFor="let measurements of city.measurements">
+        {{measurements.parameter | uppercase}}
+        {{measurements.value.toFixed(2)}}
+        {{measurements.unit}}
+        {{measurements.lastUpdated.slice(0, 16).replace("T", " ")}}
+      </div>
+    </li>
+  </ul>
+</div>
