@@ -1,7 +1,12 @@
 <div *ngIf="cityData">
   <ul>
     <li *ngFor="let city of cityData">{{city.location}}
-      <div *ngFor="let measurements of city.measurements">
+      <div *ngFor="let measurements of city.measurements"
+           [class.air-quality-index-no2]="measurements.parameter === 'no2'"
+           [class.air-quality-index-o3]="measurements.parameter === 'o3'"
+           [class.air-quality-index-pm10]="measurements.parameter === 'pm10'"
+           [class.air-quality-index-pm25]="measurements.parameter === 'pm25'"
+           [ngStyle]="getColor(measurements.parameter, measurements.value)">
         {{measurements.parameter.replace("pm25", "pm2.5") | uppercase}}
         {{measurements.value.toFixed(2)}}
         {{measurements.unit}}

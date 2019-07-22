@@ -1,4 +1,13 @@
 .most-polluted-cities {
   display: flex;
   justify-content: center;
+  .cities-list {
+    .city {
+      margin: 10px;
+      &:hover {
+        cursor: pointer;
+        color: #373536;
+      }
+    }
+  }
 }

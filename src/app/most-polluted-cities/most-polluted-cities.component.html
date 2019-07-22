@@ -1,6 +1,6 @@
 <section class="most-polluted-cities">
   <ol class="cities-list">
-    <li *ngFor="let city of this.pollutionSortService.mostPollutedCities()"
+    <li class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities()"
     routerLink="city/{{city.name}}">
       <span>{{city.name}}  </span><span>{{city.measurementAvg.toFixed(2)}}</span><span> µg/m³</span>
     </li>

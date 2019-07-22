@@ -7,6 +7,19 @@
     margin: 0;
   }
   .parameter-list {
-
+    .parameter-name {
+      margin: 10px;
+      &:hover {
+        cursor: pointer;
+        color: #373536;
+      }
+    }
+  }
+  .selected {
+    border: 1px solid black;
+    border-radius: 5px;
+    transform: scale(1.1);
+    padding: 10px;
+    font-weight: bold;
   }
 }

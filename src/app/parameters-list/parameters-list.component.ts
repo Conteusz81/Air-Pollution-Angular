@@ -9,6 +9,7 @@ import { PARAMETERS } from '../mock-parameters';
 })
 export class ParametersListComponent implements OnInit {
   pollutionParameters = PARAMETERS;
+  selectedParameter;
   constructor(
     private parameterService: ParameterService
   ) { }
@@ -16,6 +17,7 @@ export class ParametersListComponent implements OnInit {
   ngOnInit() {
   }
   onParameterSelect(param: string) {
+    this.selectedParameter = param;
     this.parameterService.getLatestMeasurements(param);
   }
 }
