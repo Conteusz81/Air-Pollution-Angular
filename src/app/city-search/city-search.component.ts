@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { CityGroup } from '../city-group.model';
@@ -49,4 +49,5 @@ export class CitySearchComponent implements OnInit {
 
     return this.cityGroups;
   }
+
 }
