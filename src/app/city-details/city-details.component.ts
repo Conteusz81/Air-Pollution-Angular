@@ -21,6 +21,7 @@ export class CityDetailsComponent implements OnInit  {
 
   ngOnInit() {
     this.observeRouteParamMapChange();
+    this.getCityPollutionData();
   }
 
   private observeRouteParamMapChange() {
