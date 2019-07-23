@@ -1,5 +1,11 @@
 <app-page-header></app-page-header>
-<app-city-search></app-city-search>
-<router-outlet></router-outlet>
-<app-parameters-list></app-parameters-list>
-<app-most-polluted-cities></app-most-polluted-cities>
+<div class="container">
+  <div class="city-search">
+  <app-city-search></app-city-search>
+  <router-outlet></router-outlet>
+  </div>
+  <div class="most-polluted-search">
+  <app-parameters-list></app-parameters-list>
+  <app-most-polluted-cities></app-most-polluted-cities>
+  </div>
+</div>

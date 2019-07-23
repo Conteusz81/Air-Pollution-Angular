@@ -1,1 +1,8 @@
-
+.container {
+  display: flex;
+  justify-content: space-around;
+  .city-search {
+    flex-direction: column;
+    width: 70%;
+  }
+}
