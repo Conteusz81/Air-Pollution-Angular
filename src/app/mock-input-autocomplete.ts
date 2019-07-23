@@ -4,12 +4,18 @@ export const CITIESLIST: CityGroup[] = [{
   letter: 'A',
   names: []
 }, {
+  letter: 'B',
+  names: []
+}, {
   letter: 'C',
   names: []
 }, {
   letter: 'D',
   names: []
 }, {
+  letter: 'E',
+  names: []
+},{
   letter: 'F',
   names: []
 }, {
@@ -22,6 +28,9 @@ export const CITIESLIST: CityGroup[] = [{
   letter: 'I',
   names: []
 }, {
+  letter: 'J',
+  names: []
+},{
   letter: 'K',
   names: []
 }, {

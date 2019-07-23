@@ -1,0 +1,34 @@
+.city-pollution-container {
+  h2 {
+    text-align: center;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      margin: 15px 30px;
+      list-style: none;
+      font-size: 1.2rem;
+      border: 1px solid #373536;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: lighten(#AFD4D7, 3%);
+      .measurements {
+        margin-top: 10px;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+        padding: 5px;
+        span:last-child {
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+}
+
+.error-message {
+  text-align: center;
+}

@@ -4,9 +4,11 @@
   .cities-list {
     .city {
       margin: 10px;
+      transition: .4s;
       &:hover {
         cursor: pointer;
         color: #373536;
+        transform: scale(1.05);
       }
     }
   }

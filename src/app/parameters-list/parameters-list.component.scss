@@ -9,17 +9,28 @@
   .parameter-list {
     .parameter-name {
       margin: 10px;
+      transition: .5s;
+      border: 1px solid #373536;
+      border-radius: 5px;
+      padding: 3px;
       &:hover {
         cursor: pointer;
         color: #373536;
+        background-color: darken(#AFD4D7, 5%);
+        transform: scale(1.1);
       }
     }
   }
-  .selected {
-    border: 1px solid black;
-    border-radius: 5px;
-    transform: scale(1.1);
-    padding: 10px;
-    font-weight: bold;
+  .parameter-list{
+    .selected {
+      border: 1px solid black;
+      border-radius: 5px;
+      transform: scale(1.1);
+      padding: 10px;
+      font-weight: bold;
+      transition: .6s;
+      background-color: darken(#AFD4D7, 5%);
+    }
   }
+
 }

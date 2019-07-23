@@ -27,7 +27,7 @@ import { CityDetailsComponent } from './city-details/city-details.component';
     ParametersListComponent,
     MostPollutedCitiesComponent,
     CitySearchComponent,
-    CityDetailsComponent,
+    CityDetailsComponent
   ],
   imports: [
     BrowserModule,
