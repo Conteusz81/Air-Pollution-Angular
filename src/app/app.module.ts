@@ -9,7 +9,9 @@ import {
   MatOptionModule,
   MatAutocompleteModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatCardModule,
+  MatSidenavModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -43,7 +45,9 @@ import { PageInformationComponent } from './page-information/page-information.co
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

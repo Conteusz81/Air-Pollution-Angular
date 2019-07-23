@@ -9,10 +9,10 @@
       margin: 15px 30px;
       list-style: none;
       font-size: 1.2rem;
-      border: 1px solid #373536;
       border-radius: 5px;
       padding: 10px;
-      background-color: lighten(#AFD4D7, 3%);
+      background-color: lighten(#AFD4D7, 5%);
+      box-shadow: 0 1px 1px 0 lighten(#373536, 20%);
       .measurements {
         margin-top: 10px;
         font-size: 1rem;
@@ -30,5 +30,13 @@
 }
 
 .error-message {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  mat-card {
+    text-align: center;
+    background-color: lighten(#AFD4D7, 5%);
+    width: 80%;
+  }
 }
