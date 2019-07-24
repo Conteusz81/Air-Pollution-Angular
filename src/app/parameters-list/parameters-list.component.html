@@ -3,12 +3,13 @@
     <mat-card-title>Select the parameter to get to know the top ten most polluted cities.</mat-card-title>
     <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
   </mat-card-header>
-  <div class="parameter-list">
-    <button mat-raised-button class="parameter-name" *ngFor="let parameter of pollutionParameters"
-         [class.selected]="parameter.id === selectedParameter"
-         (click)="onParameterSelect(parameter.id)"
-         [matTooltip]="parameter.description">
-         {{parameter.name}}
+  <div class="pollution-parameter-list">
+    <button mat-raised-button class="pollution-parameter-name" *ngFor="let pollutionParameter of pollutionParameters"
+         [class.selected]="pollutionParameter.id === selectedParameter"
+         (click)="onParameterSelect(pollutionParameter.id)"
+         [matTooltip]="pollutionParameter.description"
+         matTooltipClass="pollution-parameter-tooltip">
+         {{pollutionParameter.name}}
     </button>
   </div>
 </section>

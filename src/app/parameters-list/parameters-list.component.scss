@@ -8,9 +8,9 @@
      padding: 5px 0;
    }
  }
-  .parameter-list {
+  .pollution-parameter-list {
     flex-direction: column;
-    .parameter-name {
+    .pollution-parameter-name {
       margin: 10px;
       transition: .5s;
       &:hover {
@@ -19,7 +19,7 @@
       }
     }
   }
-  .parameter-list{
+  .pollution-parameter-list{
     .selected {
       border: 1px solid black;
       border-radius: 5px;
@@ -31,4 +31,8 @@
     }
   }
 
+}
+
+.pollution-parameter-tooltip {
+  font-size: 20px;
 }
