@@ -36,6 +36,8 @@ export class CityDetailsComponent implements OnInit  {
     this.parameterService.getCityPollutionData(this.cityId)
       .subscribe(cityData => {
         this.cityData = cityData.results.filter( element => element.measurements[0].lastUpdated.startsWith('2019'));
+        this.cityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
+          -1 : ((b.parameter > a.parameter) ? 1 : 0)));
         this.displayNoMeasurementsAlert();
         // console.log(this.cityData);
       });
