@@ -7,6 +7,7 @@ import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.s
   styleUrls: ['./most-polluted-cities.component.scss']
 })
 export class MostPollutedCitiesComponent implements OnInit {
+  selectedSource;
 
   constructor(private pollutionSortService: PollutionMeasurementsSortService) { }
 

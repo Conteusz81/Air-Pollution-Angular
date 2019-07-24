@@ -11,8 +11,10 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatSidenavModule,
-  MatMenuModule
+  MatMenuModule,
+  MatButtonToggleModule,
+  MatTooltipModule,
+  MatListModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -50,8 +52,10 @@ import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.
     MatInputModule,
     AppRoutingModule,
     MatCardModule,
-    MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatButtonToggleModule,
+    MatTooltipModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

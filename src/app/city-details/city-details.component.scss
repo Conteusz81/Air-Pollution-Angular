@@ -1,29 +1,30 @@
 .city-pollution-container {
   h2 {
     text-align: center;
+    font-size: 2rem;
   }
-  ul {
+  div.location-list {
     display: flex;
     flex-wrap: wrap;
-    li {
-      margin: 20px;
-      list-style: none;
-      font-size: 1.2rem;
-      border-radius: 5px;
+    justify-content: flex-start;
+    mat-card {
+      margin: 18px;
+      font-size: 1.4rem;
       padding: 10px;
-      background-color: lighten(lightblue, 5%);
-      box-shadow: 0 1px 1px 0 lighten(#373536, 20%);
+      background-color: lighten(lightblue, 10%);
       .measurements {
         margin-top: 10px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         border-radius: 5px;
         padding: 5px;
-
+        span:first-child {
+          font-weight: bold;
+        }
         span:last-child {
-          font-size: .8rem;
+          font-size: 1rem;
         }
       }
     }
@@ -37,7 +38,7 @@
   height: 100%;
   mat-card {
     text-align: center;
-    background-color: lighten(#AFD4D7, 5%);
+    background-color: lighten(#AFD4D7, 10%);
     width: 80%;
   }
 }

@@ -3,22 +3,19 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  // font-family: 'Ropa Sans', sans-serif;
-  h2 {
-    margin: 0;
-  }
+ mat-card-header {
+   mat-card-subtitle {
+     padding: 5px 0;
+   }
+ }
   .parameter-list {
+    flex-direction: column;
     .parameter-name {
       margin: 10px;
       transition: .5s;
-      border: 1px solid #373536;
-      border-radius: 5px;
-      padding: 3px;
       &:hover {
         cursor: pointer;
-        color: #373536;
-        background-color: #AFD4D7;
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
   }
@@ -26,7 +23,7 @@
     .selected {
       border: 1px solid black;
       border-radius: 5px;
-      transform: scale(1.1);
+      transform: scale(1.2);
       padding: 10px;
       font-weight: bold;
       transition: .6s;

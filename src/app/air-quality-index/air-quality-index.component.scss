@@ -1,20 +1,16 @@
-.very-low-index {
-  background-color: #79bc6a;
+$air-quality-index-color: #79bc6a, #bbcf4c, #eec20b, #f29305, #e8416f;
+
+mat-card {
+  background-color: lighten(lightblue, 10%);
+
+  @for $i from 1 through length($air-quality-index-color) {
+    button:nth-of-type(#{$i}) {
+      background-color: nth($air-quality-index-color, $i);
+      width: 20%;
+    }
+  }
 }
 
-.low-index {
-  background-color: #bbcf4c;
+p {
+  padding: 0 10px;
 }
-
-.medium-index {
-  background-color: #eec20b;
-}
-
-.high-index {
-  background-color: #f29305;
-}
-
-.very-high-index {
-  background-color: #e8416f;
-}
-
