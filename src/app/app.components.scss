@@ -5,8 +5,10 @@
   .city-search {
     flex-direction: column;
     width: 70%;
+    background-color: lighten(#AFD4D7, 5%);
   }
   .most-polluted-search {
     background-color: lighten(#AFD4D7, 5%);
+    width: 20%;
   }
 }

@@ -6,12 +6,12 @@
     display: flex;
     flex-wrap: wrap;
     li {
-      margin: 15px 30px;
+      margin: 20px;
       list-style: none;
       font-size: 1.2rem;
       border-radius: 5px;
       padding: 10px;
-      background-color: lighten(#AFD4D7, 5%);
+      background-color: lighten(lightblue, 5%);
       box-shadow: 0 1px 1px 0 lighten(#373536, 20%);
       .measurements {
         margin-top: 10px;
@@ -21,6 +21,7 @@
         align-items: center;
         border-radius: 5px;
         padding: 5px;
+
         span:last-child {
           font-size: .8rem;
         }

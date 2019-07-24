@@ -11,7 +11,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -47,7 +48,8 @@ import { PageInformationComponent } from './page-information/page-information.co
     MatInputModule,
     AppRoutingModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
