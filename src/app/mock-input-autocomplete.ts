@@ -1,4 +1,4 @@
-import { CityGroup } from './city-group.model';
+import { CityGroup } from './model/city-group.model';
 
 export const CITIESLIST: CityGroup[] = [{
   letter: 'A',

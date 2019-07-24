@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { ParameterService } from '../parameter.service';
+import { ApiResponseService } from '../api-response.service';
 import { PARAMETERS } from '../mock-parameters';
 
 @Component({
@@ -12,7 +12,7 @@ export class ParametersListComponent implements OnInit {
   pollutionParameters = PARAMETERS;
   selectedParameter;
   constructor(
-    private parameterService: ParameterService
+    private parameterService: ApiResponseService
   ) { }
 
   ngOnInit() {

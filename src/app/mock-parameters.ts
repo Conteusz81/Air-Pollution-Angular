@@ -1,4 +1,4 @@
-import {PollutionParameter} from './pollution-parameter';
+import {PollutionParameter} from './pollution.parameter';
 
 export const PARAMETERS: PollutionParameter[] = [
   {

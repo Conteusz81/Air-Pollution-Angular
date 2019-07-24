@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ParameterService } from './parameter.service';
+import { ApiResponseService } from './api-response.service';
 
-describe('ParameterService', () => {
+describe('ApiResponseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ParameterService = TestBed.get(ParameterService);
+    const service: ApiResponseService = TestBed.get(ApiResponseService);
     expect(service).toBeTruthy();
   });
 });

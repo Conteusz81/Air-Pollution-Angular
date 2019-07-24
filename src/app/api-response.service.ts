@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PollutionMeasurementsSortService} from './pollution-measurements-sort.service';
-import {ApiResponse} from './api-response.model';
+import {ApiResponse} from './model/api-response.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ParameterService {
+export class ApiResponseService {
 
   constructor(
     private http: HttpClient,

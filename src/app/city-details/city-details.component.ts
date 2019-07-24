@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import { ParameterService } from '../parameter.service';
-import { LocationApiResponse } from '../location-api-response.model';
+import { ApiResponseService } from '../api-response.service';
+import { LocationApiResponse } from '../model/location-api-response.model';
 import {filter} from 'rxjs/operators';
 
 @Component({
@@ -16,7 +16,7 @@ export class CityDetailsComponent implements OnInit  {
 
   constructor(
     private route: ActivatedRoute,
-    private parameterService: ParameterService,
+    private parameterService: ApiResponseService,
     private router: Router
   ) { }
 

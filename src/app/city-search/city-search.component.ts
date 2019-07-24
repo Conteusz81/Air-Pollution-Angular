@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { CityGroup } from '../city-group.model';
+import { CityGroup } from '../model/city-group.model';
 import { InputAutocompleteService } from '../input-autocomplete.service';
 
 export const filter = (opt: string[], value: string): string[] => {

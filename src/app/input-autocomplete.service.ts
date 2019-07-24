@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CityGroup } from './city-group.model';
-import { ApiResponse } from './api-response.model';
+import { CityGroup } from './model/city-group.model';
+import { ApiResponse } from './model/api-response.model';
 import { CITIESLIST } from './mock-input-autocomplete';
 
 @Injectable({
