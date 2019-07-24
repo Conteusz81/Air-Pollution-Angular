@@ -1,8 +1,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Ropa+Sans:400,400i&display=swap&subset=latin-ext');
 body {
-  margin: 0 auto;
+  margin: 0;
   box-sizing: border-box;
   // font-family: 'Ropa Sans', sans-serif;
-  background-color: #AFD4D7;
+  background-image: url("../src/app/img/AdobeStock_59555445.jpeg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
