@@ -10,8 +10,8 @@
             {{measurements.value.toFixed(2)}}
             {{measurements.unit}}
        </span>
-        <span>Measurement time:
-            {{measurements.lastUpdated.slice(0, 16).replace("T", " ")}}
+        <span>Measurement time
+            {{measurements.lastUpdated | date: 'yyyy-MM-dd HH:mm'}}
        </span>
       </div>
     </mat-card>
