@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { ApiResponseService } from '../api-response.service';
 import { LocationApiResponse } from '../model/location-api-response.model';
+import { PollutionMeasurementsSortService } from '../pollution-measurements-sort.service';
 import {filter} from 'rxjs/operators';
 
 @Component({
@@ -17,7 +18,8 @@ export class CityDetailsComponent implements OnInit  {
   constructor(
     private route: ActivatedRoute,
     private parameterService: ApiResponseService,
-    private router: Router
+    private router: Router,
+    private pollutionSortService: PollutionMeasurementsSortService
   ) { }
 
   ngOnInit() {
@@ -35,9 +37,8 @@ export class CityDetailsComponent implements OnInit  {
     this.cityId = this.route.snapshot.paramMap.get('id');
     this.parameterService.getCityPollutionData(this.cityId)
       .subscribe(cityData => {
-        this.cityData = cityData.results.filter( element => element.measurements[0].lastUpdated.startsWith('2019'));
-        this.cityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
-          -1 : ((b.parameter > a.parameter) ? 1 : 0)));
+        this.cityData = this.pollutionSortService.test(cityData.results);
+
         this.displayNoMeasurementsAlert();
         // console.log(this.cityData);
       });

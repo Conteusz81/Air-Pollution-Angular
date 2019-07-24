@@ -17,10 +17,10 @@ export class PollutionMeasurementsSortService {
 
   sortMostPollutedCities(serviceResponse: ApiResponse) {
     this.responseResult = serviceResponse.results;
-    console.log(this.responseResult);
+    // console.log(this.responseResult);
 
     this.filterMeasurementsByDate();
-    console.log(this.currentMonthMeasurements);
+    // console.log(this.currentMonthMeasurements);
 
     this.createSortedByCitiesObject();
     // console.log(this.sortedByCities);
@@ -61,5 +61,10 @@ export class PollutionMeasurementsSortService {
 
   mostPollutedCities() {
     return this.sortedTopCities;
+  }
+  test(x) {
+    const z = x.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
+    return z.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
+      -1 : ((b.parameter < a.parameter) ? 1 : 0)));
   }
 }
