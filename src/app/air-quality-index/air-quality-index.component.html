@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Air Quality Index</mat-card-title>
+    <mat-card-subtitle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, perferendis.</mat-card-subtitle>
+  </mat-card-header>
+
+  <button class="very-low-index" mat-button [matMenuTriggerFor]="VeryLowInfo">Very low</button>
+  <mat-menu #VeryLowInfo="matMenu" yPosition="above">
+    <mat-card>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cumque ducimus ex nisi nobis odit, saepe. A beatae cumque ducimus maxime perspiciatis, qui sunt suscipit voluptate? Dolorem numquam pariatur vel!</mat-card>
+  </mat-menu>
+
+  <button class="low-index" mat-button [matMenuTriggerFor]="lowInfo">Low</button>
+  <mat-menu #lowInfo="matMenu" yPosition="above">
+    <mat-card>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cumque ducimus ex nisi nobis odit, saepe. A beatae cumque ducimus maxime perspiciatis, qui sunt suscipit voluptate? Dolorem numquam pariatur vel!</mat-card>
+  </mat-menu>
+
+  <button class="medium-index" mat-button [matMenuTriggerFor]="mediumInfo">Medium</button>
+  <mat-menu #mediumInfo="matMenu" yPosition="above">
+    <mat-card>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cumque ducimus ex nisi nobis odit, saepe. A beatae cumque ducimus maxime perspiciatis, qui sunt suscipit voluptate? Dolorem numquam pariatur vel!</mat-card>
+  </mat-menu>
+
+  <button class="high-index" mat-button [matMenuTriggerFor]="highInfo">High</button>
+  <mat-menu #highInfo="matMenu" yPosition="above">
+    <mat-card>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cumque ducimus ex nisi nobis odit, saepe. A beatae cumque ducimus maxime perspiciatis, qui sunt suscipit voluptate? Dolorem numquam pariatur vel!</mat-card>
+  </mat-menu>
+
+  <button class="very-high-index" mat-button [matMenuTriggerFor]="veryHighInfo">Very high</button>
+  <mat-menu #veryHighInfo="matMenu" yPosition="above">
+    <mat-card>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cumque ducimus ex nisi nobis odit, saepe. A beatae cumque ducimus maxime perspiciatis, qui sunt suscipit voluptate? Dolorem numquam pariatur vel!</mat-card>
+  </mat-menu>
+</mat-card>

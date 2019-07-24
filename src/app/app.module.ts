@@ -23,6 +23,7 @@ import { CitySearchComponent } from './city-search/city-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { PageInformationComponent } from './page-information/page-information.component';
+import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PageInformationComponent } from './page-information/page-information.co
     MostPollutedCitiesComponent,
     CitySearchComponent,
     CityDetailsComponent,
-    PageInformationComponent
+    PageInformationComponent,
+    AirQualityIndexComponent
   ],
   imports: [
     BrowserModule,

@@ -49,75 +49,75 @@ export class CityDetailsComponent implements OnInit  {
     switch (parameter) {
       case 'no2':
         if (value < 50) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 100) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 200) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 400) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
         case 'pm10':
         if (value < 25) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 50) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 90) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 180) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
         case 'pm25':
         if (value < 15) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 30) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 55) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 110) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
         case 'o3':
         if (value < 60) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 120) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 180) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 240) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
         case 'co':
         if (value < 5000) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 7500) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 10000) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 20000) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
         case 'so2':
         if (value < 50) {
-          return {border: '1px solid green', background: 'green'};
+          return {border: '1px solid #79bc6a', background: '#79bc6a'};
         } else if (value < 100) {
-          return {border: '1px solid lightgreen', background: 'lightgreen'};
+          return {border: '1px solid #bbcf4c', background: '#bbcf4c'};
         } else if (value < 350) {
-          return {border: '1px solid yellow', background: 'yellow'};
+          return {border: '1px solid #eec20b', background: '#eec20b'};
         } else if (value < 500) {
-          return {border: '1px solid orange', background: 'orange'};
+          return {border: '1px solid #f29305', background: '#f29305'};
         } else {
-          return {border: '1px solid red', background: 'red'};
+          return {border: '1px solid #e8416f', background: '#e8416f'};
         }
     }
   }

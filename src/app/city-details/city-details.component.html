@@ -1,15 +1,16 @@
 <div *ngIf="cityData" class="city-pollution-container">
+  <app-air-quality-index></app-air-quality-index>
   <h2>{{cityId}}</h2>
   <ul>
     <li *ngFor="let city of cityData">{{city.location}}
       <div class="measurements" *ngFor="let measurements of city.measurements"
            [ngStyle]="getColor(measurements.parameter, measurements.value)">
-       <span>
+        <span>
             {{measurements.parameter.replace("pm25", "pm2.5") | uppercase}}
             {{measurements.value.toFixed(2)}}
             {{measurements.unit}}
        </span>
-       <span>Measurement time:
+        <span>Measurement time:
             {{measurements.lastUpdated.slice(0, 16).replace("T", " ")}}
        </span>
       </div>
