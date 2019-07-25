@@ -1,7 +1,7 @@
 $air-quality-index-color: #79bc6a, #bbcf4c, #eec20b, #f29305, #e8416f;
 
 mat-card {
-  background-color: lighten(lightblue, 10%);
+  background-color: lighten(#8cd1f0, 10%);
 
   @for $i from 1 through length($air-quality-index-color) {
     button:nth-of-type(#{$i}) {
