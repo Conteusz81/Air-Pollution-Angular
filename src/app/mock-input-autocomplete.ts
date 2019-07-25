@@ -15,7 +15,7 @@ export const CITIESLIST: CityGroup[] = [{
 }, {
   letter: 'E',
   names: []
-},{
+}, {
   letter: 'F',
   names: []
 }, {
@@ -30,7 +30,7 @@ export const CITIESLIST: CityGroup[] = [{
 }, {
   letter: 'J',
   names: []
-},{
+}, {
   letter: 'K',
   names: []
 }, {

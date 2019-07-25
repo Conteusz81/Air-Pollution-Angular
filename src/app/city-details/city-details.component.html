@@ -1,7 +1,7 @@
-<div *ngIf="cityData" class="city-pollution-container">
+<div class="city-pollution-container">
   <app-air-quality-index></app-air-quality-index>
   <h2>{{cityId}}</h2>
-  <div class="location-list">
+  <div *ngIf="cityData && apiResponseFlag" class="location-list">
     <mat-card *ngFor="let city of cityData">{{city.location}}
       <div class="measurements" *ngFor="let measurements of city.measurements"
            [ngStyle]="getColor(measurements.parameter, measurements.value)">
@@ -10,15 +10,17 @@
             {{measurements.value.toFixed(2)}}
             {{measurements.unit}}
        </span>
-        <span>Measurement time
+       <span>Measurement time
             {{measurements.lastUpdated | date: 'yyyy-MM-dd HH:mm'}}
        </span>
       </div>
     </mat-card>
   </div>
 </div>
-
-<div class="error-message" *ngIf="noMeasurementsAlertFlag">
+<div class="spinner">
+<mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
+</div>
+<div class="error-message" *ngIf="noMeasurementsAlertFlag && apiResponseFlag">
   <mat-card>
   <h1>Sorry</h1>
   <h2>Currently we don't have latest measurements from this location.</h2>

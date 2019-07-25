@@ -14,6 +14,7 @@ export class CityDetailsComponent implements OnInit  {
   cityData: LocationApiResponse[];
   cityId: string;
   noMeasurementsAlertFlag = false;
+  apiResponseFlag = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +30,11 @@ export class CityDetailsComponent implements OnInit  {
 
   private observeRouteParamMapChange() {
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe( () => this.getCityPollutionData());
+      filter(event => event instanceof NavigationEnd))
+      .subscribe( () => {
+        this.apiResponseFlag = false;
+        this.getCityPollutionData();
+      });
   }
 
   private getCityPollutionData() {
@@ -39,6 +43,7 @@ export class CityDetailsComponent implements OnInit  {
       .subscribe(cityData => {
         this.cityData = this.pollutionSortService.sortCityData(cityData.results);
         this.displayNoMeasurementsAlert();
+        this.apiResponseFlag = true;
       });
   }
 

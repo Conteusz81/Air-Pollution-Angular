@@ -14,7 +14,9 @@ import {
   MatMenuModule,
   MatButtonToggleModule,
   MatTooltipModule,
-  MatListModule
+  MatListModule,
+  MatSidenavModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -55,7 +57,9 @@ import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.
     MatMenuModule,
     MatButtonToggleModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
