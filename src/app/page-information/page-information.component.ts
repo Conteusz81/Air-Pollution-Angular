@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-information.component.scss']
 })
 export class PageInformationComponent implements OnInit {
-  showFiller1 = false;
-  showFiller2 = false;
 
   constructor() { }
 

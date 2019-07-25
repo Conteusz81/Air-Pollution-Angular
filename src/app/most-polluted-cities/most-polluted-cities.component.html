@@ -1,7 +1,7 @@
 <section class="most-polluted-cities">
   <mat-nav-list class="cities-list">
     <a mat-list-item class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities() let i = index"
-    routerLink="city/{{city.name}}">
+    routerLink="../../city/{{city.name}}">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}

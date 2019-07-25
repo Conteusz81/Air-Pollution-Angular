@@ -8,9 +8,10 @@
          [class.selected]="pollutionParameter.id === selectedParameter"
          (click)="onParameterSelect(pollutionParameter.id)"
          [matTooltip]="pollutionParameter.description"
-         matTooltipClass="pollution-parameter-tooltip">
+         matTooltipClass="pollution-parameter-tooltip"
+         routerLink="{{pollutionParameter.id}}">
          {{pollutionParameter.name}}
     </button>
   </div>
 </section>
-<app-most-polluted-cities></app-most-polluted-cities>
+<router-outlet></router-outlet>
