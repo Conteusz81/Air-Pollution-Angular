@@ -1,6 +1,7 @@
 import {Component, OnInit } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { PARAMETERS } from '../mock-parameters';
+import {PollutionParameter} from '../pollution.parameter';
 
 @Component({
   selector: 'app-parameters-list',
@@ -8,8 +9,8 @@ import { PARAMETERS } from '../mock-parameters';
   styleUrls: ['./parameters-list.component.scss']
 })
 export class ParametersListComponent implements OnInit {
-  pollutionParameters = PARAMETERS;
-  selectedParameter;
+  pollutionParameters: PollutionParameter[] = PARAMETERS;
+  selectedParameter: string;
   constructor(
     private apiResponseService: ApiResponseService
   ) { }

@@ -1,8 +1,10 @@
 <section class="pollution-parameters">
+  <mat-card>
   <mat-card-header>
     <mat-card-title>Select the parameter to get to know the top ten most polluted cities.</mat-card-title>
     <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
   </mat-card-header>
+  </mat-card>
   <div class="pollution-parameter-list">
     <button mat-raised-button class="pollution-parameter-name" *ngFor="let pollutionParameter of pollutionParameters"
          [class.selected]="pollutionParameter.id === selectedParameter"
@@ -14,4 +16,8 @@
     </button>
   </div>
 </section>
+<app-page-information *ngIf="selectedParameter"
+                      [selectedParameter]="selectedParameter"
+                      [pollutionParametersInfo]="pollutionParameters">
+</app-page-information>
 <router-outlet></router-outlet>
