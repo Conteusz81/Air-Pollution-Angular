@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: DashboardMainPageComponent },
   { path: 'city', component: CitySearchComponent,
     children: [ { path: ':id', component: CityDetailsComponent } ]},
-  { path: 'parameter', component: ParametersListComponent,
+  { path: 'parameters', component: ParametersListComponent,
     children: [ { path: ':id', component: MostPollutedCitiesComponent} ]},
 ];
 

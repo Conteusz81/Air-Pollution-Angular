@@ -27,7 +27,7 @@ import { MostPollutedCitiesComponent } from './most-polluted-cities/most-pollute
 import { CitySearchComponent } from './city-search/city-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CityDetailsComponent } from './city-details/city-details.component';
-import { PageInformationComponent } from './page-information/page-information.component';
+import { PollutionParameterInformationComponent } from './pollution-parameter-information/pollution-parameter-information.component';
 import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
 import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 
@@ -39,7 +39,7 @@ import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main
     MostPollutedCitiesComponent,
     CitySearchComponent,
     CityDetailsComponent,
-    PageInformationComponent,
+    PollutionParameterInformationComponent,
     AirQualityIndexComponent,
     DashboardMainPageComponent
   ],
