@@ -17,9 +17,11 @@
     </mat-card>
   </div>
 </div>
+
 <div class="spinner">
 <mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
 </div>
+
 <div class="error-message" *ngIf="noMeasurementsAlertFlag && apiResponseFlag">
   <mat-card>
   <h1>Sorry</h1>
