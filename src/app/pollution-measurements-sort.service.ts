@@ -63,8 +63,10 @@ export class PollutionMeasurementsSortService {
     return this.sortedTopCities;
   }
   test(x) {
-    const z = x.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
-    return z.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
-      -1 : ((b.parameter < a.parameter) ? 1 : 0)));
+   // const z = x.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth))
+    x.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
+      -1 : ((b.parameter < a.parameter) ? 1 : 0)))
+      .filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
+    return x;
   }
 }

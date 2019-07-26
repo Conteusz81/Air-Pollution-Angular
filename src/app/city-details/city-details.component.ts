@@ -38,9 +38,8 @@ export class CityDetailsComponent implements OnInit  {
     this.parameterService.getCityPollutionData(this.cityId)
       .subscribe(cityData => {
         this.cityData = this.pollutionSortService.test(cityData.results);
-
-        this.displayNoMeasurementsAlert();
-        // console.log(this.cityData);
+        // this.displayNoMeasurementsAlert();
+        console.log(this.cityData);
       });
   }
 
