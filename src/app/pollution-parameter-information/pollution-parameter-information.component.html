@@ -1,12 +1,11 @@
-<div *ngFor="let pollutionParameter of pollutionParametersInfo">
-<mat-card *ngIf="selectedParameter === pollutionParameter.id">
+<mat-card *ngFor="let pollutionParameter of pollutionParameterInfo">
   <mat-card-header>
     <mat-card-title>{{pollutionParameter.name}}</mat-card-title>
     <mat-card-subtitle>{{pollutionParameter.description}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores, commodi cum, deserunt dicta dolore eius
-    fugit quam qui quidem recusandae rerum veritatis vero voluptatibus voluptatum! Adipisci deleniti eos optio.
+    {{pollutionParameter.info}}
+    <br>
+    {{pollutionParameter.imgUrl}}
   </mat-card-content>
 </mat-card>
-</div>

@@ -11,14 +11,22 @@ import {PollutionParameter} from '../pollution.parameter';
 export class ParametersListComponent implements OnInit {
   pollutionParameters: PollutionParameter[] = PARAMETERS;
   selectedParameter: string;
+  pollutionParameterInformation: PollutionParameter[];
+
   constructor(
     private apiResponseService: ApiResponseService
   ) { }
 
   ngOnInit() {
   }
-  onParameterSelect(pollutionParameterName: string) {
+
+  private onParameterSelect(pollutionParameterName: string) {
     this.selectedParameter = pollutionParameterName;
     this.apiResponseService.getLatestMeasurements(pollutionParameterName);
+    this.pollutionParameterInformation = this.getPollutionParameterInfo();
+  }
+
+  private getPollutionParameterInfo(): PollutionParameter[] {
+    return this.pollutionParameters.filter(element => element.id === this.selectedParameter);
   }
 }
