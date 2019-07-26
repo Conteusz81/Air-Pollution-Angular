@@ -1,23 +1,26 @@
-<section class="pollution-parameters">
+<div class="pollution-parameters">
   <mat-card>
-  <mat-card-header>
-    <mat-card-title>Select the parameter to get to know the top ten most polluted cities.</mat-card-title>
-    <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
-  </mat-card-header>
+    <mat-card-header>
+      <mat-card-title>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, vel.</mat-card-title>
+      <mat-card-subtitle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, magni.</mat-card-subtitle>
+    </mat-card-header>
   </mat-card>
   <div class="pollution-parameter-list">
     <button mat-raised-button class="pollution-parameter-name" *ngFor="let pollutionParameter of pollutionParameters"
-         [class.selected]="pollutionParameter.id === selectedParameter"
-         (click)="onParameterSelect(pollutionParameter.id)"
-         [matTooltip]="pollutionParameter.description"
-         matTooltipClass="pollution-parameter-tooltip"
-         routerLink="{{pollutionParameter.id}}">
-         {{pollutionParameter.name}}
+            [class.selected]="pollutionParameter.id === selectedParameter"
+            (click)="onParameterSelect(pollutionParameter.id)"
+            [matTooltip]="pollutionParameter.description"
+            matTooltipClass="pollution-parameter-tooltip"
+            routerLink="{{pollutionParameter.id}}">
+      {{pollutionParameter.name}}
     </button>
   </div>
-</section>
-<app-page-information *ngIf="selectedParameter"
-                      [selectedParameter]="selectedParameter"
-                      [pollutionParametersInfo]="pollutionParameters">
-</app-page-information>
-<router-outlet></router-outlet>
+</div>
+<div class="pollution-parameters-info">
+  <app-page-information *ngIf="selectedParameter"
+                        [selectedParameter]="selectedParameter"
+                        [pollutionParametersInfo]="pollutionParameters">
+  </app-page-information>
+  <router-outlet *ngIf="selectedParameter"></router-outlet>
+</div>
+
