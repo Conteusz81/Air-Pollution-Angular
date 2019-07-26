@@ -16,7 +16,8 @@ import {
   MatTooltipModule,
   MatListModule,
   MatSidenavModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatIconModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -28,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { PageInformationComponent } from './page-information/page-information.component';
 import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
-import { MainPageNavigationComponent } from './main-page-navigation/main-page-navigation.component';
+import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MainPageNavigationComponent } from './main-page-navigation/main-page-na
     CityDetailsComponent,
     PageInformationComponent,
     AirQualityIndexComponent,
-    MainPageNavigationComponent
+    DashboardMainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import { MainPageNavigationComponent } from './main-page-navigation/main-page-na
     MatTooltipModule,
     MatListModule,
     MatSidenavModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

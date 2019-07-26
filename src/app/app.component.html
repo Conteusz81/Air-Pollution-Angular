@@ -1,9 +1,18 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
     <mat-nav-list>
-      <a mat-list-item routerLink="home">Dashboard</a>
-      <a mat-list-item routerLink="city">City Search</a>
-      <a mat-list-item routerLink="parameter">Pollution Parameters</a>
+      <a mat-list-item routerLink="home">
+        <mat-icon matListIcon>home</mat-icon>
+        <h3 mat-line>Dashboard</h3>
+      </a>
+      <a mat-list-item routerLink="city">
+        <mat-icon matListIcon>search</mat-icon>
+        <h3 mat-line>City Search</h3>
+      </a>
+      <a mat-list-item routerLink="parameters">
+        <mat-icon matListIcon>grain</mat-icon>
+        <h3 mat-line>Parameters</h3>
+      </a>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
