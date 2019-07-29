@@ -5,6 +5,7 @@ import {DashboardMainPageComponent} from './dashboard-main-page/dashboard-main-p
 import {CitySearchComponent} from './city-search/city-search.component';
 import {ParametersListComponent} from './parameters-list/parameters-list.component';
 import {MostPollutedCitiesComponent} from './most-polluted-cities/most-polluted-cities.component';
+import {MapViewComponent} from './map-view/map-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [ { path: ':id', component: CityDetailsComponent } ]},
   { path: 'parameters', component: ParametersListComponent,
     children: [ { path: ':id', component: MostPollutedCitiesComponent} ]},
+  { path: 'map', component: MapViewComponent }
 ];
 
 @NgModule({
