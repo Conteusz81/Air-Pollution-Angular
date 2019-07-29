@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PollutionParameter} from '../pollution.parameter';
+import {PollutionParameter} from '../model/pollution-parameter.model';
 
 @Component({
   selector: 'app-page-information',

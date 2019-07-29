@@ -1,7 +1,7 @@
 import {Component, OnInit } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { PARAMETERS } from '../mock-parameters';
-import {PollutionParameter} from '../pollution.parameter';
+import {PollutionParameter} from '../model/pollution-parameter.model';
 
 @Component({
   selector: 'app-parameters-list',
