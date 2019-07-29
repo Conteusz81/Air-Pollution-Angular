@@ -1,2 +1,4 @@
 <div leaflet
-     [leafletOptions]="options"></div>
+     [leafletOptions]="options">
+  <div *ngFor="let marker of layers" [leafletLayer]="marker"></div>
+</div>
