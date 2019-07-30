@@ -32,7 +32,9 @@ export class CitySearchComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.inputAutocompleteService.getCitiesNames();
+    if (this.cityGroups[0].names.length === 0) {
+      this.inputAutocompleteService.getCitiesNames();
+    }
     this.cityGroupOptions = this.cityForm.get('cityGroup').valueChanges
       .pipe(
         startWith(''),

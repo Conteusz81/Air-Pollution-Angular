@@ -17,7 +17,7 @@ export class ApiResponseService {
   getLatestMeasurements(parameterId: string) {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
     this.http.get<ApiResponse>(latestMeasurementsUrl).subscribe(response => {
-      this.pollutionMeasurementsService.sortMostPollutedCities(response);
+      this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
     });
   }
 

@@ -15,27 +15,19 @@ export class PollutionMeasurementsSortService {
 
   constructor() { }
 
-  sortMostPollutedCities(serviceResponse: ApiResponse) {
-    this.responseResult = serviceResponse.results;
-    // console.log(this.responseResult);
+  sortMostPollutedCities(serviceResponse: LocationApiResponse[]) {
+    this.responseResult = serviceResponse;
 
     this.filterMeasurementsByDate();
-    // console.log(this.currentMonthMeasurements);
 
     this.createSortedByCitiesObject();
-    // console.log(this.sortedByCities);
 
     this.sortCitiesByAverageValue();
-    // console.log(sortedByCitiesAvgValue);
-    // console.log(this.sortedTopCities);
   }
 
-  filterMeasurementsByDate() {
-    this.currentMonthMeasurements = this.responseResult.filter(element => {
-      if (element.measurements[0].lastUpdated.startsWith(this.currentMonth)) {
-        return element;
-      }
-    });
+  private filterMeasurementsByDate() {
+    this.currentMonthMeasurements = this.responseResult.filter(element => element.measurements[0].lastUpdated
+      .startsWith(this.currentMonth));
   }
 
   private createSortedByCitiesObject() {
@@ -62,11 +54,11 @@ export class PollutionMeasurementsSortService {
   mostPollutedCities() {
     return this.sortedTopCities;
   }
-  test(x) {
-   // const z = x.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth))
-    x.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
-      -1 : ((b.parameter < a.parameter) ? 1 : 0)))
-      .filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
-    return x;
+
+  sortCityData(cityDataResults: LocationApiResponse[]): LocationApiResponse[] {
+    const sortedCityData = cityDataResults.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
+    sortedCityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
+      -1 : ((b.parameter < a.parameter) ? 1 : 0)));
+    return sortedCityData;
   }
 }

@@ -1,14 +1,17 @@
-.container {
-  max-width: 1800px;
-  display: flex;
-  justify-content: space-around;
-  .city-search {
-    flex-direction: column;
-    width: 75%;
-    background-color: lighten(#AFD4D7, 5%);
+
+.example-container {
+  height: 100vh;
+  mat-drawer {
+    width: 10%;
+    mat-nav-list {
+      margin-top: 100px;
+    }
   }
-  .most-polluted-search {
-    background-color: lighten(#AFD4D7, 5%);
-    width: 17%;
+    mat-drawer-content {
+      background-image: url("./img/AdobeStock_59555445.jpeg");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
-}
+

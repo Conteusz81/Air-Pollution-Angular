@@ -11,7 +11,7 @@
       margin: 18px;
       font-size: 1.4rem;
       padding: 10px;
-      background-color: lighten(lightblue, 10%);
+      background-color: lighten(#8cd1f0, 10%);
       .measurements {
         margin-top: 10px;
         font-size: 1.2rem;
@@ -30,15 +30,18 @@
     }
   }
 }
+.spinner{
+  display: flex;
+  justify-content: center;
+}
 
 .error-message {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
   mat-card {
     text-align: center;
-    background-color: lighten(#AFD4D7, 10%);
     width: 80%;
   }
 }
