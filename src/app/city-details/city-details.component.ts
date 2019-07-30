@@ -51,8 +51,8 @@ export class CityDetailsComponent implements OnInit  {
     this.cityData.length === 0 ? this.noMeasurementsAlertFlag = true : this.noMeasurementsAlertFlag = false;
   }
 
-  private getColor(parameter: string, value: number) {
-    switch (parameter) {
+  private getColor(parameterName: string, value: number) {
+    switch (parameterName) {
       case 'no2':
         if (value < 50) {
           return {border: '1px solid #79bc6a', background: '#79bc6a'};

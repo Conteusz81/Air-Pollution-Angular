@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiResponse} from './model/api-response.model';
 import {LocationApiResponse} from './model/location-api-response.model';
 import {MostPollutedCities} from './model/most-polluted-cities.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class PollutionMeasurementsSortService {
   }
 
   private sortCitiesByAverageValue() {
-    const sortedByCitiesAvgValue = [];
+    const sortedByCitiesAvgValue: MostPollutedCities[] = [];
     for (const city in this.sortedByCities) {
       if (this.sortedByCities.hasOwnProperty(city)) {
         const measurementSum: number = this.sortedByCities[city].reduce((total, val) => total + val);
@@ -51,7 +52,8 @@ export class PollutionMeasurementsSortService {
       -1 : ((b.measurementAvg > a.measurementAvg) ? 1 : 0)).slice(0, 10);
   }
 
-  mostPollutedCities() {
+  mostPollutedCities(): MostPollutedCities[] {
+    // console.log(this.sortedTopCities);
     return this.sortedTopCities;
   }
 

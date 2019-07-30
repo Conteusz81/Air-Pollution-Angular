@@ -1,0 +1,11 @@
+<mat-card *ngFor="let pollutionParameter of pollutionParameterInfo">
+  <mat-card-header>
+    <mat-card-title>{{pollutionParameter.name}}</mat-card-title>
+    <mat-card-subtitle>{{pollutionParameter.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{pollutionParameter.info}}
+    <br>
+    {{pollutionParameter.imgUrl}}
+  </mat-card-content>
+</mat-card>

@@ -1,6 +1,7 @@
 import {Component, OnInit } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { PARAMETERS } from '../mock-parameters';
+import {PollutionParameter} from '../model/pollution-parameter.model';
 
 @Component({
   selector: 'app-parameters-list',
@@ -8,16 +9,24 @@ import { PARAMETERS } from '../mock-parameters';
   styleUrls: ['./parameters-list.component.scss']
 })
 export class ParametersListComponent implements OnInit {
-  pollutionParameters = PARAMETERS;
-  selectedParameter;
+  pollutionParameters: PollutionParameter[] = PARAMETERS;
+  selectedParameter: string;
+  pollutionParameterInformation: PollutionParameter[];
+
   constructor(
     private apiResponseService: ApiResponseService
   ) { }
 
   ngOnInit() {
   }
-  onParameterSelect(pollutionParameterName: string) {
+
+  private onParameterSelect(pollutionParameterName: string) {
     this.selectedParameter = pollutionParameterName;
     this.apiResponseService.getLatestMeasurements(pollutionParameterName);
+    this.pollutionParameterInformation = this.getPollutionParameterInfo();
+  }
+
+  private getPollutionParameterInfo(): PollutionParameter[] {
+    return this.pollutionParameters.filter(element => element.id === this.selectedParameter);
   }
 }

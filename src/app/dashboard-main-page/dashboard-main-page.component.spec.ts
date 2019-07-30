@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageNavigationComponent } from './main-page-navigation.component';
+import { DashboardMainPageComponent } from './dashboard-main-page.component';
 
-describe('MainPageNavigationComponent', () => {
-  let component: MainPageNavigationComponent;
-  let fixture: ComponentFixture<MainPageNavigationComponent>;
+describe('DashboardMainPageComponent', () => {
+  let component: DashboardMainPageComponent;
+  let fixture: ComponentFixture<DashboardMainPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageNavigationComponent ]
+      declarations: [ DashboardMainPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageNavigationComponent);
+    fixture = TestBed.createComponent(DashboardMainPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

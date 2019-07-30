@@ -3,13 +3,8 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
- mat-card-header {
-   mat-card-subtitle {
-     padding: 5px 0;
-   }
- }
+
   .pollution-parameter-list {
-    flex-direction: column;
     .pollution-parameter-name {
       width: 100px;
       height: 80px;
@@ -32,9 +27,17 @@
       background-color: lighten(#8cd1f0, 10%);
     }
   }
-
 }
 
 ::ng-deep .pollution-parameter-tooltip {
   font-size: 20px;
+}
+
+.pollution-parameters-info {
+  display: flex;
+  justify-content: space-around;
+
+  app-page-information {
+    width: 50%;
+  }
 }

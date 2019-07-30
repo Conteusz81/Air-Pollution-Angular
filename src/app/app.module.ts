@@ -16,8 +16,10 @@ import {
   MatTooltipModule,
   MatListModule,
   MatSidenavModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatIconModule
 } from '@angular/material';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 import { AppComponent } from './app.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
@@ -26,9 +28,10 @@ import { MostPollutedCitiesComponent } from './most-polluted-cities/most-pollute
 import { CitySearchComponent } from './city-search/city-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CityDetailsComponent } from './city-details/city-details.component';
-import { PageInformationComponent } from './page-information/page-information.component';
+import { PollutionParameterInformationComponent } from './pollution-parameter-information/pollution-parameter-information.component';
 import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
-import { MainPageNavigationComponent } from './main-page-navigation/main-page-navigation.component';
+import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
+import { MapViewComponent } from './map-view/map-view.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,10 @@ import { MainPageNavigationComponent } from './main-page-navigation/main-page-na
     MostPollutedCitiesComponent,
     CitySearchComponent,
     CityDetailsComponent,
-    PageInformationComponent,
+    PollutionParameterInformationComponent,
     AirQualityIndexComponent,
-    MainPageNavigationComponent
+    DashboardMainPageComponent,
+    MapViewComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,9 @@ import { MainPageNavigationComponent } from './main-page-navigation/main-page-na
     MatTooltipModule,
     MatListModule,
     MatSidenavModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    LeafletModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

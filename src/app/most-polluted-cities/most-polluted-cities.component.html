@@ -1,11 +1,17 @@
-<section class="most-polluted-cities">
-  <mat-nav-list class="cities-list">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Most Polluted</mat-card-title>
+    <mat-card-subtitle>Top ten cities by the parameter</mat-card-subtitle>
+    <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
+  </mat-card-header>
+<mat-nav-list class="cities-list">
     <a mat-list-item class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities() let i = index"
-    routerLink="../../city/{{city.name}}">
+    routerLink="../../city/{{city.name}}"
+    [matTooltip]="'Check all the latest measurements.'">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}
      µg/m³
     </a>
-  </mat-nav-list>
-</section>
+</mat-nav-list>
+</mat-card>

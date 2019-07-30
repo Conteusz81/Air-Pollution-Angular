@@ -1,7 +1,12 @@
 .city-pollution-container {
-  h2 {
+  mat-card.city-name {
     text-align: center;
-    font-size: 2rem;
+    width: 20%;
+    margin: 20px auto;
+    background-color: lighten(#8cd1f0, 10%);
+    mat-card-title {
+      font-size: 2rem;
+    }
   }
   div.location-list {
     display: flex;
@@ -14,7 +19,7 @@
       background-color: lighten(#8cd1f0, 10%);
       .measurements {
         margin-top: 10px;
-        font-size: 1.2rem;
+        font-size: 1em;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -24,7 +29,7 @@
           font-weight: bold;
         }
         span:last-child {
-          font-size: 1rem;
+          font-size: .7em;
         }
       }
     }

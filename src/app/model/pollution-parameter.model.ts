@@ -3,4 +3,6 @@ export interface PollutionParameter {
   name: string;
   description: string;
   preferredUnit: string;
+  info: string;
+  imgUrl: string;
 }
