@@ -1,16 +1,7 @@
 <mat-sidenav-container class="map-sidenav-container">
   <mat-sidenav mode="side" position="end">
-    <button (click)="mapSidenav.close()">Close</button>
-    <div *ngFor="let locationData of locationMarkerData">
-      <h1 routerLink="/city/{{locationData.city}}">{{locationData.city}}</h1>
-      <h3>{{locationData.location}}</h3>
-      <mat-list *ngFor=" let measurement of locationData.measurements">
-        <mat-list-item>
-          {{measurement.parameter}}
-          {{measurement.value.toFixed(2)}}
-          {{measurement.unit}}</mat-list-item>
-      </mat-list>
-    </div>
+    <button mat-raised-button (click)="mapSidenav.close()">Close</button>
+    <app-location-details [locationMarkerDetails]="locationMarkerData"></app-location-details>
   </mat-sidenav>
   <mat-sidenav-content>
     <div leaflet

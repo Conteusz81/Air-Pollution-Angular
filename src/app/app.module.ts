@@ -32,6 +32,7 @@ import { PollutionParameterInformationComponent } from './pollution-parameter-in
 import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
 import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { LocationDetailsComponent } from './location-details/location-details.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MapViewComponent } from './map-view/map-view.component';
     PollutionParameterInformationComponent,
     AirQualityIndexComponent,
     DashboardMainPageComponent,
-    MapViewComponent
+    MapViewComponent,
+    LocationDetailsComponent
   ],
   imports: [
     BrowserModule,
