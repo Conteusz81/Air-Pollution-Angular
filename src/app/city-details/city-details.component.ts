@@ -18,7 +18,7 @@ export class CityDetailsComponent implements OnInit  {
 
   constructor(
     private route: ActivatedRoute,
-    private parameterService: ApiResponseService,
+    private apiResponseService: ApiResponseService,
     private router: Router,
     private pollutionSortService: PollutionMeasurementsSortService
   ) { }
@@ -39,7 +39,7 @@ export class CityDetailsComponent implements OnInit  {
 
   private getCityPollutionData() {
     this.cityId = this.route.snapshot.paramMap.get('id');
-    this.parameterService.getCityPollutionData(this.cityId)
+    this.apiResponseService.getCityPollutionData(this.cityId)
       .subscribe(cityData => {
         this.cityData = this.pollutionSortService.sortCityData(cityData.results);
         this.displayNoMeasurementsAlert();
