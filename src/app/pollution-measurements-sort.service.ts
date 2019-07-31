@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LocationApiResponse} from './model/location-api-response.model';
 import {MostPollutedCities} from './model/most-polluted-cities.model';
-import {Observable} from 'rxjs';
+import {AllLocationsApiResponse} from './model/all-locations-api-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +61,9 @@ export class PollutionMeasurementsSortService {
     sortedCityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
       -1 : ((b.parameter < a.parameter) ? 1 : 0)));
     return sortedCityData;
+  }
+
+  sortLocationData(locationDataResults: AllLocationsApiResponse[]): AllLocationsApiResponse[] {
+    return locationDataResults.filter( element => element.lastUpdated.startsWith(this.currentMonth));
   }
 }
