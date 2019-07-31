@@ -1,4 +1,10 @@
-div {
-  height: 89vh;
+.map-sidenav-container {
   margin: 0 20px;
+  mat-sidenav {
+    width: 300px;
+  }
+  height: 89vh;
+  div {
+    height: 100%;
+  }
 }

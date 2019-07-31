@@ -1,4 +1,12 @@
-<div leaflet
-     [leafletOptions]="options">
-  <div *ngFor="let marker of layers" [leafletLayer]="marker"></div>
-</div>
+<mat-sidenav-container class="map-sidenav-container">
+  <mat-sidenav mode="side" position="end">
+    <h1 routerLink="/city/{{markerCity}}">{{markerCity}}</h1>
+    <h3>{{markerLocation}}</h3>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div leaflet
+         [leafletOptions]="options"
+         [leafletLayers]="markerLayers">
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

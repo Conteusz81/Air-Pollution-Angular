@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {icon, latLng, marker, tileLayer} from 'leaflet';
+import {MatSidenav} from '@angular/material';
 
 @Component({
   selector: 'app-map-view',
@@ -9,7 +10,7 @@ import {icon, latLng, marker, tileLayer} from 'leaflet';
 
 export class MapViewComponent implements OnInit {
 
-  layers = [];
+  markerLayers = [];
   results = [
     {
       location: 'AM1 Gdańsk Śródmieście',
@@ -88,17 +89,32 @@ export class MapViewComponent implements OnInit {
     zoom: 7,
     center: latLng(52, 19.6)
   };
-
-  constructor() { }
+  @ViewChild(MatSidenav, { static: false }) mapSidenav: any;
+  private markerLocation: string;
+  private markerCity: string;
+  constructor( private changeDetector: ChangeDetectorRef ) { }
 
   ngOnInit() {
     const resultsLength: number = this.results.length;
     for (let i = 0; i < resultsLength; i++) {
-      const pollutionParameters = this.results[i].parameters.map( element => element );
-      this.layers.push(marker([this.results[i].coordinates.latitude, this.results[i].coordinates.longitude])
-        .bindPopup(`<a routerLink="city">${this.results[i].city}</a><br>${this.results[i].location}<br>
-${pollutionParameters}`));
+      this.markerLayers.push(marker([this.results[i].coordinates.latitude, this.results[i].coordinates.longitude],
+        {
+          icon: icon({
+            iconSize: [ 25, 41 ],
+            iconAnchor: [ 13, 41 ],
+            iconUrl: 'leaflet/marker-icon.png',
+            shadowUrl: 'leaflet/marker-shadow.png'
+          })
+        }).on('click', () => {
+      this.getLocationMeasurements(this.results[i].location, this.results[i].city);
+      this.mapSidenav.open();
+      this.changeDetector.detectChanges();
+    }));
     }
   }
 
+  private getLocationMeasurements(location: string, city: string) {
+    this.markerLocation = location;
+    this.markerCity = city;
+  }
 }
