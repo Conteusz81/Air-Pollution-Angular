@@ -18,6 +18,7 @@ export class MapViewComponent implements OnInit {
   allLocationsData: AllLocationsApiResponse[];
   markersLayer = [];
   locationMarkerData: LocationApiResponse[];
+  private cityName: string;
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -28,6 +29,28 @@ export class MapViewComponent implements OnInit {
     ],
     zoom: 7,
     center: latLng(52, 19.6)
+  };
+
+  layersControl = {
+    baseLayers: {
+      'Open Street Map': tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          maxZoom: 18,
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }),
+      'Satellite Map': tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+        {
+          maxZoom: 18,
+          subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }),
+      'Terrain Map': tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
+        {
+          maxZoom: 18,
+          subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        })
+    }
   };
 
   constructor(
@@ -61,16 +84,18 @@ export class MapViewComponent implements OnInit {
           })
         }).on('click', () => {
         this.mapSidenav.open();
-        this.getLocationPollutionData(this.allLocationsData[i].location);
+        this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
         this.changeDetector.detectChanges();
       }));
     }
   }
 
-  getLocationPollutionData(location: string) {
+  getLocationPollutionData(location: string, city: string) {
+    this.cityName = city;
     this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
       this.changeDetector.detectChanges();
+      console.log(this.locationMarkerData);
     });
   }
 }

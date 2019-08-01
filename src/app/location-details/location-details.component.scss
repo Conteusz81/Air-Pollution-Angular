@@ -1,0 +1,10 @@
+mat-card {
+  margin: 0 10px;
+  background-color: lighten(#8cd1f0, 10%);
+
+  mat-list-item {
+    h4 {
+      font-weight: bold;
+    }
+  }
+}

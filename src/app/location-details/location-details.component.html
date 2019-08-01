@@ -1,0 +1,18 @@
+<mat-card *ngFor="let locationData of locationMarkerDetails">
+  <mat-card-header>
+    <mat-card-title>{{locationData.location}}</mat-card-title>
+    <mat-card-subtitle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list *ngFor=" let measurement of locationData.measurements">
+      <mat-list-item [ngStyle]="this.pollutionSortService.getColor(measurement.parameter, measurement.value)">
+        <h4 mat-line>
+          {{measurement.parameter | uppercase}}
+        {{measurement.value.toFixed(2)}}
+          {{measurement.unit}}
+        </h4>
+        <p mat-line>Measurement time: {{measurement.lastUpdated | date: 'yyyy-MM-dd HH:mm'}}</p>
+       </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

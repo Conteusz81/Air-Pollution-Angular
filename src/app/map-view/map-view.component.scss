@@ -1,16 +1,30 @@
+$air-quality-index-color: #79bc6a, #bbcf4c, #eec20b, #f29305, #e8416f;
 .map-sidenav-container {
   margin: 0 20px;
-  mat-sidenav {
-    width: 300px;
-    button {
-      margin: 30px;
-      width: 50%;
-      background-color: lighten(#8cd1f0, 10%);
-    }
-
-  }
   height: 89vh;
   div {
     height: 100%;
+  }
+  mat-sidenav {
+    width: 350px;
+    button {
+      margin: 10px;
+      width: 50%;
+      background-color: lighten(#8cd1f0, 10%);
+    }
+    mat-card {
+      margin: 10px;
+      background-color: lighten(#8cd1f0, 10%);
+      cursor: pointer;
+      text-align: center;
+      @for $i from 1 through length($air-quality-index-color) {
+        span:nth-of-type(#{$i}) {
+          display: inline-block;
+          background-color: nth($air-quality-index-color, $i);
+          width: 20%;
+          height: 20px;
+        }
+      }
+    }
   }
 }
