@@ -31,7 +31,7 @@ export class CityDetailsComponent implements OnInit  {
   private observeRouteParamMapChange() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd))
-      .subscribe( () => {
+      .subscribe(() => {
         this.apiResponseFlag = false;
         this.getCityPollutionData();
       });
@@ -45,7 +45,7 @@ export class CityDetailsComponent implements OnInit  {
         this.displayNoMeasurementsAlert();
         this.apiResponseFlag = true;
       });
-  }
+    }
 
   private displayNoMeasurementsAlert() {
     this.cityData.length === 0 ? this.noMeasurementsAlertFlag = true : this.noMeasurementsAlertFlag = false;

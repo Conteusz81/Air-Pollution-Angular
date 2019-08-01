@@ -5,6 +5,7 @@ import {ApiResponseService} from '../api-response.service';
 import {AllLocationsApiResponse} from '../model/all-locations-api-response.model';
 import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
 import {LocationApiResponse} from '../model/location-api-response.model';
+import {TopCitySearchService} from '../top-city-search.service';
 
 @Component({
   selector: 'app-map-view',
@@ -15,9 +16,9 @@ import {LocationApiResponse} from '../model/location-api-response.model';
 export class MapViewComponent implements OnInit {
 
   @ViewChild(MatSidenav, {static: false}) mapSidenav: any;
-  allLocationsData: AllLocationsApiResponse[];
-  markersLayer = [];
-  locationMarkerData: LocationApiResponse[];
+  private allLocationsData: AllLocationsApiResponse[];
+  private markersLayer = [];
+  private locationMarkerData: LocationApiResponse[];
   private cityName: string;
   options = {
     layers: [
@@ -53,10 +54,11 @@ export class MapViewComponent implements OnInit {
     }
   };
 
-  constructor(
+    constructor(
     private apiResponseService: ApiResponseService,
     private sortService: PollutionMeasurementsSortService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
+    private topCitySearchService: TopCitySearchService
   ) {
   }
 
@@ -95,7 +97,6 @@ export class MapViewComponent implements OnInit {
     this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
       this.changeDetector.detectChanges();
-      console.log(this.locationMarkerData);
     });
   }
 }

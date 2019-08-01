@@ -7,7 +7,8 @@
 <mat-nav-list class="cities-list">
     <a mat-list-item class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities() let i = index"
     routerLink="../../city/{{city.name}}"
-    [matTooltip]="'Check all the latest measurements.'">
+    [matTooltip]="'Check all the latest measurements.'"
+    (click)="this.topCitySearchService.getName(city.name)">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}

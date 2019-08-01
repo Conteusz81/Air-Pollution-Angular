@@ -2,7 +2,7 @@
   <mat-sidenav mode="side" position="end">
     <button mat-raised-button (click)="mapSidenav.close()">Close</button>
     <mat-card>
-      <mat-card-title routerLink="/city/{{cityName}}">{{cityName}}</mat-card-title>
+      <mat-card-title routerLink="/city/{{cityName}}" (click)="this.topCitySearchService.getName(cityName)">{{cityName}}</mat-card-title>
     </mat-card>
     <app-location-details [locationMarkerDetails]="locationMarkerData"></app-location-details>
     <mat-card>

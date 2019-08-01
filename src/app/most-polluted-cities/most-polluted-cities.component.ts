@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
+import {TopCitySearchService} from '../top-city-search.service';
 
 @Component({
   selector: 'app-most-polluted-cities',
@@ -8,7 +9,10 @@ import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.s
 })
 export class MostPollutedCitiesComponent implements OnInit {
 
-  constructor(private pollutionSortService: PollutionMeasurementsSortService) { }
+  constructor(
+    private pollutionSortService: PollutionMeasurementsSortService,
+    private topCitySearchService: TopCitySearchService
+  ) { }
 
   ngOnInit() {
   }

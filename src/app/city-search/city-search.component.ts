@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { CityGroup } from '../model/city-group.model';
 import { InputAutocompleteService } from '../input-autocomplete.service';
+import {TopCitySearchService} from '../top-city-search.service';
 
 export const filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
-
   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
 };
 
@@ -22,13 +22,13 @@ export class CitySearchComponent implements OnInit {
   });
 
   cityGroups: CityGroup[] = this.inputAutocompleteService.citiesList;
-
   cityGroupOptions: Observable<CityGroup[]>;
   cityName: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private inputAutocompleteService: InputAutocompleteService
+    private inputAutocompleteService: InputAutocompleteService,
+    private topCitySearchService: TopCitySearchService
     ) {}
 
   ngOnInit() {
@@ -51,5 +51,4 @@ export class CitySearchComponent implements OnInit {
 
     return this.cityGroups;
   }
-
 }
