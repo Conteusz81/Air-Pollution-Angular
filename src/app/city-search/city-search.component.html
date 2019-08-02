@@ -15,6 +15,6 @@
   <button mat-button mat-raised-button routerLink="/city/{{cityName}}"
           (click)="this.topCitySearchService.getName(cityName)"
           *ngIf="this.inputAutocompleteService.cityNames"
-          [disabled]="this.inputAutocompleteService.cityNames.indexOf(cityName) < 0">Check Pollution</button>
+          [disabled]="!this.inputAutocompleteService.cityNames.includes(cityName)">Check Pollution</button>
 </form>
 <router-outlet></router-outlet>
