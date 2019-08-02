@@ -42,13 +42,13 @@ export class MapViewComponent implements OnInit {
       'Satellite Map': tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
         {
           maxZoom: 18,
-          subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         }),
       'Terrain Map': tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
         {
           maxZoom: 18,
-          subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         })
     }
