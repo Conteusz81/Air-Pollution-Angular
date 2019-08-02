@@ -4,6 +4,10 @@
     <mat-card-subtitle>Your favorite city search</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    Info goes here
+    <button mat-raised-button *ngFor="let city of cityCounter"
+            routerLink="/city/{{city.name}}"
+            (click)="this.topCitySearchService.cityChoice(city.name)">
+      {{city.name}}
+    </button>
   </mat-card-content>
 </mat-card>

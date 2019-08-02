@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CityCounter} from '../model/city-counter.model';
+import {TopCitySearchService} from '../top-city-search.service';
 
 @Component({
   selector: 'app-main-page-navigation',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardMainPageComponent implements OnInit {
 
-  constructor() { }
+  private cityCounter: CityCounter[] = JSON.parse(localStorage.getItem('cityCounter')).slice(0, 5);
+  constructor( private topCitySearchService: TopCitySearchService ) { }
 
   ngOnInit() {
+    console.log(this.cityCounter);
   }
 
 }
