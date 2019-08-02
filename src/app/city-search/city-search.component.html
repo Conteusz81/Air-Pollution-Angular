@@ -12,6 +12,9 @@
       </mat-optgroup>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-button mat-raised-button routerLink="/city/{{cityName}}" (click)="this.topCitySearchService.getName(cityName)">Check Pollution</button>
+  <button mat-button mat-raised-button routerLink="/city/{{cityName}}"
+          (click)="this.topCitySearchService.getName(cityName)"
+          *ngIf="this.inputAutocompleteService.cityNames"
+          [disabled]="this.inputAutocompleteService.cityNames.indexOf(cityName) < 0">Check Pollution</button>
 </form>
 <router-outlet></router-outlet>
