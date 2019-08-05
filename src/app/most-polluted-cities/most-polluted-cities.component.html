@@ -5,7 +5,7 @@
     <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
   </mat-card-header>
 <mat-nav-list class="cities-list">
-    <a mat-list-item class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities() let i = index"
+    <a mat-list-item class="city" *ngFor="let city of cites let i = index"
     routerLink="../../city/{{city.name}}"
     [matTooltip]="'Check all the latest measurements.'"
     (click)="this.topCitySearchService.cityChoice(city.name)">
@@ -16,3 +16,4 @@
     </a>
 </mat-nav-list>
 </mat-card>
+

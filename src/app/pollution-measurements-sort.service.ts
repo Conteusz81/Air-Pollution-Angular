@@ -49,7 +49,7 @@ export class PollutionMeasurementsSortService {
   }
 
   mostPollutedCities(): MostPollutedCities[] {
-   //  console.log(this.sortedTopCities);
+    console.log(this.sortedTopCities);
     return this.sortedTopCities;
   }
 

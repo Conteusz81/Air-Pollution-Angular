@@ -2,13 +2,16 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PollutionMeasurementsSortService} from './pollution-measurements-sort.service';
 import {ApiResponse} from './model/api-response.model';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {GetAllLocationsApiResponse} from './model/get-all-locations-api-response.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiResponseService {
+
+  resond: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -17,9 +20,13 @@ export class ApiResponseService {
 
   getLatestMeasurements(parameterId: string) {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
-    this.http.get<ApiResponse>(latestMeasurementsUrl).subscribe(response => {
-      this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
-    });
+    this.http.get<ApiResponse>(latestMeasurementsUrl)
+      .pipe(map(data => {
+        console.log('DATA', data)
+        this.pollutionMeasurementsService.sortMostPollutedCities(data.results);
+        this.resond.next(this.pollutionMeasurementsService.sortedTopCities);
+      })).subscribe()
+
   }
 
   getCityPollutionData(cityId: string): Observable<ApiResponse> {
