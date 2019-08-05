@@ -87,6 +87,7 @@ export class MapViewComponent implements OnInit {
         }).on('click', () => {
         this.mapSidenav.open();
         this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
+        this.topCitySearchService.cityChoice(this.allLocationsData[i].city);
         this.changeDetector.detectChanges();
       }));
     }
