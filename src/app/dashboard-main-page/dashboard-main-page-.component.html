@@ -1,13 +1,10 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Top choices</mat-card-title>
-    <mat-card-subtitle>Your favorite city search</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <button mat-raised-button *ngFor="let city of cityCounter"
-            routerLink="/city/{{city.name}}"
-            (click)="this.topCitySearchService.cityChoice(city.name)">
-      {{city.name}}
-    </button>
-  </mat-card-content>
+  Top Choices
 </mat-card>
+<div class="container">
+<div class="city" *ngFor="let city of cityCounter"
+     routerLink="/city/{{city.name}}"
+     (click)="this.topCitySearchService.cityChoice(city.name)">
+  <span>{{city.name}}</span>
+</div>
+</div>
