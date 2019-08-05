@@ -1,6 +1,8 @@
+@import "~src/app/variables";
+
 mat-card {
   margin: 0 10px;
-  background-color: lighten(#8cd1f0, 10%);
+  background-color: $main-background-color;
 
   mat-list-item {
     h4 {

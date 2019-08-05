@@ -1,3 +1,5 @@
+@import "~src/app/variables";
+
 form {
   display: flex;
   justify-content: center;
@@ -8,7 +10,7 @@ form {
     }
   }
   button {
-    background-color: lighten(#8cd1f0, 10%);
+    background-color: $main-background-color;
     margin: 10px;
   }
 }
