@@ -49,11 +49,11 @@ export class PollutionMeasurementsSortService {
   }
 
   mostPollutedCities(): MostPollutedCities[] {
-    // console.log(this.sortedTopCities);
+   //  console.log(this.sortedTopCities);
     return this.sortedTopCities;
   }
 
-  sortCityData(cityDataResults: LocationApiResponse[]): LocationApiResponse[] {
+  sortParameterByName(cityDataResults: LocationApiResponse[]): LocationApiResponse[] {
     const sortedCityData = cityDataResults.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
     sortedCityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
       -1 : ((b.parameter < a.parameter) ? 1 : 0)));

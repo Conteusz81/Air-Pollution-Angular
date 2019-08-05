@@ -41,7 +41,7 @@ export class CityDetailsComponent implements OnInit  {
     this.cityId = this.route.snapshot.paramMap.get('id');
     this.apiResponseService.getCityPollutionData(this.cityId)
       .subscribe(cityData => {
-        this.cityData = this.pollutionSortService.sortCityData(cityData.results);
+        this.cityData = this.pollutionSortService.sortParameterByName(cityData.results);
         this.displayNoMeasurementsAlert();
         this.apiResponseFlag = true;
       });
