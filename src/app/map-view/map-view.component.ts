@@ -1,7 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {icon, latLng, marker, tileLayer} from 'leaflet';
 import {MatSidenav} from '@angular/material';
-
+import {ApiResponseService} from '../api-response.service';
+import {AllLocationsApiResponse} from '../model/all-locations-api-response.model';
+import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
+import {LocationApiResponse} from '../model/location-api-response.model';
+import {TopCitySearchService} from '../top-city-search.service';
 
 @Component({
   selector: 'app-map-view',
@@ -11,95 +15,94 @@ import {MatSidenav} from '@angular/material';
 
 export class MapViewComponent implements OnInit {
 
-  layers = [];
-  results = [
-    {
-      location: 'AM1 Gdańsk Śródmieście',
-      city: 'Gdańsk',
-      country: 'PL',
-      count: 19286,
-      sourceNames: [
-        'GIOS'
-        ],
-      lastUpdated: '2019-07-29T11:00:00.000Z',
-      firstUpdated: '2018-11-21T18:00:00.000Z',
-      parameters: [
-        'no2',
-        'co',
-        'pm10',
-        'so2'
-        ],
-      sourceName: 'GIOS',
-      coordinates: {
-        latitude: 54.353336,
-        longitude: 18.635283
-      }
-    },
-    {
-      location: 'AM10 Gdynia Śródmieście',
-      city: 'Gdynia',
-      country: 'PL',
-      count: 10520,
-      sourceNames: [
-        'GIOS'
-        ],
-      lastUpdated: '2019-07-29T11:00:00.000Z',
-      firstUpdated: '2018-11-21T18:00:00.000Z',
-      parameters: [
-        'pm10',
-        'no2'
-        ],
-      sourceName: 'GIOS',
-      coordinates: {
-        latitude: 54.525272,
-        longitude: 18.536383
-      }
-    },
-    {
-      location: 'AM11 Słupsk Kniaziewicza',
-      city: 'Słupsk',
-      country: 'PL',
-      count: 26061,
-      sourceNames: [
-        'GIOS'
-        ],
-      lastUpdated: '2019-07-29T11:00:00.000Z',
-      firstUpdated: '2018-11-21T18:00:00.000Z',
-      parameters: [
-        'bc',
-        'no2',
-        'o3',
-        'so2',
-        'co',
-        'pm10'
-        ],
-      sourceName: 'GIOS',
-      coordinates: {
-        latitude: 54.46361,
-        longitude: 17.046722
-      }
-    }
-    ];
+  @ViewChild(MatSidenav, {static: false}) mapSidenav: any;
+  private allLocationsData: AllLocationsApiResponse[];
+  private markersLayer = [];
+  private locationMarkerData: LocationApiResponse[];
+  private cityName: string;
+  private apiResponseFlag = false;
 
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { maxZoom: 18,
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors' })
+        {
+          maxZoom: 18,
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        })
     ],
     zoom: 7,
     center: latLng(52, 19.6)
   };
-  @ViewChild( MatSidenav, {static: false} ) public myNav;
-  constructor() { }
+
+  layersControl = {
+    baseLayers: {
+      'Open Street Map': tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          maxZoom: 18,
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }),
+      'Satellite Map': tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+        {
+          maxZoom: 18,
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }),
+      'Terrain Map': tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
+        {
+          maxZoom: 18,
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        })
+    }
+  };
+
+    constructor(
+    private apiResponseService: ApiResponseService,
+    private sortService: PollutionMeasurementsSortService,
+    private changeDetector: ChangeDetectorRef,
+    private topCitySearchService: TopCitySearchService
+  ) {
+  }
 
   ngOnInit() {
-    const resultsLength: number = this.results.length;
+    this.getAllLocations();
+  }
+
+  private getAllLocations() {
+    this.apiResponseService.getAllLocationsData().subscribe(locationData => {
+      this.allLocationsData = this.sortService.sortLocationData(locationData.results);
+      this.addMapMarkers();
+    });
+  }
+
+  private addMapMarkers() {
+    const resultsLength: number = this.allLocationsData.length;
     for (let i = 0; i < resultsLength; i++) {
-      // const pollutionParameters = this.results[i].parameters.map( element => element );
-      this.layers.push(marker([this.results[i].coordinates.latitude, this.results[i].coordinates.longitude])
-        .on('click', () => this.myNav.toggle()));
+
+      this.markersLayer.push(marker([this.allLocationsData[i].coordinates.latitude, this.allLocationsData[i].coordinates.longitude],
+        {
+          icon: icon({
+            iconSize: [25, 41],
+            iconAnchor: [13, 41],
+            iconUrl: 'leaflet/marker-icon.png',
+            shadowUrl: 'leaflet/marker-shadow.png'
+          })
+        }).on('click', () => {
+        this.apiResponseFlag = false;
+        this.mapSidenav.open();
+        this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
+        this.topCitySearchService.cityChoice(this.allLocationsData[i].city);
+        this.changeDetector.detectChanges();
+      }));
     }
   }
 
+  getLocationPollutionData(location: string, city: string) {
+    this.cityName = city;
+    this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
+      this.locationMarkerData = response.results;
+      this.apiResponseFlag = true;
+      this.changeDetector.detectChanges();
+    });
+  }
 }

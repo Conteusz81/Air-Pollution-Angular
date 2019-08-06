@@ -1,9 +1,10 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Top choices</mat-card-title>
-    <mat-card-subtitle>Your favorite city search</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    Info goes here
-  </mat-card-content>
-</mat-card>
+<h1>
+  Most Popular Choices
+</h1>
+<div class="container">
+<div class="city" *ngFor="let city of cityCounter"
+     routerLink="/city/{{city.name}}"
+     (click)="this.topCitySearchService.cityChoice(city.name)">
+  <span>{{city.name}}</span>
+</div>
+</div>

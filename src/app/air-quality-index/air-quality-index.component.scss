@@ -1,7 +1,7 @@
-$air-quality-index-color: #79bc6a, #bbcf4c, #eec20b, #f29305, #e8416f;
+@import "~src/app/variables";
 
 mat-card {
-  background-color: lighten(#8cd1f0, 10%);
+  background-color: $main-background-color;
   margin: 0 20px;
 
   @for $i from 1 through length($air-quality-index-color) {

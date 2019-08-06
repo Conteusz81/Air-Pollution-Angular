@@ -1,13 +1,31 @@
-.example-container {
-  height: 89vh;
+@import "~src/app/variables";
+
+.map-sidenav-container {
   margin: 0 20px;
-  mat-sidenav {
-    width: 300px;
+  height: 89vh;
+  div {
+    height: 100%;
   }
-  mat-sidenav-content {
-    div {
-      height: 100%;
+  mat-sidenav {
+    width: 350px;
+    button {
+      margin: 10px;
+      width: 50%;
+      background-color: $main-background-color;
+    }
+    mat-card {
+      margin: 10px;
+      background-color: $main-background-color;
+      cursor: pointer;
+      text-align: center;
+      @for $i from 1 through length($air-quality-index-color) {
+        span:nth-of-type(#{$i}) {
+          display: inline-block;
+          background-color: nth($air-quality-index-color, $i);
+          width: 20%;
+          height: 20px;
+        }
+      }
     }
   }
-
 }

@@ -1,3 +1,50 @@
-mat-card {
-  margin: 20px;
+@import "~src/app/variables";
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
 }
+
+div.container {
+  position: relative;
+  @for $i from 1 through 5 {
+    div.city:nth-of-type(#{$i}) {
+      position: absolute;
+      background-image: url("../img/cloud.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      width: 250px;
+      height: 150px;
+      transform: translate(-50%, -50%) scale(0);
+      top: nth($absolute-top-positioning, $i);
+      left: calc(250px * #{$i});
+      animation: cloud#{$i} 1s #{$i * 300}ms forwards;
+      transition: .7s;
+      @keyframes cloud#{$i} {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(calc(1.7 - #{0.2 * $i}));
+        }
+      }
+
+      span {
+        position: absolute;
+        top: 80px;
+        left: 55%;
+        transform: translate(-50%, -60%);
+        font-weight: bold;
+      }
+
+      &:hover {
+        font-size: 1.2rem;
+        color: #8cd1f0;
+      }
+    }
+  }
+}
+

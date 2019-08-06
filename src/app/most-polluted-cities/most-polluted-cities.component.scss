@@ -1,14 +1,23 @@
-.cities-list {
-  .city {
-    transition: .4s;
-    background-color: lighten(#8cd1f0, 10%);
-    margin: 2px 0;
-    border-radius: 5px;
+@import "~src/app/variables";
 
-    &:hover {
-      background-color: #8cd1f0;
-      transform: scale(1.03);
+mat-card {
+  background-color: $main-background-color;
+  div.spinner {
+    display: flex;
+    justify-content: center;
+  }
+  mat-nav-list.cities-list {
+    a.city {
+      transition: .4s;
+      margin: 2px 0;
+      border-radius: 5px;
+      background-color: #ffffff;
+      &:hover {
+        background-color: #8cd1f0;
+        transform: scale(1.03);
+      }
     }
   }
 }
+
 

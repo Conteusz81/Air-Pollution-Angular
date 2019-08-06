@@ -4,10 +4,15 @@
     <mat-card-subtitle>Top ten cities by the parameter</mat-card-subtitle>
     <mat-card-subtitle>The data is displayed based on the average of the last measurements from the current month.</mat-card-subtitle>
   </mat-card-header>
-<mat-nav-list class="cities-list">
-    <a mat-list-item class="city" *ngFor="let city of this.pollutionSortService.mostPollutedCities() let i = index"
+  <div class="spinner">
+  <mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
+  </div>
+<mat-nav-list class="cities-list" *ngIf="apiResponseFlag">
+    <a mat-list-item class="city" *ngFor="let city of mostPollutedByParameter let i = index"
     routerLink="../../city/{{city.name}}"
-    [matTooltip]="'Check all the latest measurements.'">
+    [matTooltip]="'Check all the latest measurements.'"
+    (click)="this.topCitySearchService.cityChoice(city.name)"
+    [ngStyle]="pollutionSortService.getColor(cityId, city.measurementAvg)">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}
@@ -15,3 +20,4 @@
     </a>
 </mat-nav-list>
 </mat-card>
+

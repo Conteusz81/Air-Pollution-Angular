@@ -1,9 +1,11 @@
+@import "~src/app/variables";
+
 .city-pollution-container {
   mat-card.city-name {
     text-align: center;
     width: 20%;
     margin: 20px auto;
-    background-color: lighten(#8cd1f0, 10%);
+    background-color: $main-background-color;
     mat-card-title {
       font-size: 2rem;
     }
@@ -16,7 +18,7 @@
       margin: 18px;
       font-size: 1.4rem;
       padding: 10px;
-      background-color: lighten(#8cd1f0, 10%);
+      background-color: $main-background-color;
       .measurements {
         margin-top: 10px;
         font-size: 1em;

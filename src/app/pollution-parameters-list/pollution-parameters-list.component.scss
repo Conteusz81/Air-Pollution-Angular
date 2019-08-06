@@ -1,11 +1,16 @@
+@import "~src/app/variables";
+
 .pollution-parameters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-
+  mat-card {
+    background-color: $main-background-color;
+  }
   .pollution-parameter-list {
     .pollution-parameter-name {
+      background-color: $main-background-color;
       width: 100px;
       height: 80px;
       margin: 20px;
@@ -24,7 +29,7 @@
       padding: 10px;
       font-weight: bold;
       transition: .6s;
-      background-color: lighten(#8cd1f0, 10%);
+      background-color: #ffffff;
     }
   }
 }
@@ -33,11 +38,15 @@
   font-size: 20px;
 }
 
-.pollution-parameters-info {
+.pollution-parameter-info {
   display: flex;
   justify-content: space-around;
-
+  flex-wrap: wrap;
   app-page-information {
     width: 50%;
+    @media (max-width: 1440px) {
+      width: 80%;
+      margin-bottom: 20px;
+    }
   }
 }
