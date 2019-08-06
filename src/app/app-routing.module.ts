@@ -6,6 +6,7 @@ import {CitySearchComponent} from './city-search/city-search.component';
 import {PollutionParametersListComponent} from './pollution-parameters-list/pollution-parameters-list.component';
 import {MostPollutedCitiesComponent} from './most-polluted-cities/most-polluted-cities.component';
 import {MapViewComponent} from './map-view/map-view.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [ { path: ':id', component: CityDetailsComponent } ]},
   { path: 'parameters', component: PollutionParametersListComponent,
     children: [ { path: ':id', component: MostPollutedCitiesComponent} ]},
-  { path: 'map', component: MapViewComponent }
+  { path: 'map', component: MapViewComponent },
+  { path: 'profile', component: UserProfileComponent }
 ];
 
 @NgModule({

@@ -33,6 +33,9 @@ import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.
 import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { LocationDetailsComponent } from './location-details/location-details.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { LocationDetailsComponent } from './location-details/location-details.co
     AirQualityIndexComponent,
     DashboardMainPageComponent,
     MapViewComponent,
-    LocationDetailsComponent
+    LocationDetailsComponent,
+    UserProfileComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

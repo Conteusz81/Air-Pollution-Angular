@@ -1,0 +1,12 @@
+<div class="login" *ngIf="formFlag">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="login" value="">
+    </mat-form-field>
+  </form>
+</div>
+<div class="register" *ngIf="!formFlag">
+  <app-register-form></app-register-form>
+</div>
+<button mat-raised-button (click)="formFlag = !formFlag">{{formFlag ? 'Register' : 'Login'}}</button>
+
