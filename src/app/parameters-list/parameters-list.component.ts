@@ -22,8 +22,8 @@ export class ParametersListComponent implements OnInit {
 
   private onParameterSelect(pollutionParameterName: string) {
     this.selectedParameter = pollutionParameterName;
-    console.log('dddddddddd', pollutionParameterName)
-    this.apiResponseService.getLatestMeasurements(pollutionParameterName);
+    this.apiResponseService.getLatestMeasurements(pollutionParameterName)
+      .subscribe(response => this.apiResponseService.sortedTopCitiesData.next(response));
     this.pollutionParameterInformation = this.getPollutionParameterInfo();
   }
 

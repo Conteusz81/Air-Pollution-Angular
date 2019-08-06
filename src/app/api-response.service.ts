@@ -5,28 +5,27 @@ import {ApiResponse} from './model/api-response.model';
 import {Observable, Subject} from 'rxjs';
 import {GetAllLocationsApiResponse} from './model/get-all-locations-api-response.model';
 import {map} from 'rxjs/operators';
+import {MostPollutedCities} from './model/most-polluted-cities.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiResponseService {
 
-  resond: Subject<any> = new Subject<any>();
+  sortedTopCitiesData: Subject<MostPollutedCities[]> = new Subject<MostPollutedCities[]>();
 
   constructor(
     private http: HttpClient,
     private pollutionMeasurementsService: PollutionMeasurementsSortService
   ) { }
 
-  getLatestMeasurements(parameterId: string) {
+  getLatestMeasurements(parameterId: string): Observable<MostPollutedCities[]> {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
-    this.http.get<ApiResponse>(latestMeasurementsUrl)
-      .pipe(map(data => {
-        console.log('DATA', data)
-        this.pollutionMeasurementsService.sortMostPollutedCities(data.results);
-        this.resond.next(this.pollutionMeasurementsService.sortedTopCities);
-      })).subscribe()
-
+    return this.http.get<ApiResponse>(latestMeasurementsUrl)
+      .pipe(map(response => {
+        this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
+        return this.pollutionMeasurementsService.sortedTopCities;
+      }));
   }
 
   getCityPollutionData(cityId: string): Observable<ApiResponse> {
