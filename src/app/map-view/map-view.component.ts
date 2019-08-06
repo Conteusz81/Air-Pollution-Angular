@@ -20,6 +20,8 @@ export class MapViewComponent implements OnInit {
   private markersLayer = [];
   private locationMarkerData: LocationApiResponse[];
   private cityName: string;
+  private apiResponseFlag = false;
+
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -85,6 +87,7 @@ export class MapViewComponent implements OnInit {
             shadowUrl: 'leaflet/marker-shadow.png'
           })
         }).on('click', () => {
+        this.apiResponseFlag = false;
         this.mapSidenav.open();
         this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
         this.topCitySearchService.cityChoice(this.allLocationsData[i].city);
@@ -97,6 +100,7 @@ export class MapViewComponent implements OnInit {
     this.cityName = city;
     this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
+      this.apiResponseFlag = true;
       this.changeDetector.detectChanges();
     });
   }

@@ -1,4 +1,5 @@
-<mat-card *ngFor="let locationData of locationMarkerDetails">
+<div *ngIf="apiResponseFlag">
+  <mat-card *ngFor="let locationData of locationMarkerDetails">
   <mat-card-header>
     <mat-card-title>{{locationData.location}}</mat-card-title>
     <mat-card-subtitle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos.</mat-card-subtitle>
@@ -15,4 +16,9 @@
        </mat-list-item>
     </mat-list>
   </mat-card-content>
+</mat-card>
+</div>
+
+<mat-card class="spinner">
+  <mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
 </mat-card>

@@ -10,6 +10,7 @@ import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.s
 export class LocationDetailsComponent implements OnInit {
 
   @Input() locationMarkerDetails: LocationApiResponse[];
+  @Input() apiResponseFlag;
 
   constructor( private pollutionSortService: PollutionMeasurementsSortService) { }
 

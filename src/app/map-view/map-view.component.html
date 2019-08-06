@@ -4,7 +4,7 @@
     <mat-card>
       <mat-card-title routerLink="/city/{{cityName}}" (click)="this.topCitySearchService.cityChoice(cityName)">{{cityName}}</mat-card-title>
     </mat-card>
-    <app-location-details [locationMarkerDetails]="locationMarkerData"></app-location-details>
+    <app-location-details [locationMarkerDetails]="locationMarkerData" [apiResponseFlag]="apiResponseFlag"></app-location-details>
     <mat-card>
       <mat-card-header>
         <mat-card-title>Air Quality Index</mat-card-title>

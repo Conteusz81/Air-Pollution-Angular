@@ -10,3 +10,7 @@ mat-card {
     }
   }
 }
+mat-card.spinner{
+  display: flex;
+  justify-content: center;
+}
