@@ -1,4 +1,13 @@
-div {
+.example-container {
   height: 89vh;
   margin: 0 20px;
+  mat-sidenav {
+    width: 300px;
+  }
+  mat-sidenav-content {
+    div {
+      height: 100%;
+    }
+  }
+
 }

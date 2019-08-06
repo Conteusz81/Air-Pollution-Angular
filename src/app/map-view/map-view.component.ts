@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {icon, latLng, marker, tileLayer} from 'leaflet';
+import {MatSidenav} from '@angular/material';
+
 
 @Component({
   selector: 'app-map-view',
@@ -88,16 +90,15 @@ export class MapViewComponent implements OnInit {
     zoom: 7,
     center: latLng(52, 19.6)
   };
-
+  @ViewChild( MatSidenav, {static: false} ) public myNav;
   constructor() { }
 
   ngOnInit() {
     const resultsLength: number = this.results.length;
     for (let i = 0; i < resultsLength; i++) {
-      const pollutionParameters = this.results[i].parameters.map( element => element );
+      // const pollutionParameters = this.results[i].parameters.map( element => element );
       this.layers.push(marker([this.results[i].coordinates.latitude, this.results[i].coordinates.longitude])
-        .bindPopup(`<a routerLink="city">${this.results[i].city}</a><br>${this.results[i].location}<br>
-${pollutionParameters}`));
+        .on('click', () => this.myNav.toggle()));
     }
   }
 
