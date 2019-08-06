@@ -5,10 +5,10 @@ import {PollutionParameter} from '../model/pollution-parameter.model';
 
 @Component({
   selector: 'app-parameters-list',
-  templateUrl: './parameters-list.component.html',
-  styleUrls: ['./parameters-list.component.scss']
+  templateUrl: './pollution-parameters-list.component.html',
+  styleUrls: ['./pollution-parameters-list.component.scss']
 })
-export class ParametersListComponent implements OnInit {
+export class PollutionParametersListComponent implements OnInit {
   pollutionParameters: PollutionParameter[] = PARAMETERS;
   selectedParameter: string;
   pollutionParameterInformation: PollutionParameter[];

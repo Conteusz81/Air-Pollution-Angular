@@ -19,6 +19,6 @@
 </mat-card>
 </div>
 
-<mat-card class="spinner">
-  <mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
+<mat-card class="spinner" *ngIf="!apiResponseFlag">
+  <mat-spinner color="warn"></mat-spinner>
 </mat-card>

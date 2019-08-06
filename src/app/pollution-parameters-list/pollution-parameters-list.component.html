@@ -16,8 +16,9 @@
     </button>
   </div>
 </div>
-<div class="pollution-parameters-info">
+<div class="pollution-parameter-info">
   <app-page-information *ngIf="selectedParameter" [pollutionParameterInfo]="pollutionParameterInformation"></app-page-information>
   <router-outlet *ngIf="selectedParameter"></router-outlet>
 </div>
+
 
