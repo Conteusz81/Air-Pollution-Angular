@@ -1,27 +1,27 @@
-<form>
-  <mat-button-toggle-group #group="matButtonToggleGroup">
-    <mat-button-toggle value="walk">
-      <mat-icon>directions_walk</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="bike">
-      <mat-icon>directions_bike</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="car">
-      <mat-icon>directions_car</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="bus">
-      <mat-icon>directions_bus</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="tram">
-      <mat-icon>tram</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="subway">
-      <mat-icon>subway</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="train">
-      <mat-icon>train</mat-icon>
-    </mat-button-toggle>
-  </mat-button-toggle-group>
+<form [formGroup]="registerForm">
+<!--  <mat-button-toggle-group #group="matButtonToggleGroup">-->
+<!--    <mat-button-toggle value="walk">-->
+<!--      <mat-icon>directions_walk</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="bike">-->
+<!--      <mat-icon>directions_bike</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="car">-->
+<!--      <mat-icon>directions_car</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="bus">-->
+<!--      <mat-icon>directions_bus</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="tram">-->
+<!--      <mat-icon>tram</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="subway">-->
+<!--      <mat-icon>subway</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--    <mat-button-toggle value="train">-->
+<!--      <mat-icon>train</mat-icon>-->
+<!--    </mat-button-toggle>-->
+<!--  </mat-button-toggle-group>-->
 <mat-form-field appearance="outline">
   <mat-label>Name</mat-label>
   <label>
@@ -37,34 +37,36 @@
   <mat-form-field appearance="outline">
     <mat-label>User Name</mat-label>
     <label>
-      <input matInput placeholder="Enter your user name" [formControl]="userName" required>
+      <input matInput placeholder="Enter your user name" formControlName="userName" required>
     </label>
-    <mat-error *ngIf="userName.invalid">{{getUserNameErrorMessage()}}</mat-error>
+    <mat-error *ngIf="registerForm.invalid">{{getUserNameErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Email</mat-label>
     <label>
-      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <input matInput placeholder="Enter your email" formControlName="email" required>
     </label>
-    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    <mat-error *ngIf="registerForm.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
     <label>
-      <input matInput placeholder="Enter your password" [type]="hidePrimary ? 'password' : 'text'" [formControl]="password" required>
+      <input matInput placeholder="Enter your password" [type]="hidePrimary ? 'password' : 'text'" formControlName="password" required>
     </label>
     <button mat-icon-button matSuffix (click)="hidePrimary = !hidePrimary" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePrimary">
       <mat-icon>{{hidePrimary ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
-    <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+    <mat-error *ngIf="registerForm.invalid">{{getPasswordErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Confirm Password</mat-label>
     <label>
-      <input matInput placeholder="Confirm Password" [type]="hideSecondary ? 'password' : 'text'">
+      <input matInput placeholder="Confirm Password" [type]="hideSecondary ? 'password' : 'text'" formControlName="confirmPassword">
     </label>
     <button mat-icon-button matSuffix (click)="hideSecondary = !hideSecondary" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideSecondary">
       <mat-icon>{{hideSecondary ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error *ngIf="registerForm.hasError('notSame')">Password doesn't match</mat-error>
   </mat-form-field>
+  <button mat-raised-button type="submit">Submit</button>
 </form>
