@@ -17,7 +17,9 @@ import {
   MatListModule,
   MatSidenavModule,
   MatProgressSpinnerModule,
-  MatIconModule
+  MatIconModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
@@ -75,9 +77,11 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
