@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Piotr",
+      "surname": "Pawlica",
+      "birthDate": "1981-08-25T22:00:00.000Z",
+      "transport": "bus",
+      "homeTown": "Katowice",
+      "email": "peter@mtest.com",
+      "userName": "qwerty",
+      "password": "Piotrek123",
+      "confirmPassword": "Piotrek123"
+    },
+    {
+      "name": "asdfasd",
+      "surname": "asdf",
+      "birthDate": "1981-08-25T22:00:00.000Z",
+      "transport": "bus",
+      "homeTown": "asdfa",
+      "email": "dsaf@dadf",
+      "userName": "qwee",
+      "password": "qqqqqqQ1",
+      "confirmPassword": "qqqqqqQ1",
+      "id": 2
+    }
+  ]
+}

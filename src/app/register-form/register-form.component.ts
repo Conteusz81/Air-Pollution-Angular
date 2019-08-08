@@ -1,5 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+import {Observable, zip} from 'rxjs';
+import {RegisterFormService} from '../register-form.service';
+import {map} from 'rxjs/operators';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty
+      && control.parent.hasError('passwordNotSame'));
+    return (invalidParent);
+  }
+}
 
 @Component({
   selector: 'app-register-form',
@@ -7,35 +29,67 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-  private email = new FormControl('', [Validators.required, Validators.email]);
-  private userName = new FormControl('', [Validators.required, Validators.minLength(4)]);
-  private password = new FormControl('',
-    [Validators.required, Validators.minLength(8), Validators.pattern('.*[a-z].*'),
-      Validators.pattern('.*[A-Z].*'), Validators.pattern('.*[0-9].*')]);
+
+  private registerForm: FormGroup;
+  private matcher = new MyErrorStateMatcher();
   private hidePrimary = true;
   private hideSecondary = true;
-  constructor() { }
+  private startDate = new Date(1992, 0, 1);
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private registerFormService: RegisterFormService
+  ) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: [''],
+      surname: [''],
+      birthDate: [''],
+      transport: [''],
+      homeTown: [''],
+      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required, Validators.minLength(4)],  this.validateEmailNotTaken.bind(this)],
+      password: ['',
+       [Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('.*[a-z].*'),
+        Validators.pattern('.*[A-Z].*'),
+        Validators.pattern('.*[0-9].*')]],
+      confirmPassword: ['', Validators.required]
+    }, {validator: this.registerFormService.checkPasswordMatch});
   }
 
+  validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.registerFormService.checkIfUserOrEmailExist(control.value).pipe(map(byUser => {
+      console.log(byUser);
+      return Object.keys(byUser).length ? {userTaken: true} : null;
+    }));
+  }
+
+  get form() { return this.registerForm.controls; }
+
   getEmailErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+    return this.form.email.hasError('required') ? 'You must enter a value' :
+      this.form.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getUserNameErrorMessage() {
-    return this.userName.hasError('required') ? 'You must enter a value' :
-      this.userName.hasError('minlength') ? 'Your user name has to have at least 4 characters' :
-        '';
+    return this.form.userName.hasError('required') ? 'You must enter a value' :
+      this.form.userName.hasError('minlength') ? 'User name must have at least 4 characters' :
+        this.form.userName.hasError('userTaken') ? 'User Name is taken' :
+          '';
   }
 
   getPasswordErrorMessage() {
-    console.log(this.password.errors);
-    return this.password.hasError('required') ? 'You must enter a value' :
-      this.password.hasError('minlength') ? 'Password has to have at least 8 characters' :
-        this.password.hasError('pattern') ? 'Password is invalid' :
-          '';
+    return this.form.password.hasError('required') ? 'You must enter a value' :
+      this.form.password.hasError('minlength') ? 'Password must have at least 8 characters' :
+        this.form.password.hasError('pattern') ?
+          'Password must have at least one small letter, one uppercase letter and one number' : '';
+  }
+
+  getConfirmPasswordErrorMessage() {
+    return this.form.confirmPassword.hasError('required') ? 'You must enter a value' :
+    this.registerForm.hasError('passwordNotSame') ? 'Passwords must be the same' : '';
   }
 }
