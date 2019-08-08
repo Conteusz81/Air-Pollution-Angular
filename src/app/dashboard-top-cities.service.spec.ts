@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardTopCitiesService } from './top-city-search.service';
+import { DashboardTopCitiesService } from './dashboard-top-cities.service';
 
 describe('TopCitySearchService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
