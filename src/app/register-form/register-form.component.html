@@ -1,5 +1,6 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-  <mat-button-toggle-group #group="matButtonToggleGroup">
+<form (ngSubmit)="registerFormService.onRegisterSubmit(registerForm)" [formGroup]="registerForm">
+  <mat-button-toggle-group #group="matButtonToggleGroup"
+  formControlName="transport">
     <mat-button-toggle value="walk">
       <mat-icon>directions_walk</mat-icon>
     </mat-button-toggle>
@@ -30,7 +31,7 @@
   <mat-form-field appearance="outline">
     <mat-label>Home Town</mat-label>
     <label>
-      <input matInput placeholder="Enter your home town">
+      <input matInput placeholder="Enter your home town" formControlName="homeTown">
     </label>
   </mat-form-field>
 <mat-form-field appearance="outline">

@@ -1,11 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+import {Observable, zip} from 'rxjs';
+import {RegisterFormService} from '../register-form.service';
+import {map} from 'rxjs/operators';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty
-      && control.parent.hasError('notSame'));
+      && control.parent.hasError('passwordNotSame'));
     return (invalidParent);
   }
 }
@@ -22,16 +35,21 @@ export class RegisterFormComponent implements OnInit {
   private hidePrimary = true;
   private hideSecondary = true;
   private startDate = new Date(1992, 0, 1);
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private registerFormService: RegisterFormService
+  ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name: [''],
       surname: [''],
       birthDate: [''],
+      transport: [''],
+      homeTown: [''],
       email: ['', [Validators.required, Validators.email]],
-      userName: ['', [Validators.required, Validators.minLength(4)]],
+      userName: ['', [Validators.required, Validators.minLength(4)],  this.validateEmailNotTaken.bind(this)],
       password: ['',
        [Validators.required,
         Validators.minLength(8),
@@ -39,16 +57,17 @@ export class RegisterFormComponent implements OnInit {
         Validators.pattern('.*[A-Z].*'),
         Validators.pattern('.*[0-9].*')]],
       confirmPassword: ['', Validators.required]
-    }, {validator: this.checkPasswordMatch});
+    }, {validator: this.registerFormService.checkPasswordMatch});
+  }
+
+  validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.registerFormService.checkIfUserOrEmailExist(control.value).pipe(map(byUser => {
+      console.log(byUser);
+      return Object.keys(byUser).length ? {userTaken: true} : null;
+    }));
   }
 
   get form() { return this.registerForm.controls; }
-
-   checkPasswordMatch(control: AbstractControl): {[key: string]: boolean} {
-    const primaryPassword = control.get('password').value;
-    const secondaryPassword = control.get('confirmPassword').value;
-    return primaryPassword === secondaryPassword ? null : { notSame: true };
-  }
 
   getEmailErrorMessage() {
     return this.form.email.hasError('required') ? 'You must enter a value' :
@@ -57,7 +76,9 @@ export class RegisterFormComponent implements OnInit {
 
   getUserNameErrorMessage() {
     return this.form.userName.hasError('required') ? 'You must enter a value' :
-      this.form.userName.hasError('minlength') ? 'User name must have at least 4 characters' : '';
+      this.form.userName.hasError('minlength') ? 'User name must have at least 4 characters' :
+        this.form.userName.hasError('userTaken') ? 'User Name is taken' :
+          '';
   }
 
   getPasswordErrorMessage() {
@@ -69,16 +90,6 @@ export class RegisterFormComponent implements OnInit {
 
   getConfirmPasswordErrorMessage() {
     return this.form.confirmPassword.hasError('required') ? 'You must enter a value' :
-    this.registerForm.hasError('notSame') ? 'Passwords must be the same' : '';
-  }
-
-  onSubmit() {
-    if (this.registerForm.valid) {
-      console.log('Valid');
-      console.log(JSON.stringify(this.registerForm.value, null, 4));
-    } else {
-      console.log('Invalid');
-      console.log(this.form.email.value);
-    }
+    this.registerForm.hasError('passwordNotSame') ? 'Passwords must be the same' : '';
   }
 }
