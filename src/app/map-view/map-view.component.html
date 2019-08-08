@@ -2,14 +2,23 @@
   <mat-sidenav mode="side" position="end">
     <button mat-raised-button (click)="mapSidenav.close()">Close</button>
     <mat-card>
-      <mat-card-title routerLink="/city/{{cityName}}" (click)="this.topCitySearchService.cityChoice(cityName)">{{cityName}}</mat-card-title>
+<!-- #canDoBetter Nie znalazłem sposobu, żeby warstwa mapy współpracowałą z Materialem i routerLink w komponentach dzieci -->
+      <mat-card-title
+        routerLink="/city/{{cityName}}"
+        (click)="this.dashboardTopCitiesService.cityChoice(cityName)">
+        {{cityName}}
+      </mat-card-title>
     </mat-card>
-    <app-location-details [locationMarkerDetails]="locationMarkerData" [apiResponseFlag]="apiResponseFlag"></app-location-details>
+    <app-location-details
+      [locationMarkerDetails]="locationMarkerData"
+      [apiResponseFlag]="apiResponseFlag">
+    </app-location-details>
     <mat-card>
       <mat-card-header>
         <mat-card-title>Air Quality Index</mat-card-title>
       </mat-card-header>
       <mat-card-content>
+<!-- #canDoBetter Nie znalazłem sposobu, żeby warstwa mapy współpracowałą z Materialem i routerLink w komponentach dzieci -->
         <span matTooltip="VERY LOW" matTooltipPosition="above"></span>
         <span matTooltip="LOW" matTooltipPosition="above"></span>
         <span matTooltip="MEDIUM" matTooltipPosition="above"></span>
@@ -19,6 +28,7 @@
     </mat-card>
   </mat-sidenav>
   <mat-sidenav-content>
+<!--Leaflet map with ngx-leaflet-->
     <div leaflet
          [leafletOptions]="options"
          [leafletLayers]="markersLayer"

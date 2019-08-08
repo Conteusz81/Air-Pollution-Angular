@@ -8,19 +8,18 @@ import { CITIESLIST } from './mock-input-autocomplete';
   providedIn: 'root'
 })
 export class InputAutocompleteService {
+
   cityNames: string[];
   citiesList: CityGroup[] = CITIESLIST;
-  constructor(
-    private http: HttpClient
-  ) { }
+
+  constructor( private http: HttpClient ) { }
 
   getCitiesNames(): void {
+    // #solution url can be placed here
     const citiesNamesUrl = './assets/city-list.json';
     const citiesList = [];
     this.http.get<ApiResponse>(citiesNamesUrl).subscribe(response => {
-      response.results.map(value => {
-        citiesList.push(value.city);
-      });
+      response.results.map(value => citiesList.push(value.city));
       this.cityNames = citiesList;
       this.addCitiesToAutocomplete();
     });

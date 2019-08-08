@@ -11,7 +11,7 @@ div.container {
   @for $i from 1 through 5 {
     div.city:nth-of-type(#{$i}) {
       position: absolute;
-      background-image: url("../img/cloud.png");
+      background-image: url("../img/cloud.png"); //#canDoBetter Gdybym miał Adobe Illustratora, to chmurki byłby jak z tłą
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;

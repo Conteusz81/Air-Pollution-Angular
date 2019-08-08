@@ -6,7 +6,7 @@
   <div *ngIf="cityData && apiResponseFlag" class="location-list">
     <mat-card *ngFor="let city of cityData">{{city.location}}
       <div class="measurements" *ngFor="let measurements of city.measurements"
-           [ngStyle]="this.pollutionSortService.getColor(measurements.parameter, measurements.value)">
+           [ngStyle]="this.pollutionSortService.getAirQualityIndexColor(measurements.parameter, measurements.value)">
         <span>
             {{measurements.parameter.replace("pm25", "pm2.5") | uppercase}}
             {{measurements.value.toFixed(2)}}

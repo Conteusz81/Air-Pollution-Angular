@@ -1,6 +1,5 @@
 <form (ngSubmit)="registerFormService.onRegisterSubmit(registerForm)" [formGroup]="registerForm">
-  <mat-button-toggle-group #group="matButtonToggleGroup"
-  formControlName="transport">
+  <mat-button-toggle-group formControlName="transport">
     <mat-button-toggle value="walk">
       <mat-icon>directions_walk</mat-icon>
     </mat-button-toggle>
@@ -24,7 +23,9 @@
     </mat-button-toggle>
   </mat-button-toggle-group>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Your birth date" formControlName="birthDate">
+    <label>
+      <input matInput [matDatepicker]="picker" placeholder="Your birth date" formControlName="birthDate">
+    </label>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
   </mat-form-field>
@@ -63,9 +64,16 @@
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
     <label>
-      <input matInput placeholder="Enter your password" [type]="hidePrimary ? 'password' : 'text'" formControlName="password" required>
+      <input matInput
+             placeholder="Enter your password"
+             [type]="hidePrimary ? 'password' : 'text'"
+             formControlName="password"
+             required>
     </label>
-    <button mat-icon-button matSuffix (click)="hidePrimary = !hidePrimary" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePrimary">
+    <button mat-icon-button matSuffix
+            (click)="hidePrimary = !hidePrimary"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePrimary">
       <mat-icon>{{hidePrimary ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
     <mat-error *ngIf="registerForm.invalid">{{getPasswordErrorMessage()}}</mat-error>
@@ -73,9 +81,17 @@
   <mat-form-field appearance="outline">
     <mat-label>Confirm Password</mat-label>
     <label>
-      <input matInput placeholder="Confirm Password" [type]="hideSecondary ? 'password' : 'text'" formControlName="confirmPassword" required [errorStateMatcher]="matcher">
+      <input matInput
+             placeholder="Confirm Password"
+             [type]="hideSecondary ? 'password' : 'text'"
+             formControlName="confirmPassword"
+             required
+             [errorStateMatcher]="matcher">
     </label>
-    <button mat-icon-button matSuffix (click)="hideSecondary = !hideSecondary" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideSecondary">
+    <button mat-icon-button matSuffix
+            (click)="hideSecondary = !hideSecondary"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideSecondary">
       <mat-icon>{{hideSecondary ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
     <mat-error *ngIf="registerForm.invalid">{{getConfirmPasswordErrorMessage()}}</mat-error>

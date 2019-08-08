@@ -7,7 +7,9 @@ import {PollutionParameter} from '../model/pollution-parameter.model';
   styleUrls: ['./pollution-parameter-information.component.scss']
 })
 export class PollutionParameterInformationComponent implements OnInit {
+
   @Input() pollutionParameterInfo: PollutionParameter[];
+
   constructor() { }
 
   ngOnInit() {

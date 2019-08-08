@@ -11,7 +11,7 @@ import {MostPollutedCities} from './model/most-polluted-cities.model';
   providedIn: 'root'
 })
 export class ApiResponseService {
-
+  // #solutionOnMostPolluted z wykorzystaniem Subject
   sortedTopCitiesData: Subject<MostPollutedCities[]> = new Subject<MostPollutedCities[]>();
 
   constructor(
@@ -24,6 +24,7 @@ export class ApiResponseService {
     return this.http.get<ApiResponse>(latestMeasurementsUrl)
       .pipe(map(response => {
         this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
+        // #solutionOnMostPolluted
         return this.pollutionMeasurementsService.sortedTopCities;
       }));
   }
@@ -33,7 +34,7 @@ export class ApiResponseService {
     return this.http.get<ApiResponse>(cityDataUrl);
   }
 
-  getAllLocationsData(): Observable<GetAllLocationsApiResponse> {
+  getAllLocationsCoordinate(): Observable<GetAllLocationsApiResponse> {
     const locationsDataUrl = 'https://api.openaq.org/v1/locations?country=PL&limit=300';
     return this.http.get<GetAllLocationsApiResponse>(locationsDataUrl);
   }

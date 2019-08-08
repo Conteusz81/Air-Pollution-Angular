@@ -11,10 +11,10 @@ import {filter} from 'rxjs/operators';
   styleUrls: ['./city-details.component.scss']
 })
 export class CityDetailsComponent implements OnInit  {
-  cityData: LocationApiResponse[];
-  cityId: string;
-  noMeasurementsAlertFlag = false;
-  apiResponseFlag = false;
+  private cityData: LocationApiResponse[];
+  private cityId: string;
+  private noMeasurementsAlertFlag = false;
+  private apiResponseFlag = false;
 
   constructor(
     private route: ActivatedRoute,

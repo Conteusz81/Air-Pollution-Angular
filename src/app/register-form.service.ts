@@ -9,12 +9,6 @@ export class RegisterFormService {
 
   constructor(private http: HttpClient) { }
 
-  checkPasswordMatch(control: AbstractControl): {[key: string]: boolean} {
-    const primaryPassword = control.get('password').value;
-    const secondaryPassword = control.get('confirmPassword').value;
-    return primaryPassword === secondaryPassword ? null : { passwordNotSame: true };
-  }
-
   onRegisterSubmit(registerForm: FormGroup) {
     if (registerForm.valid) {
       console.log('valid');

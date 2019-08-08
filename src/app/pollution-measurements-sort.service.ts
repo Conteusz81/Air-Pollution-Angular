@@ -11,10 +11,11 @@ export class PollutionMeasurementsSortService {
   currentMonth = `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`;
   responseResult: LocationApiResponse[];
   currentMonthMeasurements: LocationApiResponse[];
+  // #solutionOnMostPolluted
   sortedTopCities: MostPollutedCities[];
 
   constructor() { }
-
+  // #canDoBetter pewnie gdybym wiedział, że tak rozbuduję tą apkę, to inaczej bym podeszdł do najbardziej zanieczyszczonych
   sortMostPollutedCities(serviceResponse: LocationApiResponse[]) {
     this.responseResult = serviceResponse;
     this.filterMeasurementsByDate();
@@ -44,22 +45,25 @@ export class PollutionMeasurementsSortService {
         sortedByCitiesAvgValue.push({name: city, measurementAvg: measurementAvgValue});
       }
     }
+    // #solutionOnMostPolluted
     this.sortedTopCities = sortedByCitiesAvgValue.sort((a, b) => (a.measurementAvg > b.measurementAvg) ?
       -1 : ((b.measurementAvg > a.measurementAvg) ? 1 : 0)).slice(0, 10);
   }
 
   sortParameterByName(cityDataResults: LocationApiResponse[]): LocationApiResponse[] {
     const sortedCityData = cityDataResults.filter( element => element.measurements[0].lastUpdated.startsWith(this.currentMonth));
-    sortedCityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ?
-      -1 : ((b.parameter < a.parameter) ? 1 : 0)));
+    sortedCityData.map(el => el.measurements.sort((a, b) => (a.parameter < b.parameter) ? -1 :
+      ((b.parameter < a.parameter) ? 1 : 0)));
     return sortedCityData;
   }
 
   sortLocationData(locationDataResults: AllLocationsApiResponse[]): AllLocationsApiResponse[] {
     return locationDataResults.filter( element => element.lastUpdated.startsWith(this.currentMonth));
   }
-
-  getColor(parameterName: string, value: number) {
+  // #canDoBetter Nie jestem pewny czy ta metoda może być tu czy już powinna być w innym serwisie.
+  // i też nie wiem dlaczego jest to ostrzeżenie o metodzie static (jeszcze w innych miejscach mam takie ostrzeżenie)
+  // jak zmieniam na static, to przestaje działać, muszę o tym poczytać czym jest satatic
+  getAirQualityIndexColor(parameterName: string, value: number) {
     switch (parameterName) {
       case 'no2':
         return value < 50  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :

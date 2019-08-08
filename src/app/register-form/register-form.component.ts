@@ -9,12 +9,15 @@ import {
   ValidationErrors,
   Validators
 } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
-import {HttpClient} from '@angular/common/http';
-import {Observable, zip} from 'rxjs';
-import {RegisterFormService} from '../register-form.service';
-import {map} from 'rxjs/operators';
+import { ErrorStateMatcher } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RegisterFormService } from '../register-form.service';
+import { map } from 'rxjs/operators';
 
+// #solution it's required for {validator: this.checkPasswordMatch} this method validate password match
+// without this validation works but mat-error doesn't show up
+// no idea how it works but it works
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty
@@ -35,6 +38,7 @@ export class RegisterFormComponent implements OnInit {
   private hidePrimary = true;
   private hideSecondary = true;
   private startDate = new Date(1992, 0, 1);
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -57,7 +61,13 @@ export class RegisterFormComponent implements OnInit {
         Validators.pattern('.*[A-Z].*'),
         Validators.pattern('.*[0-9].*')]],
       confirmPassword: ['', Validators.required]
-    }, {validator: this.registerFormService.checkPasswordMatch});
+    }, {validator: this.checkPasswordMatch});
+  }
+
+  checkPasswordMatch(control: AbstractControl): {[key: string]: boolean} {
+    const primaryPassword = control.get('password').value;
+    const secondaryPassword = control.get('confirmPassword').value;
+    return primaryPassword === secondaryPassword ? null : { passwordNotSame: true };
   }
 
   validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
@@ -67,8 +77,10 @@ export class RegisterFormComponent implements OnInit {
     }));
   }
 
+  // #solution clever way to shorten entry to controlled form fields
   get form() { return this.registerForm.controls; }
 
+  // #canDoBetter muszę sprawdzić, czy te metody mogę odpalać w serwisie
   getEmailErrorMessage() {
     return this.form.email.hasError('required') ? 'You must enter a value' :
       this.form.email.hasError('email') ? 'Not a valid email' : '';

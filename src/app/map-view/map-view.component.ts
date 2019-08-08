@@ -5,7 +5,7 @@ import {ApiResponseService} from '../api-response.service';
 import {AllLocationsApiResponse} from '../model/all-locations-api-response.model';
 import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
 import {LocationApiResponse} from '../model/location-api-response.model';
-import {TopCitySearchService} from '../top-city-search.service';
+import {DashboardTopCitiesService} from '../dashboard-top-cities.service';
 
 @Component({
   selector: 'app-map-view',
@@ -60,7 +60,7 @@ export class MapViewComponent implements OnInit {
     private apiResponseService: ApiResponseService,
     private sortService: PollutionMeasurementsSortService,
     private changeDetector: ChangeDetectorRef,
-    private topCitySearchService: TopCitySearchService
+    private dashboardTopCitiesService: DashboardTopCitiesService
   ) {
   }
 
@@ -69,13 +69,13 @@ export class MapViewComponent implements OnInit {
   }
 
   private getAllLocations() {
-    this.apiResponseService.getAllLocationsData().subscribe(locationData => {
+    this.apiResponseService.getAllLocationsCoordinate().subscribe(locationData => {
       this.allLocationsData = this.sortService.sortLocationData(locationData.results);
-      this.addMapMarkers();
+      this.addLocationMarkers();
     });
   }
 
-  private addMapMarkers() {
+  private addLocationMarkers() {
     const resultsLength: number = this.allLocationsData.length;
     for (let i = 0; i < resultsLength; i++) {
 
@@ -91,7 +91,8 @@ export class MapViewComponent implements OnInit {
         this.apiResponseFlag = false;
         this.mapSidenav.open();
         this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
-        this.topCitySearchService.cityChoice(this.allLocationsData[i].city);
+        this.dashboardTopCitiesService.cityChoice(this.allLocationsData[i].city);
+        // #solution for click event on marker to work step by step with leaflet map
         this.changeDetector.detectChanges();
       }));
     }
@@ -102,6 +103,7 @@ export class MapViewComponent implements OnInit {
     this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
       this.apiResponseFlag = true;
+      // #solution for click event on marker to work step by step with leaflet map
       this.changeDetector.detectChanges();
     });
   }
