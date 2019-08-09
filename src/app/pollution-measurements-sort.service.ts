@@ -66,41 +66,41 @@ export class PollutionMeasurementsSortService {
   getAirQualityIndexColor(parameterName: string, value: number) {
     switch (parameterName) {
       case 'no2':
-        return value < 50  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 100 ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 200 ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 400 ? {border: '1px solid #f29305', background: '#f29305'} :
-                             {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 50  ? { background: '#79bc6a'} :
+               value < 100 ? { background: '#bbcf4c'} :
+               value < 200 ? { background: '#eec20b'} :
+               value < 400 ? { background: '#f29305'} :
+                             { background: '#e8416f'};
       case 'pm10':
-        return value < 25  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 50  ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 90  ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 180 ? {border: '1px solid #f29305', background: '#f29305'} :
-                             {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 25  ? { background: '#79bc6a'} :
+               value < 50  ? { background: '#bbcf4c'} :
+               value < 90  ? { background: '#eec20b'} :
+               value < 180 ? { background: '#f29305'} :
+                             { background: '#e8416f'};
       case 'pm25':
-        return value < 15  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 30  ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 55  ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 110 ? {border: '1px solid #f29305', background: '#f29305'} :
-                             {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 15  ? { background: '#79bc6a'} :
+               value < 30  ? { background: '#bbcf4c'} :
+               value < 55  ? { background: '#eec20b'} :
+               value < 110 ? { background: '#f29305'} :
+                             { background: '#e8416f'};
       case 'o3':
-        return value < 60  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 120 ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 180 ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 240 ? {border: '1px solid #f29305', background: '#f29305'} :
-                             {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 60  ? { background: '#79bc6a'} :
+               value < 120 ? { background: '#bbcf4c'} :
+               value < 180 ? { background: '#eec20b'} :
+               value < 240 ? { background: '#f29305'} :
+                             { background: '#e8416f'};
       case 'co':
-        return value < 5000  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 7500  ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 10000 ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 20000 ? {border: '1px solid #f29305', background: '#f29305'} :
-                               {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 5000  ? { background: '#79bc6a'} :
+               value < 7500  ? { background: '#bbcf4c'} :
+               value < 10000 ? { background: '#eec20b'} :
+               value < 20000 ? { background: '#f29305'} :
+                               { background: '#e8416f'};
       case 'so2':
-        return value < 50  ? {border: '1px solid #79bc6a', background: '#79bc6a'} :
-               value < 100 ? {border: '1px solid #bbcf4c', background: '#bbcf4c'} :
-               value < 350 ? {border: '1px solid #eec20b', background: '#eec20b'} :
-               value < 500 ? {border: '1px solid #f29305', background: '#f29305'} :
-                             {border: '1px solid #e8416f', background: '#e8416f'};
+        return value < 50  ? { background: '#79bc6a'} :
+               value < 100 ? { background: '#bbcf4c'} :
+               value < 350 ? { background: '#eec20b'} :
+               value < 500 ? { background: '#f29305'} :
+                             { background: '#e8416f'};
     }
   }
 }

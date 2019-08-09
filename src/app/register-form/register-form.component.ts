@@ -52,8 +52,10 @@ export class RegisterFormComponent implements OnInit {
       birthDate: [''],
       transport: [''],
       homeTown: [''],
-      email: ['', [Validators.required, Validators.email]],
-      userName: ['', [Validators.required, Validators.minLength(4)],  this.validateEmailNotTaken.bind(this)],
+      email: ['', { updateOn: 'submit', validators: [Validators.required, Validators.email],
+        asyncValidators: [this.validateEmailNotTaken.bind(this)]}],
+      userName: ['', { updateOn: 'submit', validators: [Validators.required, Validators.minLength(4)],
+        asyncValidators: [this.validateUserNameNotTaken.bind(this)]}],
       password: ['',
        [Validators.required,
         Validators.minLength(8),
@@ -70,10 +72,17 @@ export class RegisterFormComponent implements OnInit {
     return primaryPassword === secondaryPassword ? null : { passwordNotSame: true };
   }
 
-  validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    return this.registerFormService.checkIfUserOrEmailExist(control.value).pipe(map(byUser => {
+  validateUserNameNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.registerFormService.checkIfUserExist(control.value).pipe(map(byUser => {
       console.log(byUser);
       return Object.keys(byUser).length ? {userTaken: true} : null;
+    }));
+  }
+
+  validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.registerFormService.checkIfEmailExist(control.value).pipe(map(byEmail => {
+      console.log(byEmail);
+      return Object.keys(byEmail).length ? {emailTaken: true} : null;
     }));
   }
 
@@ -83,14 +92,14 @@ export class RegisterFormComponent implements OnInit {
   // #canDoBetter muszę sprawdzić, czy te metody mogę odpalać w serwisie
   getEmailErrorMessage() {
     return this.form.email.hasError('required') ? 'You must enter a value' :
-      this.form.email.hasError('email') ? 'Not a valid email' : '';
+      this.form.email.hasError('email') ? 'Not a valid email' :
+        this.form.email.hasError('emailTaken') ? 'Email is taken' : '';
   }
 
   getUserNameErrorMessage() {
     return this.form.userName.hasError('required') ? 'You must enter a value' :
       this.form.userName.hasError('minlength') ? 'User name must have at least 4 characters' :
-        this.form.userName.hasError('userTaken') ? 'User Name is taken' :
-          '';
+        this.form.userName.hasError('userTaken') ? 'User Name is taken' : '';
   }
 
   getPasswordErrorMessage() {

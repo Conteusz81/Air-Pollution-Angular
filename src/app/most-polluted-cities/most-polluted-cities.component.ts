@@ -37,6 +37,7 @@ export class MostPollutedCitiesComponent implements OnInit {
       this.apiResponseFlag = true;
     });
   }
+
   // #canDoBetter stworzone tylko dlatego, że na początku nie przewidziałem potrzeby nazwy parametru pod jakimś Id
   // w nowo stworzonej liscie MostPollutedCities[]
   // pobieram parametr w dziwny sposób, by udało się kolorować listę i odpalić metodę getAirQualityIndexColor

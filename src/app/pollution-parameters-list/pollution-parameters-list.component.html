@@ -19,7 +19,7 @@
 <div class="pollution-parameter-info">
 <!-- #canDoBetter na początku nie wiedziałem, że jest spory problem aby przekazywać dane do child path router-outlet
   dlatego takie rozbicie na child component i router-outlet-->
-  <app-page-information *ngIf="selectedParameter" [pollutionParameterInfo]="pollutionParameterInformation"></app-page-information>
+  <app-pollution-parameter-information *ngIf="selectedParameter" [pollutionParameterInfo]="pollutionParameterInformation"></app-pollution-parameter-information>
   <router-outlet *ngIf="selectedParameter"></router-outlet>
 </div>
 
