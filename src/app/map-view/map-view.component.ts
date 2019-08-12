@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {icon, latLng, marker, tileLayer} from 'leaflet';
 import {MatSidenav} from '@angular/material';
-import {ApiResponseService} from '../api-response.service';
-import {AllLocationsApiResponse} from '../model/all-locations-api-response.model';
-import {PollutionMeasurementsSortService} from '../pollution-measurements-sort.service';
-import {LocationApiResponse} from '../model/location-api-response.model';
-import {DashboardTopCitiesService} from '../dashboard-top-cities.service';
+import {PollutionApiResponseService} from '../shared/pollution-api-response.service/pollution-api-response.service';
+import {AllLocationsApiResponse} from '../shared/pollution-api-response.service/models/all-locations-api-response.model';
+import {PollutionMeasurementsSortService} from '../shared/pollution-measurement-sort.service/pollution-measurements-sort.service';
+import {LocationApiResponse} from '../shared/models/pollution-api-response.model/location-api-response.model';
+import {DashboardTopCitiesService} from '../shared/top-cities-choice.service/dashboard-top-cities.service';
 
 @Component({
   selector: 'app-map-view',
@@ -57,7 +57,7 @@ export class MapViewComponent implements OnInit {
   };
 
     constructor(
-    private apiResponseService: ApiResponseService,
+    private apiResponseService: PollutionApiResponseService,
     private sortService: PollutionMeasurementsSortService,
     private changeDetector: ChangeDetectorRef,
     private dashboardTopCitiesService: DashboardTopCitiesService

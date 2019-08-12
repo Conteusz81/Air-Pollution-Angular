@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponseService } from '../api-response.service';
-import { PARAMETERS } from '../mock-parameters';
-import { PollutionParameter } from '../model/pollution-parameter.model';
+import { PollutionApiResponseService } from '../shared/pollution-api-response.service/pollution-api-response.service';
+import { PARAMETERS } from '../../assets/mocks/mock-parameters-information';
+import { PollutionParameter } from './models/pollution-parameter.model';
 
 @Component({
   selector: 'app-parameters-list',
@@ -14,7 +14,7 @@ export class PollutionParametersListComponent implements OnInit {
   private selectedParameter: string;
   pollutionParameterInformation: PollutionParameter[];
 
-  constructor( private apiResponseService: ApiResponseService ) { }
+  constructor( private apiResponseService: PollutionApiResponseService ) { }
 
   ngOnInit() {
   }

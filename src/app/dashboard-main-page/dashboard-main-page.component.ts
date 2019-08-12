@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CityCounter} from '../model/city-counter.model';
-import { DashboardTopCitiesService } from '../dashboard-top-cities.service';
+import {CityCounter} from '../shared/models/city-counter.model';
+import { DashboardTopCitiesService } from '../shared/top-cities-choice.service/dashboard-top-cities.service';
 
 @Component({
   selector: 'app-main-page-navigation',

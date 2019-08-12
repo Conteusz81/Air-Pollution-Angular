@@ -26,18 +26,20 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import { AppComponent } from './app.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { PollutionParametersListComponent } from './pollution-parameters-list/pollution-parameters-list.component';
-import { MostPollutedCitiesComponent } from './most-polluted-cities/most-polluted-cities.component';
+import { MostPollutedCitiesComponent } from './pollution-parameters-list/most-polluted-cities/most-polluted-cities.component';
 import { CitySearchComponent } from './city-search/city-search.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CityDetailsComponent } from './city-details/city-details.component';
-import { PollutionParameterInformationComponent } from './pollution-parameter-information/pollution-parameter-information.component';
-import { AirQualityIndexComponent } from './air-quality-index/air-quality-index.component';
+import { CityDetailsComponent } from './city-search/city-details/city-details.component';
+import {
+  PollutionParameterInformationComponent
+} from './pollution-parameters-list/pollution-parameter-information/pollution-parameter-information.component';
+import { AirQualityIndexComponent } from './city-search/air-quality-index/air-quality-index.component';
 import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 import { MapViewComponent } from './map-view/map-view.component';
-import { LocationDetailsComponent } from './location-details/location-details.component';
+import { LocationDetailsComponent } from './map-view/location-details/location-details.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './user-profile/login-form/login-form.component';
+import { RegisterFormComponent } from './user-profile/register-form/register-form.component';
 
 @NgModule({
   declarations: [

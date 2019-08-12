@@ -22,4 +22,5 @@ describe('UserProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

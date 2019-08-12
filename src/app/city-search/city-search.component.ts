@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { CityGroup } from '../model/city-group.model';
-import { InputAutocompleteService } from '../input-autocomplete.service';
-import { DashboardTopCitiesService} from '../dashboard-top-cities.service';
+import { CityGroup } from './models/city-group.model';
+import { InputAutocompleteService } from './input-autocomplete.service/input-autocomplete.service';
+import { DashboardTopCitiesService} from '../shared/top-cities-choice.service/dashboard-top-cities.service';
 
 export const filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();

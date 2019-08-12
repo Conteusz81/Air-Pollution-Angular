@@ -1,0 +1,46 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {PollutionMeasurementsSortService} from '../pollution-measurement-sort.service/pollution-measurements-sort.service';
+import {PollutionApiResponse} from '../models/pollution-api-response.model/pollution-api-response.model';
+import {Observable, Subject} from 'rxjs';
+import {GetAllLocationsApiResponse} from './models/get-all-locations-api-response.model';
+import {map} from 'rxjs/operators';
+import {MostPollutedCities} from '../models/most-polluted-cities.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PollutionApiResponseService {
+  // #solutionOnMostPolluted z wykorzystaniem Subject
+  sortedTopCitiesData: Subject<MostPollutedCities[]> = new Subject<MostPollutedCities[]>();
+
+  constructor(
+    private http: HttpClient,
+    private pollutionMeasurementsService: PollutionMeasurementsSortService
+  ) { }
+
+  getLatestMeasurements(parameterId: string): Observable<MostPollutedCities[]> {
+    const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
+    return this.http.get<PollutionApiResponse>(latestMeasurementsUrl)
+      .pipe(map(response => {
+        this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
+        // #solutionOnMostPolluted
+        return this.pollutionMeasurementsService.sortedTopCities;
+      }));
+  }
+
+  getCityPollutionData(cityId: string): Observable<PollutionApiResponse> {
+    const cityDataUrl = `https://api.openaq.org/v1/latest?country=PL&city=${cityId}`;
+    return this.http.get<PollutionApiResponse>(cityDataUrl);
+  }
+
+  getAllLocationsCoordinate(): Observable<GetAllLocationsApiResponse> {
+    const locationsDataUrl = 'https://api.openaq.org/v1/locations?country=PL&limit=300';
+    return this.http.get<GetAllLocationsApiResponse>(locationsDataUrl);
+  }
+
+  getLocationPollutionData(location: string): Observable<PollutionApiResponse> {
+    const locationPollutionDataUrl = `https://api.openaq.org/v1/latest?country=PL&location=${location}`;
+    return this.http.get<PollutionApiResponse>(locationPollutionDataUrl);
+  }
+}

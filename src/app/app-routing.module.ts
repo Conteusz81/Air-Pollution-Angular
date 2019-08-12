@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CityDetailsComponent} from './city-details/city-details.component';
+import {CityDetailsComponent} from './city-search/city-details/city-details.component';
 import {DashboardMainPageComponent} from './dashboard-main-page/dashboard-main-page.component';
 import {CitySearchComponent} from './city-search/city-search.component';
 import {PollutionParametersListComponent} from './pollution-parameters-list/pollution-parameters-list.component';
-import {MostPollutedCitiesComponent} from './most-polluted-cities/most-polluted-cities.component';
+import {MostPollutedCitiesComponent} from './pollution-parameters-list/most-polluted-cities/most-polluted-cities.component';
 import {MapViewComponent} from './map-view/map-view.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 
