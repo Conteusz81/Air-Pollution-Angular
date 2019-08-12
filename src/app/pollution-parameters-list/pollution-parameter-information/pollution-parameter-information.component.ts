@@ -8,7 +8,7 @@ import {PollutionParameter} from '../models/pollution-parameter.model';
 })
 export class PollutionParameterInformationComponent implements OnInit {
 
-  @Input() pollutionParameterInfo: PollutionParameter[];
+  @Input() pollutionParameter: PollutionParameter;
 
   constructor() { }
 
