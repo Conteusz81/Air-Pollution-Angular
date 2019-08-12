@@ -16,7 +16,7 @@ export class PollutionParametersListComponent implements OnInit {
   pollutionParameter: PollutionParameter;
 
   constructor(
-    private apiResponseService: PollutionApiService,
+    private pollutionApiService: PollutionApiService,
     private router: Router
   ) { }
 

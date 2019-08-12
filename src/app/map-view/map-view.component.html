@@ -5,7 +5,7 @@
 <!-- #canDoBetter Nie znalazłem sposobu, żeby warstwa mapy współpracowałą z Materialem i routerLink w komponentach dzieci -->
       <mat-card-title
         routerLink="/city/{{cityName}}"
-        (click)="this.dashboardTopCitiesService.cityChoice(cityName)">
+        (click)="this.topCitiesChoiceService.cityChoice(cityName)">
         {{cityName}}
       </mat-card-title>
     </mat-card>

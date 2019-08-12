@@ -58,10 +58,10 @@ export class MapViewComponent implements OnInit {
   };
 
     constructor(
-    private apiResponseService: PollutionApiService,
-    private sortService: PollutionMeasurementsSortService,
+    private pollutionApiService: PollutionApiService,
+    private pollutionSortService: PollutionMeasurementsSortService,
     private changeDetector: ChangeDetectorRef,
-    private dashboardTopCitiesService: TopCitiesChoiceService
+    private topCitiesChoiceService: TopCitiesChoiceService
   ) {
   }
 
@@ -70,8 +70,8 @@ export class MapViewComponent implements OnInit {
   }
 
   private getAllLocations() {
-    this.apiResponseService.getAllLocationCoordinates().subscribe(locationData => {
-      this.allLocationsData = this.sortService.sortLocationData(locationData.results);
+    this.pollutionApiService.getAllLocationCoordinates().subscribe(locationData => {
+      this.allLocationsData = this.pollutionSortService.sortLocationData(locationData.results);
       this.addLocationMarkers();
     });
   }
@@ -92,7 +92,7 @@ export class MapViewComponent implements OnInit {
         this.loadingFlag = false;
         this.mapSidenav.open();
         this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
-        this.dashboardTopCitiesService.cityChoice(this.allLocationsData[i].city);
+        this.topCitiesChoiceService.cityChoice(this.allLocationsData[i].city);
         // #solution for click event on marker to work step by step with leaflet map
         this.changeDetector.detectChanges();
       }));
@@ -101,7 +101,7 @@ export class MapViewComponent implements OnInit {
 
   getLocationPollutionData(location: string, city: string) {
     this.cityName = city;
-    this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
+    this.pollutionApiService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
       this.loadingFlag = true;
       // #solution for click event on marker to work step by step with leaflet map

@@ -21,8 +21,8 @@ export class MostPollutedCitiesComponent implements OnInit {
 
   constructor(
     private pollutionSortService: PollutionMeasurementsSortService,
-    private dashboardTopCitiesService: TopCitiesChoiceService,
-    private apiResponseService: PollutionApiService,
+    private topCitiesChoiceService: TopCitiesChoiceService,
+    private pollutionApiService: PollutionApiService,
     private route: ActivatedRoute
   ) {
   }
@@ -37,7 +37,7 @@ export class MostPollutedCitiesComponent implements OnInit {
         tap(() => this.loadingFlag = false),
         switchMap((ParamsMap: Params) => {
           this.pollutionParameterId = ParamsMap.params.id;
-          return this.apiResponseService.getLatestMeasurements(this.pollutionParameterId);
+          return this.pollutionApiService.getLatestMeasurements(this.pollutionParameterId);
         }))
       .subscribe(response => {
         this.mostPollutedByParameter = response;

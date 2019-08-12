@@ -11,7 +11,7 @@
     <a mat-list-item class="city" *ngFor="let city of mostPollutedByParameter let i = index"
     routerLink="../../city/{{city.name}}"
     [matTooltip]="'Check the latest measurements from this location.'"
-    (click)="this.dashboardTopCitiesService.cityChoice(city.name)"
+    (click)="this.topCitiesChoiceService.cityChoice(city.name)"
     [ngStyle]="pollutionSortService.getAirQualityIndexColor(pollutionParameterId, city.measurementAvg)">
      {{i + 1}}.
      {{city.name}}

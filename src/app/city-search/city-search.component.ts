@@ -28,7 +28,7 @@ export class CitySearchComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private inputAutocompleteService: InputAutocompleteService,
-    private dashboardTopCitiesService: TopCitiesChoiceService
+    private topCitiesChoiceService: TopCitiesChoiceService
     ) {}
 
   ngOnInit() {

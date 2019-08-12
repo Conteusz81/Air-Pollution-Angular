@@ -10,7 +10,7 @@ import { TopCitiesChoiceService } from '../shared/services/top-cities-choice.ser
 export class DashboardMainPageComponent implements OnInit {
 
   private cityCounter: CityCounter[];
-  constructor( private dashboardTopCitiesService: TopCitiesChoiceService ) { }
+  constructor( private topCitiesChoiceService: TopCitiesChoiceService ) { }
 
   ngOnInit() {
     if ( JSON.parse(localStorage.getItem('cityCounter')) !== null ) {

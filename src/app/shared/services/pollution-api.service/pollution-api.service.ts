@@ -14,14 +14,14 @@ export class PollutionApiService {
 
   constructor(
     private http: HttpClient,
-    private pollutionMeasurementsService: PollutionMeasurementsSortService
+    private pollutionSortService: PollutionMeasurementsSortService
   ) { }
 
   getLatestMeasurements(parameterId: string): Observable<MostPollutedCities[]> {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
     return this.http.get<PollutionApiResponse>(latestMeasurementsUrl)
       .pipe(map(response => {
-        return this.pollutionMeasurementsService.sortMostPollutedCities(response.results);
+        return this.pollutionSortService.sortMostPollutedCities(response.results);
       }));
   }
 
