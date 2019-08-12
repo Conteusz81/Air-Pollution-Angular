@@ -21,6 +21,7 @@ export class MapViewComponent implements OnInit {
   private locationMarkerData: LocationApiResponse[];
   private cityName: string;
   private loadingFlag = false;
+  private airQualityIndexTooltip: string[] = ['VERY LOW', 'LOW', 'MEDIUM', 'HIGH', 'VERY HIGH'];
 
   options = {
     layers: [
