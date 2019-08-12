@@ -9,22 +9,22 @@ import {AllLocationsApiResponse} from '../models/all-locations-api.model';
 export class PollutionMeasurementsSortService {
   sortedByCities: {} = {};
   currentMonth = `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`;
-  responseResult: LocationApiResponse[];
+  latestMeasurements: LocationApiResponse[];
   currentMonthMeasurements: LocationApiResponse[];
   // #solutionOnMostPolluted
   sortedTopCities: MostPollutedCities[];
 
   constructor() { }
   // #canDoBetter pewnie gdybym wiedział, że tak rozbuduję tą apkę, to inaczej bym podeszdł do najbardziej zanieczyszczonych
-  sortMostPollutedCities(serviceResponse: LocationApiResponse[]) {
-    this.responseResult = serviceResponse;
+  sortMostPollutedCities(latestMeasurements: LocationApiResponse[]) {
+    this.latestMeasurements = latestMeasurements;
     this.filterMeasurementsByDate();
     this.createSortedByCitiesObject();
     this.sortCitiesByAverageValue();
   }
 
   private filterMeasurementsByDate() {
-    this.currentMonthMeasurements = this.responseResult.filter(element => element.measurements[0].lastUpdated
+    this.currentMonthMeasurements = this.latestMeasurements.filter(element => element.measurements[0].lastUpdated
       .startsWith(this.currentMonth));
   }
 
