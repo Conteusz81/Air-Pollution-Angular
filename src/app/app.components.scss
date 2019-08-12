@@ -2,11 +2,8 @@
   height: 100vh;
   mat-drawer {
     width: 12%;
-    mat-nav-list {
-      margin-top: 100px;
-    }
   }
-    mat-drawer-content {
+      mat-drawer-content {
       background-image: url("../assets/img/AdobeStock_59555445.jpeg");
       background-position: top;
       background-size: cover;

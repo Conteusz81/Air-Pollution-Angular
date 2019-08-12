@@ -40,6 +40,7 @@ import { LocationDetailsComponent } from './map-view/location-details/location-d
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginFormComponent } from './user-profile/login-form/login-form.component';
 import { RegisterFormComponent } from './user-profile/register-form/register-form.component';
+import { MainNavigationListComponent } from './main-navigation-list/main-navigation-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RegisterFormComponent } from './user-profile/register-form/register-for
     LocationDetailsComponent,
     UserProfileComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    MainNavigationListComponent
   ],
   imports: [
     BrowserModule,
