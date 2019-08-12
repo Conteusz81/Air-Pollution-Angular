@@ -16,7 +16,7 @@ export class InputAutocompleteService {
 
   getCitiesNames(): void {
     // #solution apiUrl can be placed here
-    const citiesNamesUrl = './assets/backup-autocomplete-city-list.json';
+    const citiesNamesUrl = './assets/mocks/backup-autocomplete-city-list.json';
     const citiesList = [];
     this.http.get<PollutionApiResponse>(citiesNamesUrl).subscribe(response => {
       response.results.map(value => citiesList.push(value.city));
