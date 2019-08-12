@@ -10,9 +10,9 @@
 <mat-nav-list class="cities-list" *ngIf="loadingFlag">
     <a mat-list-item class="city" *ngFor="let city of mostPollutedByParameter let i = index"
     routerLink="../../city/{{city.name}}"
-    [matTooltip]="'Check all the latest measurements.'"
+    [matTooltip]="'Check the latest measurements from this location.'"
     (click)="this.dashboardTopCitiesService.cityChoice(city.name)"
-    [ngStyle]="pollutionSortService.getAirQualityIndexColor(cityId, city.measurementAvg)">
+    [ngStyle]="pollutionSortService.getAirQualityIndexColor(pollutionParameterId, city.measurementAvg)">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}

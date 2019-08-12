@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PollutionApiService} from '../shared/services/pollution-api.service/pollution-api.service';
 import {PARAMETERS} from '../../assets/mocks/mock-parameters-information';
 import {PollutionParameter} from './models/pollution-parameter.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pollution-parameters-list',
@@ -14,17 +15,17 @@ export class PollutionParametersListComponent implements OnInit {
   private selectedParameter: string;
   pollutionParameter: PollutionParameter;
 
-  constructor( private apiResponseService: PollutionApiService ) { }
+  constructor(
+    private apiResponseService: PollutionApiService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.router.navigate(['/parameters']);
   }
 
   private onParameterSelect(pollutionParameterName: string) {
     this.selectedParameter = pollutionParameterName;
-    this.apiResponseService.getLatestMeasurements(pollutionParameterName)
-    // #solutionOnMostPolluted nie wiedziałem, że next może ustawiać wartość zmiennej gdzie indziej z wykorzystaniem Subject
-    // miałęm przy tym pomoc
-      .subscribe(response => this.apiResponseService.sortedTopCitiesData.next(response));
     this.pollutionParameter = this.getPollutionParameterData();
   }
 

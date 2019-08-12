@@ -7,12 +7,11 @@ import {AllLocationsApiResponse} from '../models/all-locations-api.model';
   providedIn: 'root'
 })
 export class PollutionMeasurementsSortService {
-  sortedByCities: {} = {};
-  currentMonth = `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`;
-  latestMeasurements: LocationApiResponse[];
-  currentMonthMeasurements: LocationApiResponse[];
-  // #solutionOnMostPolluted
-  sortedTopCities: MostPollutedCities[];
+  private sortedByCities: {} = {};
+  private currentMonth = `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`;
+  private latestMeasurements: LocationApiResponse[];
+  private currentMonthMeasurements: LocationApiResponse[];
+  private sortedTopCities: MostPollutedCities[];
 
   constructor() { }
   // #canDoBetter pewnie gdybym wiedział, że tak rozbuduję tą apkę, to inaczej bym podeszdł do najbardziej zanieczyszczonych
@@ -21,6 +20,7 @@ export class PollutionMeasurementsSortService {
     this.filterMeasurementsByDate();
     this.createSortedByCitiesObject();
     this.sortCitiesByAverageValue();
+    return this.sortedTopCities;
   }
 
   private filterMeasurementsByDate() {
@@ -45,7 +45,6 @@ export class PollutionMeasurementsSortService {
         sortedByCitiesAvgValue.push({name: city, measurementAvg: measurementAvgValue});
       }
     }
-    // #solutionOnMostPolluted
     this.sortedTopCities = sortedByCitiesAvgValue.sort((a, b) => (a.measurementAvg > b.measurementAvg) ?
       -1 : ((b.measurementAvg > a.measurementAvg) ? 1 : 0)).slice(0, 10);
   }
