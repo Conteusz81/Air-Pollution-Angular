@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {LocationApiResponse} from '../../shared/models/pollution-api-response.model/location-api-response.model';
-import {PollutionMeasurementsSortService} from '../../shared/pollution-measurement-sort.service/pollution-measurements-sort.service';
+import {LocationApiResponse} from '../../shared/models/pollution-api.model/location-api.model';
+import {
+  PollutionMeasurementsSortService
+} from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
 
 @Component({
   selector: 'app-location-details',
@@ -10,7 +12,7 @@ import {PollutionMeasurementsSortService} from '../../shared/pollution-measureme
 export class LocationDetailsComponent implements OnInit {
 
   @Input() locationMarkerDetails: LocationApiResponse[];
-  @Input() apiResponseFlag;
+  @Input() loadingFlag;
 
   constructor( private pollutionSortService: PollutionMeasurementsSortService) { }
 

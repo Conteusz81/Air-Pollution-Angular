@@ -1,4 +1,4 @@
-import {LocationCoordinatesApiResponse} from '../../models/pollution-api-response.model/location-coordinates-api-response.model';
+import {LocationCoordinatesApiResponse} from '../../models/pollution-api.model/location-coordinates-api.model';
 
 export interface AllLocationsApiResponse {
   location: string;

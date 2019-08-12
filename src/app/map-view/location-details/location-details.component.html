@@ -1,4 +1,4 @@
-<div *ngIf="apiResponseFlag">
+<div *ngIf="loadingFlag">
   <mat-card *ngFor="let locationData of locationMarkerDetails">
   <mat-card-header>
     <mat-card-title>{{locationData.location}}</mat-card-title>
@@ -19,6 +19,6 @@
 </mat-card>
 </div>
 
-<mat-card class="spinner" *ngIf="!apiResponseFlag">
+<mat-card class="spinner" *ngIf="!loadingFlag">
   <mat-spinner color="warn"></mat-spinner>
 </mat-card>

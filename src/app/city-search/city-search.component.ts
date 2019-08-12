@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { CityGroup } from './models/city-group.model';
 import { InputAutocompleteService } from './input-autocomplete.service/input-autocomplete.service';
-import { DashboardTopCitiesService} from '../shared/top-cities-choice.service/dashboard-top-cities.service';
+import { TopCitiesChoiceService} from '../shared/services/top-cities-choice.service/top-cities-choice.service';
 
 export const filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -28,7 +28,7 @@ export class CitySearchComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private inputAutocompleteService: InputAutocompleteService,
-    private dashboardTopCitiesService: DashboardTopCitiesService
+    private dashboardTopCitiesService: TopCitiesChoiceService
     ) {}
 
   ngOnInit() {

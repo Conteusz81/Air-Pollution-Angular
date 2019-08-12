@@ -3,7 +3,7 @@
   <mat-card class="city-name">
     <mat-card-title>{{cityId}}</mat-card-title>
   </mat-card>
-  <div *ngIf="cityData && apiResponseFlag" class="location-list">
+  <div *ngIf="cityData && loadingFlag" class="location-list">
     <mat-card *ngFor="let city of cityData">{{city.location}}
       <div class="measurements" *ngFor="let measurements of city.measurements"
            [ngStyle]="this.pollutionSortService.getAirQualityIndexColor(measurements.parameter, measurements.value)">
@@ -21,10 +21,10 @@
 </div>
 
 <div class="spinner">
-<mat-spinner color="warn" *ngIf="!apiResponseFlag"></mat-spinner>
+<mat-spinner color="warn" *ngIf="!loadingFlag"></mat-spinner>
 </div>
 
-<div class="error-message" *ngIf="noMeasurementsAlertFlag && apiResponseFlag">
+<div class="error-message" *ngIf="noMeasurementsAlertFlag && loadingFlag">
   <mat-card>
   <h1>Sorry</h1>
   <h2>Currently we don't have latest measurements from this location.</h2>

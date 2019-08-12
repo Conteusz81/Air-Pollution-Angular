@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {icon, latLng, marker, tileLayer} from 'leaflet';
 import {MatSidenav} from '@angular/material';
-import {PollutionApiResponseService} from '../shared/pollution-api-response.service/pollution-api-response.service';
-import {AllLocationsApiResponse} from '../shared/pollution-api-response.service/models/all-locations-api-response.model';
-import {PollutionMeasurementsSortService} from '../shared/pollution-measurement-sort.service/pollution-measurements-sort.service';
-import {LocationApiResponse} from '../shared/models/pollution-api-response.model/location-api-response.model';
-import {DashboardTopCitiesService} from '../shared/top-cities-choice.service/dashboard-top-cities.service';
+import {PollutionApiService} from '../shared/services/pollution-api.service/pollution-api.service';
+import {AllLocationsApiResponse} from '../shared/services/models/all-locations-api.model';
+import {PollutionMeasurementsSortService} from '../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
+import {LocationApiResponse} from '../shared/models/pollution-api.model/location-api.model';
+import {TopCitiesChoiceService} from '../shared/services/top-cities-choice.service/top-cities-choice.service';
 
 @Component({
   selector: 'app-map-view',
@@ -20,7 +20,7 @@ export class MapViewComponent implements OnInit {
   private markersLayer = [];
   private locationMarkerData: LocationApiResponse[];
   private cityName: string;
-  private apiResponseFlag = false;
+  private loadingFlag = false;
 
   options = {
     layers: [
@@ -57,10 +57,10 @@ export class MapViewComponent implements OnInit {
   };
 
     constructor(
-    private apiResponseService: PollutionApiResponseService,
+    private apiResponseService: PollutionApiService,
     private sortService: PollutionMeasurementsSortService,
     private changeDetector: ChangeDetectorRef,
-    private dashboardTopCitiesService: DashboardTopCitiesService
+    private dashboardTopCitiesService: TopCitiesChoiceService
   ) {
   }
 
@@ -69,7 +69,7 @@ export class MapViewComponent implements OnInit {
   }
 
   private getAllLocations() {
-    this.apiResponseService.getAllLocationsCoordinate().subscribe(locationData => {
+    this.apiResponseService.getAllLocationCoordinates().subscribe(locationData => {
       this.allLocationsData = this.sortService.sortLocationData(locationData.results);
       this.addLocationMarkers();
     });
@@ -88,7 +88,7 @@ export class MapViewComponent implements OnInit {
             shadowUrl: 'leaflet/marker-shadow.png'
           })
         }).on('click', () => {
-        this.apiResponseFlag = false;
+        this.loadingFlag = false;
         this.mapSidenav.open();
         this.getLocationPollutionData(this.allLocationsData[i].location, this.allLocationsData[i].city);
         this.dashboardTopCitiesService.cityChoice(this.allLocationsData[i].city);
@@ -102,7 +102,7 @@ export class MapViewComponent implements OnInit {
     this.cityName = city;
     this.apiResponseService.getLocationPollutionData(location).subscribe(response => {
       this.locationMarkerData = response.results;
-      this.apiResponseFlag = true;
+      this.loadingFlag = true;
       // #solution for click event on marker to work step by step with leaflet map
       this.changeDetector.detectChanges();
     });

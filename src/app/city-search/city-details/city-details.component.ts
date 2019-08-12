@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import { PollutionApiResponseService } from '../../shared/pollution-api-response.service/pollution-api-response.service';
-import { LocationApiResponse } from '../../shared/models/pollution-api-response.model/location-api-response.model';
-import { PollutionMeasurementsSortService } from '../../shared/pollution-measurement-sort.service/pollution-measurements-sort.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { PollutionApiService } from '../../shared/services/pollution-api.service/pollution-api.service';
+import { LocationApiResponse } from '../../shared/models/pollution-api.model/location-api.model';
+import {
+  PollutionMeasurementsSortService
+} from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
 import {filter} from 'rxjs/operators';
 
 @Component({
@@ -14,11 +16,11 @@ export class CityDetailsComponent implements OnInit  {
   private cityData: LocationApiResponse[];
   private cityId: string;
   private noMeasurementsAlertFlag = false;
-  private apiResponseFlag = false;
+  private loadingFlag = false;
 
   constructor(
     private route: ActivatedRoute,
-    private apiResponseService: PollutionApiResponseService,
+    private apiResponseService: PollutionApiService,
     private router: Router,
     private pollutionSortService: PollutionMeasurementsSortService
   ) { }
@@ -32,7 +34,7 @@ export class CityDetailsComponent implements OnInit  {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.apiResponseFlag = false;
+        this.loadingFlag = false;
         this.getCityPollutionData();
       });
   }
@@ -43,7 +45,7 @@ export class CityDetailsComponent implements OnInit  {
       .subscribe(cityData => {
         this.cityData = this.pollutionSortService.sortParameterByName(cityData.results);
         this.displayNoMeasurementsAlert();
-        this.apiResponseFlag = true;
+        this.loadingFlag = true;
       });
     }
 

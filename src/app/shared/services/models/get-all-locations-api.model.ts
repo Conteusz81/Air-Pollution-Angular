@@ -1,4 +1,4 @@
-import {AllLocationsApiResponse} from './all-locations-api-response.model';
+import {AllLocationsApiResponse} from './all-locations-api.model';
 
 export interface GetAllLocationsApiResponse {
   meta: object;

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {LocationApiResponse} from '../models/pollution-api-response.model/location-api-response.model';
-import {MostPollutedCities} from '../models/most-polluted-cities.model';
-import {AllLocationsApiResponse} from '../pollution-api-response.service/models/all-locations-api-response.model';
+import {LocationApiResponse} from '../../models/pollution-api.model/location-api.model';
+import {MostPollutedCities} from '../../models/most-polluted-cities.model';
+import {AllLocationsApiResponse} from '../models/all-locations-api.model';
 
 @Injectable({
   providedIn: 'root'

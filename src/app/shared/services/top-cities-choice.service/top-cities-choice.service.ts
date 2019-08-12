@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {CityCounter} from '../models/city-counter.model';
+import {CityCounter} from '../../models/city-counter.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardTopCitiesService {
+export class TopCitiesChoiceService {
 
   private cityCounter: CityCounter[] = JSON.parse(localStorage.getItem('cityCounter'));
 

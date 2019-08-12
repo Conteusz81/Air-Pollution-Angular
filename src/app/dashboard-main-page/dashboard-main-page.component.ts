@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {CityCounter} from '../shared/models/city-counter.model';
-import { DashboardTopCitiesService } from '../shared/top-cities-choice.service/dashboard-top-cities.service';
+import { TopCitiesChoiceService } from '../shared/services/top-cities-choice.service/top-cities-choice.service';
 
 @Component({
-  selector: 'app-main-page-navigation',
+  selector: 'app-dashboard-main-page',
   templateUrl: './dashboard-main-page-.component.html',
   styleUrls: ['./dashboard-main-page-.component.scss']
 })
 export class DashboardMainPageComponent implements OnInit {
 
   private cityCounter: CityCounter[];
-  constructor( private dashboardTopCitiesService: DashboardTopCitiesService ) { }
+  constructor( private dashboardTopCitiesService: TopCitiesChoiceService ) { }
 
   ngOnInit() {
     if ( JSON.parse(localStorage.getItem('cityCounter')) !== null ) {

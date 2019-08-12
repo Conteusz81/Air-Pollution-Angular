@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PollutionMeasurementsSortService } from '../../shared/pollution-measurement-sort.service/pollution-measurements-sort.service';
-import { DashboardTopCitiesService } from '../../shared/top-cities-choice.service/dashboard-top-cities.service';
-import { PollutionApiResponseService } from '../../shared/pollution-api-response.service/pollution-api-response.service';
+import {
+  PollutionMeasurementsSortService
+} from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
+import { TopCitiesChoiceService } from '../../shared/services/top-cities-choice.service/top-cities-choice.service';
+import { PollutionApiService } from '../../shared/services/pollution-api.service/pollution-api.service';
 import { MostPollutedCities } from '../../shared/models/most-polluted-cities.model';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -14,13 +16,13 @@ import { filter } from 'rxjs/operators';
 export class MostPollutedCitiesComponent implements OnInit {
 
   private cityId: string;
-  private apiResponseFlag = false;
+  private loadingFlag = false;
   mostPollutedByParameter: MostPollutedCities[];
 
   constructor(
     private pollutionSortService: PollutionMeasurementsSortService,
-    private dashboardTopCitiesService: DashboardTopCitiesService,
-    private apiResponseService: PollutionApiResponseService,
+    private dashboardTopCitiesService: TopCitiesChoiceService,
+    private apiResponseService: PollutionApiService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -34,7 +36,7 @@ export class MostPollutedCitiesComponent implements OnInit {
     // #solutionOnMostPolluted a w tym komponenecie pobierać obserwowane dane
     this.apiResponseService.sortedTopCitiesData.subscribe(response => {
       this.mostPollutedByParameter = response;
-      this.apiResponseFlag = true;
+      this.loadingFlag = true;
     });
   }
 
@@ -47,7 +49,7 @@ export class MostPollutedCitiesComponent implements OnInit {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.cityId = this.route.snapshot.paramMap.get('id');
-        this.apiResponseFlag = false;
+        this.loadingFlag = false;
       });
   }
 

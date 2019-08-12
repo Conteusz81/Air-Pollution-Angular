@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardTopCitiesService } from './dashboard-top-cities.service';
+import { TopCitiesChoiceService } from './top-cities-choice.service';
 
 describe('TopCitySearchService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DashboardTopCitiesService = TestBed.get(DashboardTopCitiesService);
+    const service: TopCitiesChoiceService = TestBed.get(TopCitiesChoiceService);
     expect(service).toBeTruthy();
   });
 });

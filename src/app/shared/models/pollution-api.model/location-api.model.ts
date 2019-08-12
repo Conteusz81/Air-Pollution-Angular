@@ -1,5 +1,5 @@
-import { LocationMeasurementsApiResponse } from './location-measurements-api-response.model';
-import { LocationCoordinatesApiResponse } from './location-coordinates-api-response.model';
+import { LocationMeasurementsApiResponse } from './location-measurements-api.model';
+import { LocationCoordinatesApiResponse } from './location-coordinates-api.model';
 
 export interface LocationApiResponse {
   location: string;
