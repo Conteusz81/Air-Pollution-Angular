@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,11 +9,11 @@ import {
   ValidationErrors,
   Validators
 } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { RegisterFormService } from './registe-form.service/register-form.service';
-import { map } from 'rxjs/operators';
+import {ErrorStateMatcher} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {RegisterFormService} from './registe-form.service/register-form.service';
+import {map} from 'rxjs/operators';
 
 // #solution it's required for {validator: this.checkPasswordMatch} this method validate password match
 // without this validation works but mat-error doesn't show up
@@ -33,6 +33,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class RegisterFormComponent implements OnInit {
 
+  private transportButtonToggleData = [
+    {value: 'walk', iconName: 'directions_walk'},
+    {value: 'bike', iconName: 'directions_bike'},
+    {value: 'car', iconName: 'directions_car'},
+    {value: 'bus', iconName: 'directions_bus'},
+    {value: 'subway', iconName: 'subway'},
+    {value: 'train', iconName: 'train'}
+  ];
+  private inputsWithoutValidation = [
+    {name: 'name', label: 'Name'},
+    {name: 'surname', label: 'Surname'},
+    {name: 'homeTown', label: 'Home Town'},
+  ];
   private registerForm: FormGroup;
   private matcher = new MyErrorStateMatcher();
   private hidePrimary = true;
@@ -43,7 +56,8 @@ export class RegisterFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private registerFormService: RegisterFormService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -52,24 +66,28 @@ export class RegisterFormComponent implements OnInit {
       birthDate: [''],
       transport: [''],
       homeTown: [''],
-      email: ['', { updateOn: 'submit', validators: [Validators.required, Validators.email],
-        asyncValidators: [this.validateEmailNotTaken.bind(this)]}],
-      userName: ['', { updateOn: 'submit', validators: [Validators.required, Validators.minLength(4)],
-        asyncValidators: [this.validateUserNameNotTaken.bind(this)]}],
+      email: ['', {
+        updateOn: 'submit', validators: [Validators.required, Validators.email],
+        asyncValidators: [this.validateEmailNotTaken.bind(this)]
+      }],
+      userName: ['', {
+        updateOn: 'submit', validators: [Validators.required, Validators.minLength(4)],
+        asyncValidators: [this.validateUserNameNotTaken.bind(this)]
+      }],
       password: ['',
-       [Validators.required,
-        Validators.minLength(8),
-        Validators.pattern('.*[a-z].*'),
-        Validators.pattern('.*[A-Z].*'),
-        Validators.pattern('.*[0-9].*')]],
+        [Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('.*[a-z].*'),
+          Validators.pattern('.*[A-Z].*'),
+          Validators.pattern('.*[0-9].*')]],
       confirmPassword: ['', Validators.required]
     }, {validator: this.checkPasswordMatch});
   }
 
-  checkPasswordMatch(control: AbstractControl): {[key: string]: boolean} {
+  checkPasswordMatch(control: AbstractControl): { [key: string]: boolean } {
     const primaryPassword = control.get('password').value;
     const secondaryPassword = control.get('confirmPassword').value;
-    return primaryPassword === secondaryPassword ? null : { passwordNotSame: true };
+    return primaryPassword === secondaryPassword ? null : {passwordNotSame: true};
   }
 
   validateUserNameNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
@@ -87,14 +105,16 @@ export class RegisterFormComponent implements OnInit {
   }
 
   // #solution clever way to shorten entry to controlled form fields
-  get form() { return this.registerForm.controls; }
+  get form() {
+    return this.registerForm.controls;
+  }
 
   // #canDoBetter muszę sprawdzić, czy te metody mogę odpalać w serwisie
   getEmailErrorMessage() {
-    return this.form.email.hasError('required') ? 'You must enter a value' :
-      this.form.email.hasError('email') ? 'Not a valid email' :
-        this.form.email.hasError('emailTaken') ? 'Email is taken' : '';
-  }
+      return this.form.email.hasError('required') ? 'You must enter a value' :
+        this.form.email.hasError('email') ? 'Not a valid email' :
+          this.form.email.hasError('emailTaken') ? 'Email is taken' : '';
+    }
 
   getUserNameErrorMessage() {
     return this.form.userName.hasError('required') ? 'You must enter a value' :
@@ -111,6 +131,6 @@ export class RegisterFormComponent implements OnInit {
 
   getConfirmPasswordErrorMessage() {
     return this.form.confirmPassword.hasError('required') ? 'You must enter a value' :
-    this.registerForm.hasError('passwordNotSame') ? 'Passwords must be the same' : '';
+      this.registerForm.hasError('passwordNotSame') ? 'Passwords must be the same' : '';
   }
 }

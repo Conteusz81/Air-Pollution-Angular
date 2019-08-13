@@ -1,27 +1,11 @@
 <form (ngSubmit)="registerFormService.onRegisterSubmit(registerForm)" [formGroup]="registerForm">
+
   <mat-button-toggle-group formControlName="transport">
-    <mat-button-toggle value="walk">
-      <mat-icon>directions_walk</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="bike">
-      <mat-icon>directions_bike</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="car">
-      <mat-icon>directions_car</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="bus">
-      <mat-icon>directions_bus</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="tram">
-      <mat-icon>tram</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="subway">
-      <mat-icon>subway</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="train">
-      <mat-icon>train</mat-icon>
+    <mat-button-toggle *ngFor="let buttonToggle of transportButtonToggleData" value="{{buttonToggle.value}}">
+      <mat-icon>{{buttonToggle.iconName}}</mat-icon>
     </mat-button-toggle>
   </mat-button-toggle-group>
+
   <mat-form-field>
     <label>
       <input matInput [matDatepicker]="picker" placeholder="Your birth date" formControlName="birthDate">
@@ -29,24 +13,14 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Home Town</mat-label>
+
+  <mat-form-field appearance="outline" *ngFor="let input of inputsWithoutValidation">
+    <mat-label>{{input.label}}</mat-label>
     <label>
-      <input matInput placeholder="Enter your home town" formControlName="homeTown">
+      <input matInput placeholder="Enter your {{input.name}}" formControlName="{{input.name}}">
     </label>
   </mat-form-field>
-<mat-form-field appearance="outline">
-  <mat-label>Name</mat-label>
-  <label>
-    <input matInput placeholder="Enter your name" formControlName="name">
-  </label>
-</mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Surname</mat-label>
-    <label>
-      <input matInput placeholder="Enter your surname" formControlName="surname">
-    </label>
-  </mat-form-field>
+
   <mat-form-field appearance="outline">
     <mat-label>User Name</mat-label>
     <label>
@@ -61,6 +35,7 @@
     </label>
     <mat-error *ngIf="registerForm.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field>
+
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
     <label>
