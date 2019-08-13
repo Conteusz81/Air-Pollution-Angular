@@ -6,6 +6,7 @@ import {
   PollutionMeasurementsSortService
 } from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
 import {filter} from 'rxjs/operators';
+import {AirQualityIndexColorService} from '../../shared/services/air-quality-index-color.service/air-quality-index-color.service';
 
 @Component({
   selector: 'app-city-details',
@@ -22,7 +23,8 @@ export class CityDetailsComponent implements OnInit  {
     private route: ActivatedRoute,
     private pollutionApiService: PollutionApiService,
     private router: Router,
-    private pollutionSortService: PollutionMeasurementsSortService
+    private pollutionSortService: PollutionMeasurementsSortService,
+    private aqiColorService: AirQualityIndexColorService
   ) { }
 
   ngOnInit() {

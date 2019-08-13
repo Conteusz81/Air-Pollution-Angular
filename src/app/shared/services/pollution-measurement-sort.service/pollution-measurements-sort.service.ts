@@ -59,47 +59,5 @@ export class PollutionMeasurementsSortService {
   sortLocationData(locationDataResults: AllLocationsApiResponse[]): AllLocationsApiResponse[] {
     return locationDataResults.filter( element => element.lastUpdated.startsWith(this.currentMonth));
   }
-  // #canDoBetter Nie jestem pewny czy ta metoda może być tu czy już powinna być w innym serwisie.
-  // i też nie wiem dlaczego jest to ostrzeżenie o metodzie static (jeszcze w innych miejscach mam takie ostrzeżenie)
-  // jak zmieniam na static, to przestaje działać, muszę o tym poczytać czym jest satatic
-  getAirQualityIndexColor(parameterName: string, value: number) {
-    switch (parameterName) {
-      case 'no2':
-        return value < 50  ? { background: '#79bc6a'} :
-               value < 100 ? { background: '#bbcf4c'} :
-               value < 200 ? { background: '#eec20b'} :
-               value < 400 ? { background: '#f29305'} :
-                             { background: '#e8416f'};
-      case 'pm10':
-        return value < 25  ? { background: '#79bc6a'} :
-               value < 50  ? { background: '#bbcf4c'} :
-               value < 90  ? { background: '#eec20b'} :
-               value < 180 ? { background: '#f29305'} :
-                             { background: '#e8416f'};
-      case 'pm25':
-        return value < 15  ? { background: '#79bc6a'} :
-               value < 30  ? { background: '#bbcf4c'} :
-               value < 55  ? { background: '#eec20b'} :
-               value < 110 ? { background: '#f29305'} :
-                             { background: '#e8416f'};
-      case 'o3':
-        return value < 60  ? { background: '#79bc6a'} :
-               value < 120 ? { background: '#bbcf4c'} :
-               value < 180 ? { background: '#eec20b'} :
-               value < 240 ? { background: '#f29305'} :
-                             { background: '#e8416f'};
-      case 'co':
-        return value < 5000  ? { background: '#79bc6a'} :
-               value < 7500  ? { background: '#bbcf4c'} :
-               value < 10000 ? { background: '#eec20b'} :
-               value < 20000 ? { background: '#f29305'} :
-                               { background: '#e8416f'};
-      case 'so2':
-        return value < 50  ? { background: '#79bc6a'} :
-               value < 100 ? { background: '#bbcf4c'} :
-               value < 350 ? { background: '#eec20b'} :
-               value < 500 ? { background: '#f29305'} :
-                             { background: '#e8416f'};
-    }
-  }
+
 }

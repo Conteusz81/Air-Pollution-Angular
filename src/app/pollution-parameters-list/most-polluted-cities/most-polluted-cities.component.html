@@ -12,7 +12,7 @@
     routerLink="../../city/{{city.name}}"
     [matTooltip]="'Check the latest measurements from this location.'"
     (click)="this.topCitiesChoiceService.cityChoice(city.name)"
-    [ngStyle]="pollutionSortService.getAirQualityIndexColor(pollutionParameterId, city.measurementAvg)">
+    [ngStyle]="aqiColorService.getAirQualityIndexColor(pollutionParameterId, city.measurementAvg)">
      {{i + 1}}.
      {{city.name}}
      {{city.measurementAvg.toFixed(2)}}

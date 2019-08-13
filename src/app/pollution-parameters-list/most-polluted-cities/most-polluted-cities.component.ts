@@ -7,6 +7,7 @@ import {PollutionApiService} from '../../shared/services/pollution-api.service/p
 import {MostPollutedCities} from '../../shared/models/most-polluted-cities.model';
 import {ActivatedRoute, Params} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
+import {AirQualityIndexColorService} from '../../shared/services/air-quality-index-color.service/air-quality-index-color.service';
 
 @Component({
   selector: 'app-most-polluted-cities',
@@ -23,6 +24,7 @@ export class MostPollutedCitiesComponent implements OnInit {
     private pollutionSortService: PollutionMeasurementsSortService,
     private topCitiesChoiceService: TopCitiesChoiceService,
     private pollutionApiService: PollutionApiService,
+    private aqiColorService: AirQualityIndexColorService,
     private route: ActivatedRoute
   ) {
   }

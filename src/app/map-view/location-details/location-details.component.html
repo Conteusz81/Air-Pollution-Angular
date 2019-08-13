@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list *ngFor=" let measurement of locationData.measurements">
-      <mat-list-item [ngStyle]="this.pollutionSortService.getAirQualityIndexColor(measurement.parameter, measurement.value)">
+      <mat-list-item [ngStyle]="this.aqiColorService.getAirQualityIndexColor(measurement.parameter, measurement.value)">
         <h4 mat-line>
           {{measurement.parameter | uppercase}}
           {{measurement.value.toFixed(2)}}
