@@ -18,7 +18,7 @@ export class MapViewComponent implements OnInit {
   @ViewChild(MatSidenav, {static: false}) mapSidenav: any;
   private allLocationsData: AllLocationsApiResponse[];
   private markersLayer = [];
-  private locationMarkerData: LocationApiResponse[];
+  private locationMarkerDetails: LocationApiResponse[];
   private cityName: string;
   private loadingFlag = false;
   private airQualityIndexTooltip: string[] = ['VERY LOW', 'LOW', 'MEDIUM', 'HIGH', 'VERY HIGH'];
@@ -102,7 +102,7 @@ export class MapViewComponent implements OnInit {
   getLocationPollutionData(location: string, city: string) {
     this.cityName = city;
     this.pollutionApiService.getLocationPollutionData(location).subscribe(response => {
-      this.locationMarkerData = response.results;
+      this.locationMarkerDetails = this.pollutionSortService.sortParameterByName(response.results);
       this.loadingFlag = true;
       // #solution for click event on marker to work step by step with leaflet map
       this.changeDetector.detectChanges();

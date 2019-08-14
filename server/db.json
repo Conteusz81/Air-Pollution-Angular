@@ -47,30 +47,6 @@
       "password": "Londek123",
       "confirmPassword": "Londek123",
       "id": 4
-    },
-    {
-      "name": "",
-      "surname": "",
-      "birthDate": "",
-      "transport": "",
-      "homeTown": "",
-      "email": "hhh@hh",
-      "userName": "hhhh",
-      "password": "Piotrek123",
-      "confirmPassword": "Piotrek123",
-      "id": 5
-    },
-    {
-      "name": "",
-      "surname": "",
-      "birthDate": "",
-      "transport": "",
-      "homeTown": "",
-      "email": "tt@tt",
-      "userName": "nnnn",
-      "password": "Piotrek123",
-      "confirmPassword": "Piotrek123",
-      "id": 6
     }
   ]
 }

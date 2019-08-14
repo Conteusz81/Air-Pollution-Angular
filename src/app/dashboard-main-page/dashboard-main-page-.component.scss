@@ -22,7 +22,6 @@ div.container {
       top: nth($absolute-top-positioning, $i);
       left: calc(250px * #{$i});
       animation: cloud#{$i} 1s #{$i * 300}ms forwards;
-      transition: .7s;
       @keyframes cloud#{$i} {
         from {
           transform: scale(0);
@@ -33,17 +32,21 @@ div.container {
       }
 
       span {
+        opacity: .6;
         position: absolute;
         top: 80px;
         left: 55%;
         transform: translate(-50%, -60%);
         font-weight: bold;
+        transition: .7s;
+        &:hover {
+          font-size: 1.2rem;
+          color: #8cd1f0;
+          opacity: 1;
+        }
       }
 
-      &:hover {
-        font-size: 1.2rem;
-        color: #8cd1f0;
-      }
+
     }
   }
 }
