@@ -13,7 +13,7 @@ import {ErrorStateMatcher} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RegisterFormService} from './registe-form.service/register-form.service';
-import {map} from 'rxjs/operators';
+import {debounce, debounceTime, first, map, switchMap, take} from 'rxjs/operators';
 
 // #solution it's required for {validator: this.checkPasswordMatch} this method validate password match
 // without this validation works but mat-error doesn't show up
@@ -60,6 +60,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.registerForm = this.formBuilder.group({
       name: [''],
       surname: [''],
@@ -67,11 +68,13 @@ export class RegisterFormComponent implements OnInit {
       transport: [''],
       homeTown: [''],
       email: ['', {
-        updateOn: 'submit', validators: [Validators.required, Validators.email],
+        // updateOn: 'submit',
+        validators: [Validators.required, Validators.email],
         asyncValidators: [this.validateEmailNotTaken.bind(this)]
       }],
       userName: ['', {
-        updateOn: 'submit', validators: [Validators.required, Validators.minLength(4)],
+        // updateOn: 'submit',
+        validators: [Validators.required, Validators.minLength(4)],
         asyncValidators: [this.validateUserNameNotTaken.bind(this)]
       }],
       password: ['',
@@ -91,17 +94,38 @@ export class RegisterFormComponent implements OnInit {
   }
 
   validateUserNameNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    return this.registerFormService.checkIfUserExist(control.value).pipe(map(byUser => {
-      console.log(byUser);
-      return Object.keys(byUser).length ? {userTaken: true} : null;
-    }));
+    return control.valueChanges.pipe(
+      debounceTime(2000),
+      take(1),
+      switchMap(() => {
+        return this.registerFormService.checkIfUserExist(control.value);
+      }), map(byUser => {
+        console.log(byUser);
+        return Object.keys(byUser).length ? {userTaken: true} : null;
+      }), first());
+
+
+    // return this.registerFormService.checkIfUserExist(control.value).pipe(debounceTime(2000), map(byUser => {
+    //   console.log(byUser);
+    //   return Object.keys(byUser).length ? {userTaken: true} : null;
+    // }));
   }
 
   validateEmailNotTaken(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    return this.registerFormService.checkIfEmailExist(control.value).pipe(map(byEmail => {
-      console.log(byEmail);
-      return Object.keys(byEmail).length ? {emailTaken: true} : null;
-    }));
+    return control.valueChanges.pipe(
+      debounceTime(2000),
+      take(1),
+      switchMap(() => {
+        return this.registerFormService.checkIfEmailExist(control.value);
+      }), map(byEmail => {
+        console.log(byEmail);
+        return Object.keys(byEmail).length ? {emailTaken: true} : null;
+      }), first());
+
+    // return this.registerFormService.checkIfEmailExist(control.value).pipe(map(byEmail => {
+    //   console.log(byEmail);
+    //   return Object.keys(byEmail).length ? {emailTaken: true} : null;
+    // }));
   }
 
   // #solution clever way to shorten entry to controlled form fields
@@ -111,10 +135,10 @@ export class RegisterFormComponent implements OnInit {
 
   // #canDoBetter muszę sprawdzić, czy te metody mogę odpalać w serwisie
   getEmailErrorMessage() {
-      return this.form.email.hasError('required') ? 'You must enter a value' :
-        this.form.email.hasError('email') ? 'Not a valid email' :
-          this.form.email.hasError('emailTaken') ? 'Email is taken' : '';
-    }
+    return this.form.email.hasError('required') ? 'You must enter a value' :
+      this.form.email.hasError('email') ? 'Not a valid email' :
+        this.form.email.hasError('emailTaken') ? 'Email is taken' : '';
+  }
 
   getUserNameErrorMessage() {
     return this.form.userName.hasError('required') ? 'You must enter a value' :

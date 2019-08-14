@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import {first, startWith} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,29 +18,12 @@ export class RegisterFormService {
     return this.http.get(`${this.jsonServerUrl}?email=${email}`);
   }
 
-  onRegisterSubmit(registerForm: FormGroup) {
-    console.log(registerForm.status);
-    if (registerForm.pending) {
-      const test = registerForm.statusChanges.subscribe( registerFormStatus => {
-        test.unsubscribe();
-        console.log(registerForm.status);
-        if ( registerFormStatus === 'VALID') {
-          this.ngSubmitPostValidation(registerForm);
-        }
-      });
-    } else {
-      this.ngSubmitPostValidation(registerForm);
-      console.log('else');
-    }
-  }
-
-  private ngSubmitPostValidation(registerForm) {
+  ngSubmitPostValidation(registerForm) {
     if (!registerForm.valid) {
-      console.log('invalid1');
-      // console.log(registerForm.value);
+      console.log('Form is', registerForm.status);
     } else {
       this.addNewUser(registerForm);
-      console.log('valid1');
+      console.log('Form is', registerForm.status);
     }
   }
 

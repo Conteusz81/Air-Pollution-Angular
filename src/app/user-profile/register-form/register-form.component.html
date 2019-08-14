@@ -1,34 +1,42 @@
-<form (ngSubmit)="registerFormService.onRegisterSubmit(registerForm)" [formGroup]="registerForm">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Register Form</mat-card-title>
+    <mat-card-subtitle>Please fill out the register form and hit the submit button</mat-card-subtitle>
+  </mat-card-header>
+<form (ngSubmit)="registerFormService.ngSubmitPostValidation(registerForm)" [formGroup]="registerForm">
 
-  <mat-button-toggle-group formControlName="transport">
-    <mat-button-toggle *ngFor="let buttonToggle of transportButtonToggleData" value="{{buttonToggle.value}}">
-      <mat-icon>{{buttonToggle.iconName}}</mat-icon>
-    </mat-button-toggle>
-  </mat-button-toggle-group>
-
-  <mat-form-field>
-    <label>
-      <input matInput [matDatepicker]="picker" placeholder="Your birth date" formControlName="birthDate">
-    </label>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker touchUi #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" *ngFor="let input of inputsWithoutValidation">
+  <mat-form-field class="input-without-validation" appearance="outline" *ngFor="let input of inputsWithoutValidation">
     <mat-label>{{input.label}}</mat-label>
     <label>
       <input matInput placeholder="Enter your {{input.name}}" formControlName="{{input.name}}">
     </label>
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field class="date-picker">
+    <label>
+      <input matInput [matDatepicker]="picker" placeholder="Your birth date" formControlName="birthDate">
+    </label>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+  <mat-hint>Choose your main form of transport</mat-hint>
+  <mat-button-toggle-group class="transport-toggle-button" formControlName="transport">
+    <mat-button-toggle
+      *ngFor="let buttonToggle of transportButtonToggleData"
+      value="{{buttonToggle.value}}"
+      [matTooltip]="buttonToggle.value | uppercase">
+      <mat-icon>{{buttonToggle.iconName}}</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <mat-form-field class="input-with-validation" appearance="outline">
     <mat-label>User Name</mat-label>
     <label>
       <input matInput placeholder="Enter your user name" formControlName="userName" required>
     </label>
-
+    <mat-error *ngIf="registerForm.invalid">{{getUserNameErrorMessage()}}</mat-error>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="input-with-validation" appearance="outline">
     <mat-label>Email</mat-label>
     <label>
       <input matInput placeholder="Enter your email" formControlName="email" required>
@@ -36,7 +44,7 @@
     <mat-error *ngIf="registerForm.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field class="input-with-validation" appearance="outline">
     <mat-label>Password</mat-label>
     <label>
       <input matInput
@@ -53,7 +61,7 @@
     </button>
     <mat-error *ngIf="registerForm.invalid">{{getPasswordErrorMessage()}}</mat-error>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="input-with-validation" appearance="outline">
     <mat-label>Confirm Password</mat-label>
     <label>
       <input matInput
@@ -73,3 +81,4 @@
   </mat-form-field>
   <button mat-raised-button type="submit">Submit</button>
 </form>
+</mat-card>
