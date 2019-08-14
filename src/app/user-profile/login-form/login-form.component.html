@@ -1,1 +1,32 @@
-<p>login-form works!</p>
+<mat-card class="login">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Enter your user name or email to login</mat-card-subtitle>
+  </mat-card-header>
+  <form class="example-form">
+    <mat-form-field class="input-with-validation" appearance="outline">
+      <mat-label>User Name or Email</mat-label>
+      <label>
+        <input matInput placeholder="Enter your user name or email" required>
+      </label>
+      <mat-error></mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-with-validation" appearance="outline">
+      <mat-label>Password</mat-label>
+      <label>
+        <input matInput
+               placeholder="Enter your password"
+               [type]="hidePassword ? 'password' : 'text'"
+               required>
+      </label>
+      <button mat-icon-button matSuffix
+              (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error></mat-error>
+    </mat-form-field>
+    <button mat-raised-button disabled>Login not ready yet</button>
+  </form>
+</mat-card>

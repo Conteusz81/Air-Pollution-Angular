@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
+  private hidePassword = false;
+
   constructor() { }
 
   ngOnInit() {

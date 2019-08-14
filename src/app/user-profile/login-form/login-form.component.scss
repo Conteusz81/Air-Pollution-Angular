@@ -1,0 +1,16 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input-with-validation {
+      width: 98%;
+    }
+  }
+}
