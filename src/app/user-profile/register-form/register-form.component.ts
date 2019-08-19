@@ -65,7 +65,7 @@ export class RegisterFormComponent implements OnInit {
       name: [''],
       surname: [''],
       birthDate: [''],
-      // transport: [''],
+      transport: [''],
       homeTown: [''],
       email: ['', {
         // updateOn: 'submit',

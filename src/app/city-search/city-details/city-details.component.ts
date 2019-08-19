@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import { PollutionApiService } from '../../shared/services/pollution-api.service/pollution-api.service';
 import { LocationApiResponse } from '../../shared/models/pollution-api.model/location-api.model';
 import {
   PollutionMeasurementsSortService
 } from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
-import {filter, switchMap, tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {AirQualityIndexColorService} from '../../shared/services/air-quality-index-color.service/air-quality-index-color.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-city-details',

@@ -17,14 +17,14 @@
   </mat-form-field>
   <mat-hint>Choose your main form of transport</mat-hint>
 
-<!--  <mat-button-toggle-group class="transport-toggle-button" formControlName="transport">-->
-<!--    <mat-button-toggle-->
-<!--      *ngFor="let buttonToggle of transportButtonToggleData"-->
-<!--      value="{{buttonToggle.value}}"-->
-<!--      [matTooltip]="buttonToggle.value | uppercase">-->
-<!--      <mat-icon>{{buttonToggle.iconName}}</mat-icon>-->
-<!--    </mat-button-toggle>-->
-<!--  </mat-button-toggle-group>-->
+<mat-button-toggle-group class="transport-toggle-button" ngDefaultControl formControlName="transport">
+  <mat-button-toggle
+    *ngFor="let buttonToggle of transportButtonToggleData"
+    value="{{buttonToggle.value}}"
+    [matTooltip]="buttonToggle.value | uppercase">
+    <mat-icon>{{buttonToggle.iconName}}</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>
 
   <mat-form-field class="input-with-validation" appearance="outline">
     <mat-label>User Name</mat-label>
