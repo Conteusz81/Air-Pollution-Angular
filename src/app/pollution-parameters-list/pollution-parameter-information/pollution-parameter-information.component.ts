@@ -13,6 +13,7 @@ export class PollutionParameterInformationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.pollutionParameter);
   }
 
 }

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {PollutionApiService} from '../shared/services/pollution-api.service/pollution-api.service';
 import {PARAMETERS} from '../../assets/mocks/mock-parameters-information';
 import {PollutionParameter} from './models/pollution-parameter.model';
 import {Router} from '@angular/router';
@@ -16,7 +15,6 @@ export class PollutionParametersListComponent implements OnInit {
   pollutionParameter: PollutionParameter;
 
   constructor(
-    private pollutionApiService: PollutionApiService,
     private router: Router
   ) { }
 

@@ -21,7 +21,6 @@ export class MostPollutedCitiesComponent implements OnInit {
   mostPollutedByParameter: MostPollutedCities[];
 
   constructor(
-    private pollutionSortService: PollutionMeasurementsSortService,
     private topCitiesChoiceService: TopCitiesChoiceService,
     private pollutionApiService: PollutionApiService,
     private aqiColorService: AirQualityIndexColorService,
@@ -42,9 +41,10 @@ export class MostPollutedCitiesComponent implements OnInit {
           return this.pollutionApiService.getLatestMeasurements(this.pollutionParameterId);
         }))
       .subscribe(response => {
+        console.log('response', response);
         this.mostPollutedByParameter = response;
         this.loadingFlag = true;
-      });
+      }, error => console.log(error.message, error.status));
   }
 
 }

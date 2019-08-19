@@ -21,8 +21,10 @@ export class InputAutocompleteService {
     this.http.get<PollutionApiResponse>(citiesNamesUrl).subscribe(response => {
       response.results.map(value => citiesList.push(value.city));
       this.cityNames = citiesList;
-      this.addCitiesToAutocomplete();
-    });
+      if (this.citiesList[0].names.length === 0) {
+        this.addCitiesToAutocomplete();
+      }
+      }, error => console.log(error.message, error.status));
   }
 
   addCitiesToAutocomplete(): void {

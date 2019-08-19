@@ -73,7 +73,7 @@ export class MapViewComponent implements OnInit {
     this.pollutionApiService.getAllLocationCoordinates().subscribe(locationData => {
       this.allLocationsData = this.pollutionSortService.sortLocationData(locationData.results);
       this.addLocationMarkers();
-    });
+    }, error => console.log(error.message, error.status));
   }
 
   private addLocationMarkers() {
@@ -106,6 +106,6 @@ export class MapViewComponent implements OnInit {
       this.loadingFlag = true;
       // #solution for click event on marker to work step by step with leaflet map
       this.changeDetector.detectChanges();
-    });
+    }, error => console.log(error.message, error.status));
   }
 }

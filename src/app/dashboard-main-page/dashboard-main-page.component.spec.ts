@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardMainPageComponent } from './dashboard-main-page.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('DashboardMainPageComponent', () => {
   let component: DashboardMainPageComponent;
@@ -8,7 +9,8 @@ describe('DashboardMainPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardMainPageComponent ]
+      declarations: [ DashboardMainPageComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   }));

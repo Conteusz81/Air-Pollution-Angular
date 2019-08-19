@@ -18,12 +18,11 @@ export const filter = (opt: string[], value: string): string[] => {
 })
 export class CitySearchComponent implements OnInit {
   cityForm: FormGroup = this.formBuilder.group({
-    cityGroup: '',
+    cityGroup: ''
   });
 
   cityGroups: CityGroup[] = this.inputAutocompleteService.citiesList;
   cityGroupOptions: Observable<CityGroup[]>;
-  cityName: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,9 +31,10 @@ export class CitySearchComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    if (this.cityGroups[0].names.length === 0) {
-      this.inputAutocompleteService.getCitiesNames();
-    }
+    // if (this.cityGroups[0].names.length === 0) {
+    //
+    // }
+    this.inputAutocompleteService.getCitiesNames();
     this.cityGroupOptions = this.cityForm.get('cityGroup').valueChanges
       .pipe(
         startWith(''),

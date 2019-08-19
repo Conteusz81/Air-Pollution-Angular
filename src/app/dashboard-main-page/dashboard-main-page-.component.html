@@ -4,6 +4,7 @@
 <div class="container">
 <div class="city" *ngFor="let city of cityCounter"
      routerLink="/city/{{city.name}}"
+     routerLinkActive="active"
      (click)="this.topCitiesChoiceService.cityChoice(city.name)">
   <span>{{city.name}}</span>
 </div>

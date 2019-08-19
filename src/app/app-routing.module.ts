@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'parameters', component: PollutionParametersListComponent,
     children: [ { path: ':id', component: MostPollutedCitiesComponent} ]},
   { path: 'map', component: MapViewComponent },
-  { path: 'profile', component: UserProfileComponent }
+  { path: 'profile', component: UserProfileComponent },
+  { path: '**', component: DashboardMainPageComponent }
 ];
 
 @NgModule({

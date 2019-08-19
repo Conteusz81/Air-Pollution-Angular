@@ -1,9 +1,7 @@
 <form [formGroup]="cityForm">
   <mat-form-field>
-    <label>
       <input type="text" matInput placeholder="Choose City"
-             formControlName="cityGroup" required [matAutocomplete]="autoGroup" [(ngModel)]="cityName">
-    </label>
+             formControlName="cityGroup" [matAutocomplete]="autoGroup" aria-label>
     <mat-autocomplete #autoGroup="matAutocomplete">
       <mat-optgroup *ngFor="let group of cityGroupOptions | async" [label]="group.letter">
         <mat-option *ngFor="let name of group.names" [value]="name">
@@ -12,9 +10,11 @@
       </mat-optgroup>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-button mat-raised-button routerLink="/city/{{cityName}}"
-          (click)="this.topCitiesChoiceService.cityChoice(cityName)"
-          *ngIf="this.inputAutocompleteService.cityNames"
-          [disabled]="!this.inputAutocompleteService.cityNames.includes(cityName)">Check Pollution</button>
+  <ng-container *ngIf="cityForm">
+    <button mat-button mat-raised-button routerLink="/city/{{cityForm.get('cityGroup').value}}"
+            (click)="this.topCitiesChoiceService.cityChoice(cityForm.get('cityGroup').value)"
+            *ngIf="this.inputAutocompleteService.cityNames"
+            [disabled]="!this.inputAutocompleteService.cityNames.includes(cityForm.get('cityGroup').value)">Check Pollution</button>
+  </ng-container>
 </form>
 <router-outlet></router-outlet>

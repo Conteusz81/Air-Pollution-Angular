@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -13,7 +13,7 @@ import {ErrorStateMatcher} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RegisterFormService} from './registe-form.service/register-form.service';
-import {debounce, debounceTime, first, map, switchMap, take} from 'rxjs/operators';
+import {debounceTime, first, map, switchMap, take} from 'rxjs/operators';
 
 // #solution it's required for {validator: this.checkPasswordMatch} this method validate password match
 // without this validation works but mat-error doesn't show up
@@ -29,8 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss'],
-
+  styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
 
@@ -66,7 +65,7 @@ export class RegisterFormComponent implements OnInit {
       name: [''],
       surname: [''],
       birthDate: [''],
-      transport: [''],
+      // transport: [''],
       homeTown: [''],
       email: ['', {
         // updateOn: 'submit',

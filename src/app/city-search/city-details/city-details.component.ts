@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import { PollutionApiService } from '../../shared/services/pollution-api.service/pollution-api.service';
 import { LocationApiResponse } from '../../shared/models/pollution-api.model/location-api.model';
 import {
   PollutionMeasurementsSortService
 } from '../../shared/services/pollution-measurement-sort.service/pollution-measurements-sort.service';
-import {filter} from 'rxjs/operators';
+import {filter, switchMap, tap} from 'rxjs/operators';
 import {AirQualityIndexColorService} from '../../shared/services/air-quality-index-color.service/air-quality-index-color.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-city-details',
@@ -28,27 +29,23 @@ export class CityDetailsComponent implements OnInit  {
   ) { }
 
   ngOnInit() {
-    this.observeRouteParamMapChange();
     this.getCityPollutionData();
    }
 
-  private observeRouteParamMapChange() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.loadingFlag = false;
-        this.getCityPollutionData();
-      });
-  }
-
   private getCityPollutionData() {
-    this.cityId = this.route.snapshot.paramMap.get('id');
-    this.pollutionApiService.getCityPollutionData(this.cityId)
-      .subscribe(cityData => {
-        this.cityData = this.pollutionSortService.sortParameterByName(cityData.results);
-        this.displayNoMeasurementsAlert();
-        this.loadingFlag = true;
-      });
+      this.route.paramMap
+        .pipe(
+          tap(() => this.loadingFlag = false),
+          switchMap((ParamsMap: Params) => {
+            this.cityId = ParamsMap.params.id;
+            return this.pollutionApiService.getCityPollutionData(this.cityId);
+          }))
+        .subscribe(cityData => {
+          console.log('response', cityData);
+          this.cityData = this.pollutionSortService.sortParameterByName(cityData.results);
+          this.loadingFlag = true;
+          this.displayNoMeasurementsAlert();
+        }, error => console.log(error.message, error.status));
     }
 
   private displayNoMeasurementsAlert() {

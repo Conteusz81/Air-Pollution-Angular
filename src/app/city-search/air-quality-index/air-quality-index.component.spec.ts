@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AirQualityIndexComponent } from './air-quality-index.component';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {MatMenuModule} from '@angular/material';
 
 describe('AirQualityIndexComponent', () => {
   let component: AirQualityIndexComponent;
@@ -8,7 +10,9 @@ describe('AirQualityIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AirQualityIndexComponent ]
+      declarations: [ AirQualityIndexComponent ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      imports: [MatMenuModule]
     })
     .compileComponents();
   }));
