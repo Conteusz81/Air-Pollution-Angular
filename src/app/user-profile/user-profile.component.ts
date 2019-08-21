@@ -7,14 +7,14 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
   styleUrls: ['./user-profile.component.scss'],
   animations: [
     trigger('rotatedForm', [
-      state('start', style({ transform: 'rotateY(0)' })),
-      state('rotate', style({ transform: 'rotateY(0)' })),
-      transition('start => rotate', animate('600ms', keyframes([
+      state('loginForm', style({ transform: 'rotateY(0)' })),
+      state('registerForm', style({ transform: 'rotateY(0)' })),
+      transition('loginForm => registerForm', animate('600ms', keyframes([
         style({transform: 'rotateY(0)', offset: 0}),
         style({transform: 'rotateY(90deg)', offset: 0.5}),
         style({transform: 'rotateY(0)', offset: 1.0})
       ]))),
-      transition('rotate => start', animate('600ms', keyframes([
+      transition('registerForm => loginForm', animate('600ms', keyframes([
         style({transform: 'rotateY(0)', offset: 0}),
         style({transform: 'rotateY(90deg)', offset: 0.5}),
         style({transform: 'rotateY(0)', offset: 1.0})
@@ -24,8 +24,8 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 })
 export class UserProfileComponent implements OnInit {
 
-  private formFlag = true;
-  private state = 'start';
+  formFlag = true;
+  state = 'loginForm';
 
   constructor() { }
 
@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   rotate() {
-    this.state = (this.state === 'start' ? 'rotate' : 'start');
+    this.state = (this.state === 'loginForm' ? 'registerForm' : 'loginForm');
   }
 
   formFlagTimeout() {
