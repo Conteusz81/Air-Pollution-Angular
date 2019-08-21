@@ -71,7 +71,9 @@ export class MapViewComponent implements OnInit {
 
   private getAllLocations() {
     this.pollutionApiService.getAllLocationCoordinates().subscribe(locationData => {
+      console.log(locationData);
       this.allLocationsData = this.pollutionSortService.sortLocationData(locationData.results);
+      console.log(this.allLocationsData);
       this.addLocationMarkers();
     }, error => console.log(error.message, error.status));
   }

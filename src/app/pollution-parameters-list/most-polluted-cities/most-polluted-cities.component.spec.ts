@@ -5,12 +5,15 @@ import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ActivatedRoute, convertToParamMap} from '@angular/router';
 import {of} from 'rxjs';
 import {PollutionApiService} from '../../shared/services/pollution-api.service/pollution-api.service';
+import {TopCitiesChoiceService} from '../../shared/services/top-cities-choice.service/top-cities-choice.service';
+import {AirQualityIndexColorService} from '../../shared/services/air-quality-index-color.service/air-quality-index-color.service';
+
+class MockTopCitiesChoiceService {}
 
 class MockPollutionApiService {
-  getLatestMeasurements() {
-
-  }
+  getLatestMeasurements() {}
 }
+class MockAirQualityIndexColorService {}
 
 describe('MostPollutedCitiesComponent', () => {
   let component: MostPollutedCitiesComponent;
@@ -23,7 +26,9 @@ describe('MostPollutedCitiesComponent', () => {
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         {provide: ActivatedRoute, useValue: { paramMap: of(convertToParamMap({id: 1}))}},
+        {provide: TopCitiesChoiceService, useClass: MockTopCitiesChoiceService},
         {provide: PollutionApiService, useClass: MockPollutionApiService},
+        {provide: AirQualityIndexColorService, useClass: MockAirQualityIndexColorService},
         ]
     })
     .compileComponents();
