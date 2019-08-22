@@ -15,7 +15,7 @@ export class PollutionMeasurementsSortService {
 
   constructor() { }
   // #canDoBetter pewnie gdybym wiedział, że tak rozbuduję tą apkę, to inaczej bym podeszdł do najbardziej zanieczyszczonych
-  sortMostPollutedCities(latestMeasurements: LocationApiResponse[]) {
+  sortMostPollutedCities(latestMeasurements: LocationApiResponse[]): MostPollutedCities[] {
     this.latestMeasurements = latestMeasurements;
     this.filterMeasurementsByDate();
     this.createSortedByCitiesObject();
@@ -23,10 +23,10 @@ export class PollutionMeasurementsSortService {
     return this.sortedTopCities;
   }
 
-  private filterMeasurementsByDate() {
+   private filterMeasurementsByDate() {
     this.currentMonthMeasurements = this.latestMeasurements.filter(element => element.measurements[0].lastUpdated
       .startsWith(this.currentMonth));
-  }
+   }
 
   private createSortedByCitiesObject() {
     this.sortedByCities = this.currentMonthMeasurements.reduce((r, a) => {
