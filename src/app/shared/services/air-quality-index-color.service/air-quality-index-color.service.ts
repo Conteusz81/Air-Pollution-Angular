@@ -77,8 +77,8 @@ export class AirQualityIndexColorService {
 
   getAirQualityIndexColor(parameterName: string, ppmValue: number) {
    const degree = airQualityDegreePpmRangeMapping[parameterName]
-        .find(range => range.toPpm > ppmValue).airQualityDegree;
-   return degree ? {background: degree} : {background: AirQualityDegree.VeryHigh};
+        .find(range => ppmValue < range.toPpm);
+   return degree ? {background: degree.airQualityDegree} : {background: AirQualityDegree.VeryHigh};
 
 
     // switch (parameterName) {
