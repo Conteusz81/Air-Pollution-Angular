@@ -21,6 +21,7 @@ export class PollutionApiService {
     const latestMeasurementsUrl = `https://api.openaq.org/v1/latest?country=PL&parameter=${parameterId}&limit=10000`;
     return this.http.get<PollutionApiResponse>(latestMeasurementsUrl)
       .pipe(map(response => {
+        console.log(response);
         return this.pollutionSortService.sortMostPollutedCities(response.results);
       }));
   }

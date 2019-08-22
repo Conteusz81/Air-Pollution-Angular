@@ -9,7 +9,7 @@ describe('ParametersListComponent', () => {
 
   const router = {
     navigate: jasmine.createSpy('navigate'),
-    url: 'testUrl',
+    url: 'testUrl'
   };
 
   beforeEach(async(() => {
