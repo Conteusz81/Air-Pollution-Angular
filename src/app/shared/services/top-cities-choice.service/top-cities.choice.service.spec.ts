@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TopCitiesChoiceService } from './top-cities-choice.service';
 
-describe('TopCitySearchService', () => {
+describe('TopCityChoiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

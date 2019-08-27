@@ -36,4 +36,10 @@ describe('LocationDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it( 'Setting loadingFlag to true, enable the component', () => {
+    component.loadingFlag = true;
+    fixture.detectChanges();
+    expect(component.loadingFlag).toBeTruthy();
+  });
 });

@@ -22,7 +22,7 @@ export class PollutionParametersListComponent implements OnInit {
     this.router.navigate(['/parameters']);
   }
 
-  private onParameterSelect(pollutionParameterName: string) {
+  onParameterSelect(pollutionParameterName: string) {
     this.selectedParameter = pollutionParameterName;
     this.pollutionParameter = this.getPollutionParameterData();
   }
