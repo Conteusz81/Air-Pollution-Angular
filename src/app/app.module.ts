@@ -37,9 +37,9 @@ import { AirQualityIndexComponent } from './city-search/air-quality-index/air-qu
 import { DashboardMainPageComponent } from './dashboard-main-page/dashboard-main-page.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { LocationDetailsComponent } from './map-view/location-details/location-details.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { LoginFormComponent } from './user-profile/login-form/login-form.component';
-import { RegisterFormComponent } from './user-profile/register-form/register-form.component';
+// import { UserProfileComponent } from './user-profile/user-profile.component';
+// import { LoginFormComponent } from './user-profile/login-form/login-form.component';
+// import { RegisterFormComponent } from './user-profile/register-form/register-form.component';
 import { MainNavigationListComponent } from './main-navigation-list/main-navigation-list.component';
 
 @NgModule({
@@ -55,9 +55,9 @@ import { MainNavigationListComponent } from './main-navigation-list/main-navigat
     DashboardMainPageComponent,
     MapViewComponent,
     LocationDetailsComponent,
-    UserProfileComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
+    // UserProfileComponent,
+    // LoginFormComponent,
+    // RegisterFormComponent,
     MainNavigationListComponent
   ],
   imports: [

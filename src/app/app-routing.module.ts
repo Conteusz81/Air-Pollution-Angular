@@ -6,7 +6,7 @@ import {CitySearchComponent} from './city-search/city-search.component';
 import {PollutionParametersListComponent} from './pollution-parameters-list/pollution-parameters-list.component';
 import {MostPollutedCitiesComponent} from './pollution-parameters-list/most-polluted-cities/most-polluted-cities.component';
 import {MapViewComponent} from './map-view/map-view.component';
-import {UserProfileComponent} from './user-profile/user-profile.component';
+// import {UserProfileComponent} from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'parameters', component: PollutionParametersListComponent,
     children: [ { path: ':id', component: MostPollutedCitiesComponent} ]},
   { path: 'map', component: MapViewComponent },
-  { path: 'profile', component: UserProfileComponent },
+  // { path: 'profile', component: UserProfileComponent },
   { path: '**', component: DashboardMainPageComponent }
 ];
 

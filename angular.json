@@ -29,6 +29,11 @@
                 "input": "./node_modules/leaflet/dist/images",
                 "output": "leaflet/"
               },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
